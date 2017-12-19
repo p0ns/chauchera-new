@@ -154,8 +154,8 @@
         <translation>正在為磁碟區塊重建索引...</translation>
     </message>
     <message>
-        <source>Send coins to a Litecoin address</source>
-        <translation>付款至一個 Litecoin 位址</translation>
+        <source>Send coins to a Chaucha address</source>
+        <translation>付款至一個 Chaucha 位址</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -178,8 +178,8 @@
         <translation>驗證訊息... &amp;V</translation>
     </message>
     <message>
-        <source>Litecoin</source>
-        <translation>Litecoin</translation>
+        <source>Chaucha</source>
+        <translation>Chaucha</translation>
     </message>
     <message>
         <source>Wallet</source>

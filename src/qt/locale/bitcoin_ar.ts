@@ -158,7 +158,7 @@
         <translation>إعادة الفهرسة الكتل على القرص ...</translation>
     </message>
     <message>
-        <source>Send coins to a Litecoin address</source>
+        <source>Send coins to a Chaucha address</source>
         <translation>ارسل عملات الى عنوان بيتكوين</translation>
     </message>
     <message>
@@ -182,8 +182,8 @@
         <translation>&amp;التحقق من الرسالة...</translation>
     </message>
     <message>
-        <source>Litecoin</source>
-        <translation>Litecoin</translation>
+        <source>Chaucha</source>
+        <translation>Chaucha</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -210,12 +210,12 @@
         <translation>تشفير المفتاح الخاص بمحفظتك</translation>
     </message>
     <message>
-        <source>Sign messages with your Litecoin addresses to prove you own them</source>
-        <translation>وقَع الرسائل بواسطة ال: Litecoin الخاص بك لإثبات امتلاكك لهم</translation>
+        <source>Sign messages with your Chaucha addresses to prove you own them</source>
+        <translation>وقَع الرسائل بواسطة ال: Chaucha الخاص بك لإثبات امتلاكك لهم</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Litecoin addresses</source>
-        <translation>تحقق من الرسائل للتأكد من أنَها وُقعت برسائل Litecoin محدَدة</translation>
+        <source>Verify messages to ensure they were signed with specified Chaucha addresses</source>
+        <translation>تحقق من الرسائل للتأكد من أنَها وُقعت برسائل Chaucha محدَدة</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -234,7 +234,7 @@
         <translation>شريط أدوات علامات التبويب</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and litecoin: URIs)</source>
+        <source>Request payments (generates QR codes and chaucha: URIs)</source>
         <translation>أطلب دفعات (يولد كودات الرمز المربع وبيت كوين: العناوين المعطاة)</translation>
     </message>
     <message>
@@ -246,8 +246,8 @@
         <translation>عرض قائمة عناوين الإستقبال المستخدمة والملصقات</translation>
     </message>
     <message>
-        <source>Open a litecoin: URI or payment request</source>
-        <translation>فتح URI : Litecoin أو طلب دفع</translation>
+        <source>Open a chaucha: URI or payment request</source>
+        <translation>فتح URI : Chaucha أو طلب دفع</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
@@ -1014,8 +1014,8 @@
         <translation>هذا دفع اعتيادي</translation>
     </message>
     <message>
-        <source>The Litecoin address to send the payment to</source>
-        <translation>عنوان الLitecoin المرسل اليه الدفع</translation>
+        <source>The Chaucha address to send the payment to</source>
+        <translation>عنوان الChaucha المرسل اليه الدفع</translation>
     </message>
     <message>
         <source>Alt+A</source>
@@ -1083,8 +1083,8 @@
         <translation>التوقيع</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Litecoin address</source>
-        <translation>وقع الرسالة لتثبت انك تمتلك عنوان الLitecoin هذا</translation>
+        <source>Sign the message to prove you own this Chaucha address</source>
+        <translation>وقع الرسالة لتثبت انك تمتلك عنوان الChaucha هذا</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
@@ -1156,7 +1156,7 @@
         <translation>قبول الاتصالات من خارج</translation>
     </message>
     <message>
-        <source>Litecoin Core</source>
+        <source>Chaucha Core</source>
         <translation>جوهر البيت كوين</translation>
     </message>
     <message>

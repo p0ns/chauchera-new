@@ -94,8 +94,8 @@
         <translation>Ndrysho frazkalimin e përdorur per enkriptimin e portofolit</translation>
     </message>
     <message>
-        <source>Litecoin</source>
-        <translation>Litecoin</translation>
+        <source>Chaucha</source>
+        <translation>Chaucha</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -438,8 +438,8 @@
         <translation>Opsionet:</translation>
     </message>
     <message>
-        <source>Litecoin Core</source>
-        <translation>Berthama Litecoin</translation>
+        <source>Chaucha Core</source>
+        <translation>Berthama Chaucha</translation>
     </message>
     <message>
         <source>Information</source>

@@ -146,8 +146,8 @@
         <translation>Пераіндэксацыя блокаў на дыску...</translation>
     </message>
     <message>
-        <source>Send coins to a Litecoin address</source>
-        <translation>Даслаць манеты на Litecoin-адрас</translation>
+        <source>Send coins to a Chaucha address</source>
+        <translation>Даслаць манеты на Chaucha-адрас</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -170,8 +170,8 @@
         <translation>Праверыць паведамленне...</translation>
     </message>
     <message>
-        <source>Litecoin</source>
-        <translation>Litecoin</translation>
+        <source>Chaucha</source>
+        <translation>Chaucha</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -198,12 +198,12 @@
         <translation>Зашыфраваць прыватныя ключы, якия належаць вашаму гаманцу</translation>
     </message>
     <message>
-        <source>Sign messages with your Litecoin addresses to prove you own them</source>
-        <translation>Падпісаць паведамленне з дапамогай Litecoin-адраса каб даказаць, што яно належыць вам</translation>
+        <source>Sign messages with your Chaucha addresses to prove you own them</source>
+        <translation>Падпісаць паведамленне з дапамогай Chaucha-адраса каб даказаць, што яно належыць вам</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Litecoin addresses</source>
-        <translation>Спраўдзіць паведамленне з дапамогай Litecoin-адраса каб даказаць, што яно належыць вам</translation>
+        <source>Verify messages to ensure they were signed with specified Chaucha addresses</source>
+        <translation>Спраўдзіць паведамленне з дапамогай Chaucha-адраса каб даказаць, што яно належыць вам</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -218,8 +218,8 @@
         <translation>Дапамога</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and litecoin: URIs)</source>
-        <translation>Запатрабаваць плацёж (генеруецца QR-код для Litecoin URI)</translation>
+        <source>Request payments (generates QR codes and chaucha: URIs)</source>
+        <translation>Запатрабаваць плацёж (генеруецца QR-код для Chaucha URI)</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -230,16 +230,16 @@
         <translation>Паказаць спіс адрасоў і метак для прымання</translation>
     </message>
     <message>
-        <source>Open a litecoin: URI or payment request</source>
-        <translation>Адкрыць Litecoin: URI ці запыт плацяжу</translation>
+        <source>Open a chaucha: URI or payment request</source>
+        <translation>Адкрыць Chaucha: URI ці запыт плацяжу</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
         <translation>Опцыі каманднага радка</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to Litecoin network</source>
-        <translation><numerusform>%n актыўнае злучэнне з сецівам Litecoin</numerusform><numerusform>%n актыўных злучэнняў з сецівам Litecoin</numerusform><numerusform>%n актыўных злучэнняў з сецівам Litecoin</numerusform><numerusform>%n актыўных злучэнняў з сецівам Litecoin</numerusform></translation>
+        <source>%n active connection(s) to Chaucha network</source>
+        <translation><numerusform>%n актыўнае злучэнне з сецівам Chaucha</numerusform><numerusform>%n актыўных злучэнняў з сецівам Chaucha</numerusform><numerusform>%n актыўных злучэнняў з сецівам Chaucha</numerusform><numerusform>%n актыўных злучэнняў з сецівам Chaucha</numerusform></translation>
     </message>
     <message>
         <source>No block source available...</source>
@@ -736,8 +736,8 @@
         <translation>Запусціць у фоне як дэман і прымаць каманды</translation>
     </message>
     <message>
-        <source>Litecoin Core</source>
-        <translation>Litecoin Core</translation>
+        <source>Chaucha Core</source>
+        <translation>Chaucha Core</translation>
     </message>
     <message>
         <source>Do you want to rebuild the block database now?</source>

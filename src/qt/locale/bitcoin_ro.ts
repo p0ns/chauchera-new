@@ -142,8 +142,8 @@
         <translation>Deschide &amp;URI...</translation>
     </message>
     <message>
-        <source>Send coins to a Litecoin address</source>
-        <translation>Trimite monedele către o adresă Litecoin</translation>
+        <source>Send coins to a Chaucha address</source>
+        <translation>Trimite monedele către o adresă Chaucha</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -166,8 +166,8 @@
         <translation>&amp;Verifică mesajul...</translation>
     </message>
     <message>
-        <source>Litecoin</source>
-        <translation>Litecoin</translation>
+        <source>Chaucha</source>
+        <translation>Chaucha</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -194,12 +194,12 @@
         <translation>Criptează cheile private care aparțin portofelului tău.</translation>
     </message>
     <message>
-        <source>Sign messages with your Litecoin addresses to prove you own them</source>
-        <translation>Semnează mesajele cu adresa ta de Litecoin pentru a face dovada că îți aparțin.</translation>
+        <source>Sign messages with your Chaucha addresses to prove you own them</source>
+        <translation>Semnează mesajele cu adresa ta de Chaucha pentru a face dovada că îți aparțin.</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Litecoin addresses</source>
-        <translation>Verifică mesajele cu scopul de a asigura faptul că au fost semnate cu adresa de Litecoin specificată.</translation>
+        <source>Verify messages to ensure they were signed with specified Chaucha addresses</source>
+        <translation>Verifică mesajele cu scopul de a asigura faptul că au fost semnate cu adresa de Chaucha specificată.</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -214,12 +214,12 @@
         <translation>&amp;Ajutor</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and litecoin: URIs)</source>
-        <translation>Cerere plată (generează coduri QR și litecoin: URIs)</translation>
+        <source>Request payments (generates QR codes and chaucha: URIs)</source>
+        <translation>Cerere plată (generează coduri QR și chaucha: URIs)</translation>
     </message>
     <message>
-        <source>Open a litecoin: URI or payment request</source>
-        <translation>Deschide un litecoin: URI sau cerere de plată</translation>
+        <source>Open a chaucha: URI or payment request</source>
+        <translation>Deschide un chaucha: URI sau cerere de plată</translation>
     </message>
     <message>
         <source>%1 and %2</source>
@@ -746,8 +746,8 @@
 <context>
     <name>bitcoin-core</name>
     <message>
-        <source>Litecoin Core</source>
-        <translation>Litecoin Core</translation>
+        <source>Chaucha Core</source>
+        <translation>Chaucha Core</translation>
     </message>
     <message>
         <source>Information</source>

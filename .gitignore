@@ -1,12 +1,12 @@
 *.tar.gz
 
 *.exe
-src/litecoin
-src/litecoind
-src/litecoin-cli
-src/litecoin-tx
-src/test/test_litecoin
-src/qt/test/test_litecoin-qt
+src/chaucha
+src/chauchad
+src/chaucha-cli
+src/chaucha-tx
+src/test/test_chaucha
+src/qt/test/test_chaucha-qt
 
 # autoreconf
 Makefile.in
@@ -55,7 +55,7 @@ src/qt/test/moc*.cpp
 *.o
 *.o-*
 *.patch
-.litecoin
+.chaucha
 *.a
 *.pb.cc
 *.pb.h
@@ -74,12 +74,12 @@ src/qt/test/moc*.cpp
 # Compilation and Qt preprocessor part
 *.qm
 Makefile
-litecoin-qt
-Litecoin-Qt.app
+chaucha-qt
+Chaucha-Qt.app
 
 # Unit-tests
 Makefile.test
-litecoin-qt_test
+chaucha-qt_test
 src/test/buildenv.py
 
 # Resources cpp

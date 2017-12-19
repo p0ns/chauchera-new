@@ -138,16 +138,16 @@
         <translation>Повторно индексирање на блокови од дискот...</translation>
     </message>
     <message>
-        <source>Send coins to a Litecoin address</source>
-        <translation>Испрати Litecoin на Litecoin адреса</translation>
+        <source>Send coins to a Chaucha address</source>
+        <translation>Испрати Chaucha на Chaucha адреса</translation>
     </message>
     <message>
         <source>&amp;Verify message...</source>
         <translation>&amp;Потврди порака...</translation>
     </message>
     <message>
-        <source>Litecoin</source>
-        <translation>Litecoin</translation>
+        <source>Chaucha</source>
+        <translation>Chaucha</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -600,8 +600,8 @@
         <translation>Опции:</translation>
     </message>
     <message>
-        <source>Litecoin Core</source>
-        <translation>Litecoin Core</translation>
+        <source>Chaucha Core</source>
+        <translation>Chaucha Core</translation>
     </message>
     <message>
         <source>Warning</source>
