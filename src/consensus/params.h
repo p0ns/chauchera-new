@@ -62,6 +62,9 @@ struct Params {
     int64_t nPowTargetTimespan;
     int64_t DifficultyAdjustmentInterval() const { return nPowTargetTimespan / nPowTargetSpacing; }
     uint256 nMinimumChainWork;
+
+    /** DarkGravityWell v3 Fork Params - Humwerthuz @ 30/12/2017 **/
+    int nPowDGWHeight;
 };
 } // namespace Consensus
 

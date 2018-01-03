@@ -87,6 +87,9 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1230767999; // December 31, 2008
 
+        /** DarkGravityWell v3 Fork Params - Humwerthuz @ 30/12/2017 **/
+        consensus.nPowDGWHeight = 150000; //DGW on starting from block 150.000
+
         // Deployment of BIP68, BIP112, and BIP113.
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1485561600; // January 28, 2017
@@ -114,13 +117,14 @@ public:
 
         genesis = CreateGenesisBlock(1502438055, 638445, 0x1e0ffff0, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
+
         assert(consensus.hashGenesisBlock == uint256S("0x6e27bffd2a104bea1c870be76aab1cce13bebb0db40606773827517da9528174"));
         assert(genesis.hashMerkleRoot == uint256S("0x1b54ad13e84ece043533beb59d6b666047ffc77a4496034a101791601d711998"));
 
         // Note that of those with the service bits flag, most only support a subset of possible options
-        vSeeds.push_back(CDNSSeedData("pool.chaucha.cl", "pool.chaucha.cl"));
-        vSeeds.push_back(CDNSSeedData("explorer.chaucha.cl", "explorer.chaucha.cl"));
-        vSeeds.push_back(CDNSSeedData("dns.chaucha.cl", "dns.chaucha.cl"));
+        //vSeeds.push_back(CDNSSeedData("pool.chaucha.cl", "pool.chaucha.cl"));
+        //vSeeds.push_back(CDNSSeedData("explorer.chaucha.cl", "explorer.chaucha.cl"));
+        //vSeeds.push_back(CDNSSeedData("dns.chaucha.cl", "dns.chaucha.cl"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,88);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,5);
@@ -178,6 +182,9 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1230767999; // December 31, 2008
 
+        /** DarkGravityWell v3 Fork Params - Humwerthuz @ 30/12/2017 **/
+        consensus.nPowDGWHeight = 200; //DGW always on
+
         // Deployment of BIP68, BIP112, and BIP113.
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1483228800; // January 1, 2017
@@ -189,7 +196,7 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1517356801; // January 31st, 2018
 
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = uint256S("0x00000000000000000000000000000000000000000000000000000000872d04d7");
+        consensus.nMinimumChainWork = uint256S("0x000000000000000000000000000000000000000000000000000000010c823ba7");
 
         pchMessageStart[0] = 0xfc;
         pchMessageStart[1] = 0xd1;
@@ -198,17 +205,22 @@ public:
         nDefaultPort = 19335;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1502438055, 638445, 0x1e0ffff0, 1, 50 * COIN);
+        //genesis = CreateGenesisBlock(1502438055, 638445, 0x1e0ffff0, 1, 50 * COIN);
+        //consensus.hashGenesisBlock = genesis.GetHash();
+        //assert(consensus.hashGenesisBlock == uint256S("0x6e27bffd2a104bea1c870be76aab1cce13bebb0db40606773827517da9528174"));
+        //assert(genesis.hashMerkleRoot == uint256S("0x1b54ad13e84ece043533beb59d6b666047ffc77a4496034a101791601d711998"));
+
+        genesis = CreateGenesisBlock(1514919398, 304091, 0x1e0ffff0, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x6e27bffd2a104bea1c870be76aab1cce13bebb0db40606773827517da9528174"));
+        assert(consensus.hashGenesisBlock == uint256S("0xf0a673496ca33e8d84df16f2ad99eba0732ee41971658be4d927f30c8f27aa65"));
         assert(genesis.hashMerkleRoot == uint256S("0x1b54ad13e84ece043533beb59d6b666047ffc77a4496034a101791601d711998"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
         // nodes with support for servicebits filtering should be at the top
-        vSeeds.push_back(CDNSSeedData("pool.chaucha.cl", "pool.chaucha.cl"));
-        vSeeds.push_back(CDNSSeedData("explorer.chaucha.cl", "explorer.chaucha.cl"));
-        vSeeds.push_back(CDNSSeedData("dns.chaucha.cl", "dns.chaucha.cl"));
+        //vSeeds.push_back(CDNSSeedData("pool.chaucha.cl", "pool.chaucha.cl"));
+        //vSeeds.push_back(CDNSSeedData("explorer.chaucha.cl", "explorer.chaucha.cl"));
+        //vSeeds.push_back(CDNSSeedData("dns.chaucha.cl", "dns.chaucha.cl"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,111);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,196);
@@ -228,10 +240,11 @@ public:
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            ( 2056, uint256S("0x17748a31ba97afdc9a4f86837a39d287e3e7c7290a08a1d816c5969c78a83289")),
-            1487036370,
-            2057,
-            576
+            (0, consensus.hashGenesisBlock) , //GENESIS
+                0, // * UNIX timestamp of last checkpoint block
+                0,   // * total number of transactions between genesis and last checkpoint
+                //   (the tx=... number in the SetBestChain debug.log lines)
+                0     // * estimated number of transactions per day after checkpoint
         };
 
     }
@@ -268,6 +281,9 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nStartTime = 0;
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 999999999999ULL;
 
+        /** DarkGravityWell v3 Fork Params - Humwerthuz @ 30/12/2017 **/
+        consensus.nPowDGWHeight = 0; //DGW always on
+
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x00");
 
@@ -292,13 +308,7 @@ public:
         fMineBlocksOnDemand = true; 
         fTestnetToBeDeprecatedFieldRPC = false;
 
-	checkpointData = (CCheckpointData){
-		boost::assign::map_list_of
-			( 0, uint256S("0f9188f13cb7b2c71f2a335e3a4fc328bf5beb436012afca590b1a11466e2206")),
-			0,
-			0,
-			0
-	};
+	checkpointData = (CCheckpointData){};
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,111);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,196);
