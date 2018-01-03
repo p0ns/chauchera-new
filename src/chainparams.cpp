@@ -308,7 +308,14 @@ public:
         fMineBlocksOnDemand = true; 
         fTestnetToBeDeprecatedFieldRPC = false;
 
-	checkpointData = (CCheckpointData){};
+        checkpointData = (CCheckpointData) {
+            boost::assign::map_list_of
+            (0, consensus.hashGenesisBlock) , //GENESIS
+                0, // * UNIX timestamp of last checkpoint block
+                0,   // * total number of transactions between genesis and last checkpoint
+                //   (the tx=... number in the SetBestChain debug.log lines)
+                0     // * estimated number of transactions per day after checkpoint
+        };
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,111);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,196);
