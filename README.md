@@ -3,7 +3,7 @@ Chaucha Core integration/staging tree
 
 [![Build Status](https://travis-ci.org/chaucha-project/chaucha.svg?branch=master)](https://travis-ci.org/chaucha-project/chaucha)
 
-https://chaucha.org
+https://chaucha.cl
 
 What is Chaucha?
 ----------------
@@ -15,7 +15,7 @@ out collectively by the network. Chaucha Core is the name of open source
 software which enables the use of this currency.
 
 For more information, as well as an immediately useable, binary version of
-the Chaucha Core software, see [https://chaucha.org](https://chaucha.org).
+the Chaucha Core software, see [https://chaucha.cl](https://chaucha.cl).
 
 License
 -------
