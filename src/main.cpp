@@ -1732,7 +1732,7 @@ CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
     if (nHeight == 1)
       nSubsidy = 50000 * COIN;
 
-    if (nHeight >= 2834 && nHeight <= 50000)
+    if (nHeight > 2834 && nHeight <= 50000) //En realidad partio desde el 2835.
       nSubsidy = (50000/nHeight + 10) * COIN;
 
     // Subsidy is cut in half every 210,000 blocks which will occur approximately every 4 years.
