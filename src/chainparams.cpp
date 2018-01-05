@@ -166,18 +166,18 @@ public:
     CTestNetParams() {
         strNetworkID = "test";
         consensus.nSubsidyHalvingInterval = 840000;
-        consensus.nMajorityEnforceBlockUpgrade = 51;
-        consensus.nMajorityRejectBlockOutdated = 75;
-        consensus.nMajorityWindow = 100;
-        consensus.BIP34Height = -1;
-        consensus.BIP34Hash = uint256S("");
+        consensus.nMajorityEnforceBlockUpgrade = 750;
+        consensus.nMajorityRejectBlockOutdated = 950;
+        consensus.nMajorityWindow = 1000;
+        consensus.BIP34Height = 710000;
+        consensus.BIP34Hash = uint256S("fa09d204a83a768ed5a7c8d441fa62f2043abf420cff1226c7b4329aeb9d51cf");
         consensus.powLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
-        consensus.nPowTargetTimespan = 3.5 * 24 * 60 * 60; // 3.5 days
-        consensus.nPowTargetSpacing = 2.5 * 60;
-        consensus.fPowAllowMinDifficultyBlocks = true;
+        consensus.nPowTargetTimespan = 30 * 60; // Chaucha: 30 min
+        consensus.nPowTargetSpacing = 1 * 60; // Chaucha: 1 min
+        consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
-        consensus.nRuleChangeActivationThreshold = 1512; // 75% for testchains
-        consensus.nMinerConfirmationWindow = 2016; // nPowTargetTimespan / nPowTargetSpacing
+        consensus.nRuleChangeActivationThreshold = 6048; // 75% of 8064
+        consensus.nMinerConfirmationWindow = 8064; // nPowTargetTimespan / nPowTargetSpacing * 4
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1230767999; // December 31, 2008
@@ -187,23 +187,23 @@ public:
 
         // Deployment of BIP68, BIP112, and BIP113.
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1483228800; // January 1, 2017
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1485561600; // January 28, 2017
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1517356801; // January 31st, 2018
 
         // Deployment of SegWit (BIP141, BIP143, and BIP147)
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].bit = 0;
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nStartTime = 1483228800; // January 1, 2017
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nStartTime = 1485561600; // January 28, 2017
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1517356801; // January 31st, 2018
 
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = uint256S("0x000000000000000000000000000000000000000000000000000000010c823ba7");
+        consensus.nMinimumChainWork = uint256S("0x0"); // Zero due to blockchain reset.
 
         pchMessageStart[0] = 0xfc;
         pchMessageStart[1] = 0xd1;
         pchMessageStart[2] = 0xb7;
         pchMessageStart[3] = 0xdc;
         nDefaultPort = 19335;
-        nPruneAfterHeight = 1000;
+        nPruneAfterHeight = 100000;
 
         //genesis = CreateGenesisBlock(1502438055, 638445, 0x1e0ffff0, 1, 50 * COIN);
         //consensus.hashGenesisBlock = genesis.GetHash();
@@ -218,11 +218,11 @@ public:
         vFixedSeeds.clear();
         vSeeds.clear();
         // nodes with support for servicebits filtering should be at the top
-        //vSeeds.push_back(CDNSSeedData("pool.chaucha.cl", "pool.chaucha.cl"));
-        //vSeeds.push_back(CDNSSeedData("explorer.chaucha.cl", "explorer.chaucha.cl"));
-        //vSeeds.push_back(CDNSSeedData("dns.chaucha.cl", "dns.chaucha.cl"));
+        vSeeds.push_back(CDNSSeedData("fn1.cha.harc.cl", "fn1.cha.harc.cl"));
+        vSeeds.push_back(CDNSSeedData("fn2.cha.harc.cl", "fn2.cha.harc.cl"));
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,111);
+
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,65);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,196);
         base58Prefixes[SCRIPT_ADDRESS2] = std::vector<unsigned char>(1,58);
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
@@ -233,9 +233,9 @@ public:
 
         fMiningRequiresPeers = true;
         fDefaultConsistencyChecks = false;
-        fRequireStandard = false;
+        fRequireStandard = true;
         fMineBlocksOnDemand = false;
-        fTestnetToBeDeprecatedFieldRPC = true;
+        fTestnetToBeDeprecatedFieldRPC = true; //indicates wether this is tesnet or not.
 
 
         checkpointData = (CCheckpointData) {
