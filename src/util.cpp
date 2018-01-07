@@ -808,7 +808,7 @@ std::string CopyrightHolders(const std::string& strPrefix)
         std::string strYearLTC = strPrefix;
         std::string strYearBTC = strPrefix;
         strYearLTC.replace(strYearLTC.find("2017"), sizeof("2017")-1, "2011");
-        strYearBTC.replace(strYearLTC.find("2017"), sizeof("2017")-1, "2009");
+        strYearBTC.replace(strYearBTC.find("2017"), sizeof("2017")-1, "2009");
 
         strCopyrightHolders += "\n" + strYearLTC + "The Litecoin Core developers";
         strCopyrightHolders += "\n" + strYearBTC + "The Bitcoin Core developers";
