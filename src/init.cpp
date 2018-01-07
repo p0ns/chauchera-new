@@ -486,6 +486,7 @@ std::string LicenseInfo()
     // todo: remove urls from translations on next change
     return CopyrightHolders(strprintf(_("Copyright (C) %i-%i"), 2017, COPYRIGHT_YEAR) + " ") + "\n" +
            "\n" +
+           _("Por la razón o la chaucha!") + "\n\n" +
            strprintf(_("Please contribute if you find %s useful. "
                        "Visit %s for further information about the software."),
                PACKAGE_NAME, URL_WEBSITE) +
