@@ -602,7 +602,7 @@
         <translation>Opciones:</translation>
     </message>
     <message>
-        <source>Chaucha Core</source>
+        <source>Chauchera</source>
         <translation>nucleo Chaucha</translation>
     </message>
     <message>

@@ -290,8 +290,8 @@
 <context>
     <name>bitcoin-core</name>
     <message>
-        <source>Chaucha Core</source>
-        <translation>Chaucha Core</translation>
+        <source>Chauchera</source>
+        <translation>Chauchera</translation>
     </message>
     <message>
         <source>Insufficient funds</source>

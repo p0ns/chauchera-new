@@ -1408,8 +1408,8 @@
         <translation>Kívülről érkező kapcsolatok elfogadása (alapértelmezett: 1, ha nem használt a -proxy vagy a -connect)</translation>
     </message>
     <message>
-        <source>Chaucha Core</source>
-        <translation>Chaucha Core</translation>
+        <source>Chauchera</source>
+        <translation>Chauchera</translation>
     </message>
     <message>
         <source>Execute command when a wallet transaction changes (%s in cmd is replaced by TxID)</source>

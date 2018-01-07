@@ -1,9 +1,9 @@
-Chaucha Core 0.13.2
+Chauchera 0.13.2
 =====================
 
 Setup
 ---------------------
-[Chaucha Core](http://chaucha.org/en/download) is the original Chaucha client and it builds the backbone of the network. However, it downloads and stores the entire history of Chaucha transactions (which is currently several GBs); depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more.
+[Chauchera](http://chaucha.org/en/download) is the original Chaucha client and it builds the backbone of the network. However, it downloads and stores the entire history of Chaucha transactions (which is currently several GBs); depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more.
 
 Running
 ---------------------
@@ -13,12 +13,12 @@ The following are some helpful notes on how to run Chaucha on your native platfo
 
 Unpack the files into a directory and run:
 
-- `bin/chaucha-qt` (GUI) or
+- `bin/chauchera` (GUI) or
 - `bin/chauchad` (headless)
 
 ### Windows
 
-Unpack the files into a directory, and then run chaucha-qt.exe.
+Unpack the files into a directory, and then run chauchera.exe.
 
 ### OS X
 

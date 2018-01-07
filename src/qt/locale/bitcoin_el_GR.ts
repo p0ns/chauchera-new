@@ -1441,8 +1441,8 @@
         <translation>Να δέχεσαι συνδέσεις από έξω(προεπιλογή:1)</translation>
     </message>
     <message>
-        <source>Chaucha Core</source>
-        <translation>Chaucha Core</translation>
+        <source>Chauchera</source>
+        <translation>Chauchera</translation>
     </message>
     <message>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>

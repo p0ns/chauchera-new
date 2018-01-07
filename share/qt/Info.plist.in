@@ -29,16 +29,16 @@
   <string>????</string>
 
   <key>CFBundleExecutable</key>
-  <string>Chaucha-Qt</string>
+  <string>Chauchera</string>
   
   <key>CFBundleName</key>
-  <string>Chaucha-Qt</string>
+  <string>Chauchera</string>
 
   <key>LSHasLocalizedDisplayName</key>
   <true/>
 
   <key>CFBundleIdentifier</key>
-  <string>org.chaucha.Chaucha-Qt</string>
+  <string>org.chaucha.Chauchera</string>
 
   <key>CFBundleURLTypes</key>
   <array>

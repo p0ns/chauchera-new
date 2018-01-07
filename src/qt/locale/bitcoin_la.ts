@@ -762,7 +762,7 @@
         <translation>Accipe conexiones externas (praedefinitum: 1 nisi -proxy neque -connect)</translation>
     </message>
     <message>
-        <source>Chaucha Core</source>
+        <source>Chauchera</source>
         <translation>Chaucha Nucleus</translation>
     </message>
     <message>

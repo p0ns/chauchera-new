@@ -1801,8 +1801,8 @@
         <translation>Aceitar ligações externas (padrão: 1 sem -proxy ou -connect)</translation>
     </message>
     <message>
-        <source>Chaucha Core</source>
-        <translation>Chaucha Core</translation>
+        <source>Chauchera</source>
+        <translation>Chauchera</translation>
     </message>
     <message>
         <source>-fallbackfee is set very high! This is the transaction fee you may pay when fee estimates are not available.</source>

@@ -736,8 +736,8 @@
         <translation>Запусціць у фоне як дэман і прымаць каманды</translation>
     </message>
     <message>
-        <source>Chaucha Core</source>
-        <translation>Chaucha Core</translation>
+        <source>Chauchera</source>
+        <translation>Chauchera</translation>
     </message>
     <message>
         <source>Do you want to rebuild the block database now?</source>

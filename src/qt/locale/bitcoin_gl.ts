@@ -1034,7 +1034,7 @@
         <translation>Aceptar conexións de fóra (por defecto: 1 se non -proxy ou -connect)</translation>
     </message>
     <message>
-        <source>Chaucha Core</source>
+        <source>Chauchera</source>
         <translation>Core de Chaucha</translation>
     </message>
     <message>

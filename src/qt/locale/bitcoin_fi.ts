@@ -1800,7 +1800,7 @@
         <translation>Hyväksy yhteyksiä ulkopuolelta (vakioasetus: 1 jos -proxy tai -connect ei määritelty)</translation>
     </message>
     <message>
-        <source>Chaucha Core</source>
+        <source>Chauchera</source>
         <translation>Chaucha-ydin</translation>
     </message>
     <message>

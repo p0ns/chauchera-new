@@ -1129,7 +1129,7 @@
         <translation>Aceptar conexiones desde el exterior (predeterminado: 1 si no -proxy o -connect)</translation>
     </message>
     <message>
-        <source>Chaucha Core</source>
+        <source>Chauchera</source>
         <translation>Núcleo de Chaucha</translation>
     </message>
     <message>

@@ -2,8 +2,8 @@
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-bin_PROGRAMS += qt/test/test_chaucha-qt
-TESTS += qt/test/test_chaucha-qt
+bin_PROGRAMS += qt/test/test_chauchera
+TESTS += qt/test/test_chauchera
 
 TEST_QT_MOC_CPP = \
   qt/test/moc_compattests.cpp \
@@ -52,9 +52,9 @@ CLEAN_BITCOIN_QT_TEST = $(TEST_QT_MOC_CPP) qt/test/*.gcda qt/test/*.gcno
 
 CLEANFILES += $(CLEAN_BITCOIN_QT_TEST)
 
-test_bitcoin_qt : qt/test/test_chaucha-qt$(EXEEXT)
+test_bitcoin_qt : qt/test/test_chauchera$(EXEEXT)
 
-test_bitcoin_qt_check : qt/test/test_chaucha-qt$(EXEEXT) FORCE
+test_bitcoin_qt_check : qt/test/test_chauchera$(EXEEXT) FORCE
 	$(MAKE) check-TESTS TESTS=$^
 
 test_bitcoin_qt_clean: FORCE

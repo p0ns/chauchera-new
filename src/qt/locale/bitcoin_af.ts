@@ -710,7 +710,7 @@
 <context>
     <name>bitcoin-core</name>
     <message>
-        <source>Chaucha Core</source>
+        <source>Chauchera</source>
         <translation>Chaucha Kern</translation>
     </message>
     <message>

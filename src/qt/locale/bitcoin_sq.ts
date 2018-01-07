@@ -438,7 +438,7 @@
         <translation>Opsionet:</translation>
     </message>
     <message>
-        <source>Chaucha Core</source>
+        <source>Chauchera</source>
         <translation>Berthama Chaucha</translation>
     </message>
     <message>

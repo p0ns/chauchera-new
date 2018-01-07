@@ -3860,8 +3860,8 @@
     </message>
     <message>
         <location line="-211"/>
-        <source>Chaucha Core</source>
-        <translation type="unfinished">Chaucha Core</translation>
+        <source>Chauchera</source>
+        <translation type="unfinished">Chauchera</translation>
     </message>
     <message>
         <location line="+1"/>

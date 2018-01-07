@@ -59,7 +59,7 @@
     <name>BitcoinGUI</name>
     <message>
         <source>Chaucha</source>
-        <translation>Chaucha Core</translation>
+        <translation>Chauchera</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
@@ -218,8 +218,8 @@
 <context>
     <name>bitcoin-core</name>
     <message>
-        <source>Chaucha Core</source>
-        <translation>Chaucha Core</translation>
+        <source>Chauchera</source>
+        <translation>Chauchera</translation>
     </message>
     <message>
         <source>Whitelisted peers cannot be DoS banned and their transactions are always relayed, even if they are already in the mempool, useful e.g. for a gateway</source>

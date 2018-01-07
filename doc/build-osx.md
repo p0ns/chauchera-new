@@ -24,12 +24,12 @@ In case you want to build the disk image with `make deploy` (.dmg / optional), y
 
 NOTE: Building with Qt4 is still supported, however, could result in a broken UI. Building with Qt5 is recommended.
 
-Build Chaucha Core
+Build Chauchera
 ------------------------
 
 1. Clone the chaucha source code and cd into `chaucha`
 
-        git clone https://github.com/chaucha-project/chaucha
+        git clone https://github.com/proyecto-chaucha/chauchera-new chaucha
         cd chaucha
 
 2.  Build chaucha-core:
@@ -55,7 +55,7 @@ Build Chaucha Core
 Running
 -------
 
-Chaucha Core is now available at `./src/chauchad`
+Chauchera is now available at `./src/chauchad`
 
 Before running, it's recommended you create an RPC configuration file.
 
@@ -85,7 +85,7 @@ Uncheck everything except Qt Creator during the installation process.
 1. Make sure you installed everything through Homebrew mentioned above
 2. Do a proper ./configure --enable-debug
 3. In Qt Creator do "New Project" -> Import Project -> Import Existing Project
-4. Enter "chaucha-qt" as project name, enter src/qt as location
+4. Enter "chauchera" as project name, enter src/qt as location
 5. Leave the file selection as it is
 6. Confirm the "summary page"
 7. In the "Projects" tab select "Manage Kits..."

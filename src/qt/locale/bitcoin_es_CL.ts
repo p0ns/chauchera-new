@@ -774,8 +774,8 @@
 </translation>
     </message>
     <message>
-        <source>Chaucha Core</source>
-        <translation>chaucha core</translation>
+        <source>Chauchera</source>
+        <translation>Chauchera</translation>
     </message>
     <message>
         <source>Connect only to the specified node(s)</source>

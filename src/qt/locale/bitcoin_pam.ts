@@ -742,7 +742,7 @@
         <translation>Tumanggap koneksion menibat king kilwal (default: 1 if no -proxy or -connect)</translation>
     </message>
     <message>
-        <source>Chaucha Core</source>
+        <source>Chauchera</source>
         <translation>Kapilubluban ning Chaucha</translation>
     </message>
     <message>

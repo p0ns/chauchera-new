@@ -110,7 +110,7 @@ NOTE: Offline builds must use the --url flag to ensure Gitian fetches only from 
 
 The gbuild invocations below <b>DO NOT DO THIS</b> by default.
 
-### Build and sign Chaucha Core for Linux, Windows, and OS X:
+### Build and sign Chauchera for Linux, Windows, and OS X:
 
     pushd ./gitian-builder
     ./bin/gbuild --memory 3000 --commit chaucha=v${VERSION} ../chaucha/contrib/gitian-descriptors/gitian-linux.yml
@@ -239,7 +239,7 @@ Note: check that SHA256SUMS itself doesn't end up in SHA256SUMS, which is a spur
 
   - chaucha-dev mailing list
 
-  - Chaucha Core announcements list https://groups.google.com/forum/#!forum/chaucha-dev
+  - Chauchera announcements list https://groups.google.com/forum/#!forum/chaucha-dev
 
   - blog.chaucha.org blog post
 

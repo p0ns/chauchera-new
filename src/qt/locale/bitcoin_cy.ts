@@ -490,7 +490,7 @@
         <translation>Opsiynau:</translation>
     </message>
     <message>
-        <source>Chaucha Core</source>
+        <source>Chauchera</source>
         <translation>Craidd Chaucha</translation>
     </message>
     <message>

@@ -13,7 +13,7 @@
 - (NSString *)__bundleIdentifier
 {
     if (self == [NSBundle mainBundle]) {
-        return @"org.chaucha.Chaucha-Qt";
+        return @"org.chaucha.Chauchera";
     } else {
         return [self __bundleIdentifier];
     }

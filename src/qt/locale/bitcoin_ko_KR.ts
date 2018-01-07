@@ -1856,7 +1856,7 @@
         <translation>외부 접속을 승인합니다</translation>
     </message>
     <message>
-        <source>Chaucha Core</source>
+        <source>Chauchera</source>
         <translation>라이트코인을 코어</translation>
     </message>
     <message>

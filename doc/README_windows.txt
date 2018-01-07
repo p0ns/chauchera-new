@@ -1,4 +1,4 @@
-Chaucha Core 0.13.2
+Chauchera 0.13.2
 =====================
 
 Intro
@@ -11,9 +11,9 @@ with each other, with the help of a P2P network to check for double-spending.
 
 Setup
 -----
-Unpack the files into a directory and run chaucha-qt.exe.
+Unpack the files into a directory and run chauchera.exe.
 
-Chaucha Core is the original Chaucha client and it builds the backbone of the network.
+Chauchera is the original Chaucha client and it builds the backbone of the network.
 However, it downloads and stores the entire history of Chaucha transactions;
 depending on the speed of your computer and network connection, the synchronization
 process can take anywhere from a few hours to a day or more.
