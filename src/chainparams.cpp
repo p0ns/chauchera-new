@@ -74,8 +74,8 @@ public:
         consensus.nMajorityEnforceBlockUpgrade = 750;
         consensus.nMajorityRejectBlockOutdated = 950;
         consensus.nMajorityWindow = 1000;
-        consensus.BIP34Height = 147000;
-        // consensus.BIP34Hash = uint256S("fa09d204a83a768ed5a7c8d441fa62f2043abf420cff1226c7b4329aeb9d51cf"); //BIP 34 no activo aun
+        consensus.BIP34Height = 0;
+        consensus.BIP34Hash = uint256S("6e27bffd2a104bea1c870be76aab1cce13bebb0db40606773827517da9528174"); //BIP 34 activo desde el principio
         consensus.powLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowTargetTimespan = 30 * 60; // Chaucha: 30 min
         consensus.nPowTargetSpacing = 1 * 60; // Chaucha: 1 min
