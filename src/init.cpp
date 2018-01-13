@@ -481,7 +481,7 @@ std::string HelpMessage(HelpMessageMode mode)
 
 std::string LicenseInfo()
 {
-    const std::string URL_SOURCE_CODE = "<https://github.com/proyecto-chaucha/chauchera-new>";
+    const std::string URL_SOURCE_CODE = "<https://github.com/proyecto-chaucha/chauchera>";
     const std::string URL_WEBSITE = "<https://chaucha.cl>";
     // todo: remove urls from translations on next change
     return CopyrightHolders(strprintf(_("Copyright (C) %i-%i"), 2017, COPYRIGHT_YEAR) + " ") + "\n" +

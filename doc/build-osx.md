@@ -29,7 +29,7 @@ Build Chauchera
 
 1. Clone the chaucha source code and cd into `chaucha`
 
-        git clone https://github.com/proyecto-chaucha/chauchera-new chaucha
+        git clone https://github.com/proyecto-chaucha/chauchera chaucha
         cd chaucha
 
 2.  Build chaucha-core:
