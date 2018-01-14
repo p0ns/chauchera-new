@@ -1,13 +1,15 @@
-Chauchera version 0.13.2 is now available from:
+Chauchera version 2.0.0 is now available from:
 
-  <https://download.chaucha.org/chaucha-0.13.2.1/>
+  <https://chaucha.cl>
+
+This version trae a lot of nuevas cosas, like the new algoritmo de calculation of dificultad, and the actualization of versiones from the client of Litecoin.
 
 This is a new major version release, including new features, various bugfixes and performance improvements, as well as updated translations.
 It is recommended to upgrade to this version.
 
 Please report bugs using the issue tracker at github:
 
-  <https://github.com/chaucha-project/chaucha/issues>
+  <https://github.com/proyecto-chaucha/chauchera/issues>
 
 Compatibility
 ==============
@@ -499,7 +501,7 @@ For more information about the implementation, see
 BIP113 locktime enforcement soft fork
 -------------------------------------
 
-This release seeks to make mempool-only locktime enforcement using GetMedianTimePast() 
+This release seeks to make mempool-only locktime enforcement using GetMedianTimePast()
 a consensus rule.
 
 Chaucha transactions currently may specify a locktime indicating when
@@ -937,7 +939,7 @@ Low-level RPC changes
 Linux ARM builds
 ----------------
 
-Pre-built Linux ARM binaries have been added to the set of uploaded executables. 
+Pre-built Linux ARM binaries have been added to the set of uploaded executables.
 Additional detail on the ARM architecture targeted by each is provided below.
 
 The following extra files can be found in the download directory or torrent:
