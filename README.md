@@ -1,78 +1,39 @@
-Chauchera integration/staging tree
-=====================================
+# Proyecto [Chaucha](http://chaucha.cl)
 
-[![Build Status](https://travis-ci.org/chaucha-project/chaucha.svg?branch=master)](https://travis-ci.org/chaucha-project/chaucha)
+El objetivo principal del Proyecto Chaucha ([www.chaucha.cl](http://www.chaucha.cl)) es educar a la población Chilena sobre la utilización de criptomonedas,
+proponiendo un sistema monetario confiable, transparente y descentralizado,
+junto con la documentación necesaria para comprender de manera simple el funcionamiento de la red y la tecnología utilizada.
 
-https://chaucha.cl
+## Chauchera
 
-What is Chaucha?
-----------------
+![Chaucha](https://user-images.githubusercontent.com/292738/30509118-bf810742-9a7e-11e7-9316-2a264094bb1f.png)
 
-Chaucha is an experimental digital currency that enables instant payments to
-anyone, anywhere in the world. Chaucha uses peer-to-peer technology to operate
-with no central authority: managing transactions and issuing money are carried
-out collectively by the network. Chauchera is the name of open source
-software which enables the use of this currency.
+Wallet oficial del [Proyecto Chaucha](http://chaucha.cl).
 
-For more information, as well as an immediately useable, binary version of
-the Chauchera software, see [https://chaucha.cl](https://chaucha.cl).
+## ¿Qué es esto?
 
-License
--------
+*Chauchera* es un cliente modificado desde el código fuente de [Litecoin](https://litecoin.org/) (0.13.3), que permite a las personas comunicarse con la red del **Proyecto Chaucha**.
 
-Chauchera is released under the terms of the MIT license. See [COPYING](COPYING) for more
-information or see https://opensource.org/licenses/MIT.
+Con la *Chauchera* podrás enviar y recibir *Chauchas* (`CHA`), que es la criptomoneda utilizada dentro de la red.
 
-Development Process
--------------------
+## ¿Por qué el nombre "Chauchera"?
 
-The `master` branch is regularly built and tested, but is not guaranteed to be
-completely stable. [Tags](https://github.com/chaucha-project/chaucha/tags) are created
-regularly to indicate new official, stable release versions of Chauchera.
+En Chile es común llamarle "*chauchera*" a un pequeño bolso utilizado para almacenar monedas, y como la criptomoneda se llama *Chaucha*, lo normal era llamarle *Chauchera* a la wallet.
 
-The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md).
+## Información de la Red Chaucha:
 
-The developer [mailing list](https://groups.google.com/forum/#!forum/chaucha-dev)
-should be used to discuss complicated or controversial changes before working
-on a patch set.
+- Cada un minuto se generan *Chauchas* como recompensa al minar un bloque.
+- Con el primer bloque se generaron **50.000 CHA** para el financiamiento del proyecto.
+- Desde el bloque `#1` al `#2833` la recompensa fue de **10 CHA** por bloque.
+- A partir del bloque `#2834` hasta el bloque `#50000` la recompensa es variable.
+- Desde el bloque `#50000` en adelante, la recompensa es de **10 CHA** por bloque, dividido en 2 cada 2 años aproximadamente.
+- Se recalcula la dificultad de minado es dinamica usando DGW, y se recalcula cada bloque desde el bloque 147000.
+- El máximo de *Chauchas* que existirán en la red es de `123.456.789 CHA`.
+- La Red *Chaucha* está basada en [Litecoin](https://litecoin.org/).
 
-Developer IRC can be found on Freenode at #chaucha-dev.
 
-Testing
--------
+## ¿Dónde me puedo descargar los clientes?
+En la sección releases de Github.
 
-Testing and code review is the bottleneck for development; we get more pull
-requests than we can review and test on short notice. Please be patient and help out by testing
-other people's pull requests, and remember this is a security-critical project where any mistake might cost people
-lots of money.
-
-### Automated Testing
-
-Developers are strongly encouraged to write [unit tests](/doc/unit-tests.md) for new code, and to
-submit new unit tests for old code. Unit tests can be compiled and run
-(assuming they weren't disabled in configure) with: `make check`
-
-There are also [regression and integration tests](/qa) of the RPC interface, written
-in Python, that are run automatically on the build server.
-These tests can be run (if the [test dependencies](/qa) are installed) with: `qa/pull-tester/rpc-tests.py`
-
-The Travis CI system makes sure that every pull request is built for Windows, Linux, and OS X, and that unit/sanity tests are run automatically.
-
-### Manual Quality Assurance (QA) Testing
-
-Changes should be tested by somebody other than the developer who wrote the
-code. This is especially important for large or high-risk changes. It is useful
-to add a test plan to the pull request description if testing the changes is
-not straightforward.
-
-Translations
-------------
-
-We only accept translation fixes that are submitted through [Bitcoin Core's Transifex page](https://www.transifex.com/projects/p/bitcoin/).
-Translations are converted to Chaucha periodically.
-
-Translations are periodically pulled from Transifex and merged into the git repository. See the
-[translation process](doc/translation_process.md) for details on how this works.
-
-**Important**: We do not accept translation changes as GitHub pull requests because the next
-pull from Transifex would automatically overwrite them again.
+- [Cliente](https://github.com/proyecto-chaucha/chauchera/releases/latest)
+- [Código Fuente](https://github.com/proyecto-chaucha/chauchera/archive/master.zip)

@@ -1,9 +1,9 @@
-Chauchera 0.13.2
+Chauchera 2.0.0
 =====================
 
 Setup
 ---------------------
-[Chauchera](http://chaucha.org/en/download) is the original Chaucha client and it builds the backbone of the network. However, it downloads and stores the entire history of Chaucha transactions (which is currently several GBs); depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more.
+[Chauchera](http://chaucha.cl) is the original Chaucha client and it builds the backbone of the network. However, it downloads and stores the entire history of Chaucha transactions; depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more.
 
 Running
 ---------------------
@@ -22,14 +22,14 @@ Unpack the files into a directory, and then run chauchera.exe.
 
 ### OS X
 
-Drag Chaucha-Core to your applications folder, and then run Chaucha-Core.
+Drag Chauchera to your applications folder, and then run Chauchera.
 
 ### Need Help?
 
-* See the documentation at the [Chaucha Wiki](https://chaucha.info/)
+* See the documentation at the [Chaucha Wiki](https://chaucha.cl/)
 for help and more information.
-* Ask for help on [#chaucha](http://webchat.freenode.net?channels=chaucha) on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net?channels=chaucha).
-* Ask for help on the [ChauchaTalk](https://chauchatalk.io/) forums.
+* Ask for help on [chaucha telegram](https://t.me/chaucha) on Telegram.
+
 
 Building
 ---------------------
@@ -60,8 +60,7 @@ The Chaucha repo's [root README](/README.md) contains relevant information on th
 - [Benchmarking](benchmarking.md)
 
 ### Resources
-* Discuss on the [ChauchaTalk](https://chauchatalk.io/) forums.
-* Discuss project-specific development on #chaucha on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net/?channels=chaucha).
+* Discuss project-specific development on [chaucha telegram](https://t.me/chaucha) on Telegram. 
 
 ### Miscellaneous
 - [Assets Attribution](assets-attribution.md)
