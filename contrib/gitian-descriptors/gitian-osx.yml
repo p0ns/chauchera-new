@@ -28,7 +28,7 @@ packages:
 - "python-setuptools"
 - "fonts-tuffy"
 remotes:
-- "url": "https://github.com/chaucha-project/chaucha.git"
+- "url": "https://github.com/proyecto-chaucha/chauchera.git"
   "dir": "chaucha"
 files:
 - "MacOSX10.11.sdk.tar.gz"

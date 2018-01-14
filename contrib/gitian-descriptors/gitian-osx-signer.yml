@@ -7,7 +7,7 @@ architectures:
 packages:
 - "faketime"
 remotes:
-- "url": "https://github.com/chaucha-project/chaucha-detached-sigs.git"
+- "url": "https://github.com/proyecto-chaucha/chauchera-detached-sigs.git"
   "dir": "signature"
 files:
 - "chaucha-osx-unsigned.tar.gz"

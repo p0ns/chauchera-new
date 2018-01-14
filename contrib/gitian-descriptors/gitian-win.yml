@@ -22,7 +22,7 @@ packages:
 - "ca-certificates"
 - "python"
 remotes:
-- "url": "https://github.com/chaucha-project/chaucha.git"
+- "url": "https://github.com/proyecto-chaucha/chauchera.git"
   "dir": "chaucha"
 files: []
 script: |

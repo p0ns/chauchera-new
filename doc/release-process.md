@@ -22,9 +22,9 @@ Check out the source code in the following directory hierarchy.
 
     cd /path/to/your/toplevel/build
     git clone https://github.com/chaucha-project/gitian.sigs.ltc.git
-    git clone https://github.com/chaucha-project/chaucha-detached-sigs.git
+    git clone https://github.com/proyecto-chaucha/chauchera-detached-sigs.git
     git clone https://github.com/devrandom/gitian-builder.git
-    git clone https://github.com/chaucha-project/chaucha.git
+    git clone https://github.com/proyecto-chaucha/chauchera.git
 
 ### Chaucha maintainers/release engineers, update version in sources
 
@@ -165,7 +165,7 @@ Commit your signature to gitian.sigs.ltc:
 Wait for Windows/OS X detached signatures:
 
 - Once the Windows/OS X builds each have 3 matching signatures, they will be signed with their respective release keys.
-- Detached signatures will then be committed to the [chaucha-detached-sigs](https://github.com/chaucha-project/chaucha-detached-sigs) repository, which can be combined with the unsigned apps to create signed binaries.
+- Detached signatures will then be committed to the [chaucha-detached-sigs](https://github.com/proyecto-chaucha/chauchera-detached-sigs) repository, which can be combined with the unsigned apps to create signed binaries.
 
 Create (and optionally verify) the signed OS X binary:
 

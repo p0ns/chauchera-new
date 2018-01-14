@@ -8,7 +8,7 @@ packages:
 - "libssl-dev"
 - "autoconf"
 remotes:
-- "url": "https://github.com/chaucha-project/chaucha-detached-sigs.git"
+- "url": "https://github.com/proyecto-chaucha/chauchera-detached-sigs.git"
   "dir": "signature"
 files:
 - "osslsigncode-1.7.1.tar.gz"
