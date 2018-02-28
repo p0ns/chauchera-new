@@ -90,6 +90,9 @@ public:
         /** DarkGravityWell v3 Fork Params - Humwerthuz @ 30/12/2017 **/
         consensus.nPowDGWHeight = 147000; //DGW on starting from block 147.000
 
+        // Propuestas de Mejora para Chaucha (PMC)
+        consensus.PMC1 = 235000;
+
         // Deployment of BIP68, BIP112, and BIP113.
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1515726001; // January 12, 2018
@@ -184,6 +187,9 @@ public:
 
         /** DarkGravityWell v3 Fork Params - Humwerthuz @ 30/12/2017 **/
         consensus.nPowDGWHeight = 200; //DGW always on
+
+        // Propuestas de Mejora para Chaucha (PMC)
+        consensus.PMC1 = 235;
 
         // Deployment of BIP68, BIP112, and BIP113.
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;

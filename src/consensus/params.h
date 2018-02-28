@@ -65,6 +65,9 @@ struct Params {
 
     /** DarkGravityWell v3 Fork Params - Humwerthuz @ 30/12/2017 **/
     int nPowDGWHeight;
+
+    // Propuestas de Mejora para Chaucha
+    int PMC1;
 };
 } // namespace Consensus
 
