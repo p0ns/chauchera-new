@@ -11,7 +11,7 @@
     </message>
     <message>
         <source>&amp;New</source>
-        <translation>y nueva</translation>
+        <translation>Nueva</translation>
     </message>
     <message>
         <source>Copy the currently selected address to the system clipboard</source>
@@ -19,11 +19,11 @@
     </message>
     <message>
         <source>&amp;Copy</source>
-        <translation>y copiar</translation>
+        <translation>Copiar</translation>
     </message>
     <message>
         <source>C&amp;lose</source>
-        <translation>C y perder</translation>
+        <translation>Cerrar</translation>
     </message>
     <message>
         <source>Delete the currently selected address from the list</source>
@@ -35,11 +35,11 @@
     </message>
     <message>
         <source>&amp;Export</source>
-        <translation>y exportar</translation>
+        <translation>Exportar</translation>
     </message>
     <message>
         <source>&amp;Delete</source>
-        <translation>&amp;Borrar</translation>
+        <translation>Borrar</translation>
     </message>
     </context>
 <context>
@@ -49,7 +49,7 @@
     <name>AskPassphraseDialog</name>
     <message>
         <source>Enter passphrase</source>
-        <translation>Introduce contraseña actual      </translation>
+        <translation>Introduce contraseña actual</translation>
     </message>
     <message>
         <source>New passphrase</source>
@@ -67,7 +67,7 @@
     <name>BitcoinGUI</name>
     <message>
         <source>Sign &amp;message...</source>
-        <translation>Firmar &amp;Mensaje...</translation>
+        <translation>Firmar Mensaje...</translation>
     </message>
     <message>
         <source>Synchronizing with network...</source>
@@ -91,7 +91,7 @@
     </message>
     <message>
         <source>E&amp;xit</source>
-        <translation>&amp;Salir</translation>
+        <translation>Salir</translation>
     </message>
     <message>
         <source>Quit application</source>
@@ -99,11 +99,11 @@
     </message>
     <message>
         <source>&amp;About %1</source>
-        <translation>S&amp;obre %1</translation>
+        <translation>Acerca de %1</translation>
     </message>
     <message>
         <source>About &amp;Qt</source>
-        <translation>Acerca de</translation>
+        <translation>Acerca de Qt</translation>
     </message>
     <message>
         <source>Show information about Qt</source>
@@ -127,15 +127,15 @@
     </message>
     <message>
         <source>&amp;Sending addresses...</source>
-        <translation>Mandando direcciones</translation>
+        <translation>Direcciones de salida</translation>
     </message>
     <message>
         <source>&amp;Receiving addresses...</source>
-        <translation>Recibiendo direcciones</translation>
+        <translation>Direcciones de entrada</translation>
     </message>
     <message>
         <source>Open &amp;URI...</source>
-        <translation>Abrir y url...</translation>
+        <translation>Abrir URI...</translation>
     </message>
     <message>
         <source>Reindexing blocks on disk...</source>
@@ -175,15 +175,15 @@
     </message>
     <message>
         <source>&amp;Send</source>
-        <translation>&amp;Envía</translation>
+        <translation>Enviar</translation>
     </message>
     <message>
         <source>&amp;Receive</source>
-        <translation>y recibir</translation>
+        <translation>Recibir</translation>
     </message>
     <message>
         <source>&amp;Show / Hide</source>
-        <translation>&amp;Mostrar/Ocultar</translation>
+        <translation>&amp;Mostrar / Ocultar</translation>
     </message>
     <message>
         <source>Sign messages with your Chaucha addresses to prove you own them</source>
@@ -219,7 +219,7 @@
     </message>
     <message>
         <source>Warning</source>
-        <translation>Atención</translation>
+        <translation>Advertencia</translation>
     </message>
     <message>
         <source>Information</source>
@@ -262,8 +262,7 @@
     </message>
     <message>
         <source>Fee:</source>
-        <translation>comisión:
-</translation>
+        <translation>comisión:</translation>
     </message>
     <message>
         <source>Amount</source>
@@ -353,7 +352,7 @@
     </message>
     <message>
         <source>Reset all client options to default.</source>
-        <translation>Reestablece todas las opciones.</translation>
+        <translation>Reestablecer todas las opciones.</translation>
     </message>
     <message>
         <source>&amp;Network</source>
@@ -389,8 +388,7 @@
     </message>
     <message>
         <source>&amp;Window</source>
-        <translation>y windows
-</translation>
+        <translation>Ventana</translation>
     </message>
     <message>
         <source>Show only a tray icon after minimizing the window.</source>
@@ -406,7 +404,7 @@
     </message>
     <message>
         <source>&amp;Display</source>
-        <translation>&amp;Mostrado</translation>
+        <translation>Visualización</translation>
     </message>
     <message>
         <source>&amp;Unit to show amounts in:</source>
@@ -422,7 +420,7 @@
     </message>
     <message>
         <source>&amp;Cancel</source>
-        <translation>&amp;Cancela</translation>
+        <translation>&amp;Cancelar</translation>
     </message>
     <message>
         <source>default</source>
@@ -551,7 +549,7 @@
     </message>
     <message>
         <source>Copy &amp;Address</source>
-        <translation>&amp;Copia dirección</translation>
+        <translation>&amp;Copiar dirección</translation>
     </message>
     <message>
         <source>&amp;Save Image...</source>
@@ -581,12 +579,11 @@
     </message>
     <message>
         <source>Fee:</source>
-        <translation>comisión:
-</translation>
+        <translation>comisión:</translation>
     </message>
     <message>
         <source>Transaction Fee:</source>
-        <translation>Comisión transacción:</translation>
+        <translation>Comisión de transacción:</translation>
     </message>
     <message>
         <source>normal</source>
@@ -602,11 +599,11 @@
     </message>
     <message>
         <source>Add &amp;Recipient</source>
-        <translation>&amp;Agrega destinatario</translation>
+        <translation>Agregar destinatario</translation>
     </message>
     <message>
         <source>Clear &amp;All</source>
-        <translation>&amp;Borra todos</translation>
+        <translation>Borrar todo</translation>
     </message>
     <message>
         <source>Balance:</source>
@@ -618,7 +615,7 @@
     </message>
     <message>
         <source>S&amp;end</source>
-        <translation>&amp;Envía</translation>
+        <translation>Enviar</translation>
     </message>
     </context>
 <context>
@@ -698,15 +695,15 @@
     </message>
     <message>
         <source>Clear &amp;All</source>
-        <translation>&amp;Borra todos</translation>
+        <translation>Restablecer</translation>
     </message>
     <message>
         <source>&amp;Verify Message</source>
-        <translation>&amp;Firmar Mensaje</translation>
+        <translation>Verificar Mensaje</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>
-        <translation>&amp;Firmar Mensaje</translation>
+        <translation>Verificar Mensaje</translation>
     </message>
     </context>
 <context>
