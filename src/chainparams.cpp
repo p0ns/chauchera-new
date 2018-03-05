@@ -91,7 +91,7 @@ public:
         consensus.nPowDGWHeight = 147000; //DGW on starting from block 147.000
 
         // Propuestas de Mejora para Chaucha (PMC)
-        consensus.PMC1 = 235000;
+        consensus.PMC1 = 220000;
 
         // Deployment of BIP68, BIP112, and BIP113.
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
