@@ -16,10 +16,6 @@ unsigned int static DarkGravityWave(const CBlockIndex* pindexLast, const Consens
     const arith_uint256 bnPowLimit = UintToArith256(params.powLimit);
     int64_t nPastBlocks = 24;
 
-    // PMC 1
-    if(pindexLast->nHeight >= params.PMC1)
-        nPastBlocks = 14;
-
     // make sure we have at least (nPastBlocks + 1) blocks, otherwise just return powLimit
     if (!pindexLast || pindexLast->nHeight < nPastBlocks) {
         return bnPowLimit.GetCompact();
