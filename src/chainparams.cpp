@@ -70,7 +70,7 @@ class CMainParams : public CChainParams {
 public:
     CMainParams() {
         strNetworkID = "main";
-        consensus.nSubsidyHalvingInterval = 1051200;
+        consensus.nSubsidyHalvingInterval = 2628000;
         consensus.nMajorityEnforceBlockUpgrade = 750;
         consensus.nMajorityRejectBlockOutdated = 950;
         consensus.nMajorityWindow = 1000;
@@ -89,6 +89,9 @@ public:
 
         /** DarkGravityWell v3 Fork Params - Humwerthuz @ 30/12/2017 **/
         consensus.nPowDGWHeight = 147000; //DGW on starting from block 147.000
+
+        // Propuestas de Mejora para Chaucha (PMC)
+        consensus.PMC1 = 220000;
 
         // Deployment of BIP68, BIP112, and BIP113.
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
@@ -165,7 +168,7 @@ class CTestNetParams : public CChainParams {
 public:
     CTestNetParams() {
         strNetworkID = "test";
-        consensus.nSubsidyHalvingInterval = 1051200;
+        consensus.nSubsidyHalvingInterval = 250;
         consensus.nMajorityEnforceBlockUpgrade = 750;
         consensus.nMajorityRejectBlockOutdated = 950;
         consensus.nMajorityWindow = 1000;
@@ -184,6 +187,9 @@ public:
 
         /** DarkGravityWell v3 Fork Params - Humwerthuz @ 30/12/2017 **/
         consensus.nPowDGWHeight = 200; //DGW always on
+
+        // Propuestas de Mejora para Chaucha (PMC)
+        consensus.PMC1 = 235;
 
         // Deployment of BIP68, BIP112, and BIP113.
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
@@ -220,6 +226,8 @@ public:
         // nodes with support for servicebits filtering should be at the top
         vSeeds.push_back(CDNSSeedData("fn1.cha.harc.cl", "fn1.cha.harc.cl"));
         vSeeds.push_back(CDNSSeedData("fn2.cha.harc.cl", "fn2.cha.harc.cl"));
+        // PMC1 testnet
+        vSeeds.push_back(CDNSSeedData("testnet.chaucha.party", "testnet.chaucha.party"));
 
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,65);
