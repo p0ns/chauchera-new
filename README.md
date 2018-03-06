@@ -28,7 +28,8 @@ En Chile es común llamarle "*chauchera*" a un pequeño bolso utilizado para alm
 - A partir del bloque `#2834` hasta el bloque `#50000` la recompensa es variable.
 - Desde el bloque `#50000` en adelante, la recompensa es de **10 CHA** por bloque, dividido en 2 cada 2 años aproximadamente.
 - Se recalcula la dificultad de minado cada bloque desde el bloque 147000 dinámicamente usando DGW.
-- El máximo de *Chauchas* que existirán en la red es de `123.456.789 CHA`.
+- El máximo de *Chauchas* que existirán en la red es de `10.800.000 CHA`.
+- La propuesta PMC1 definió la generación en 1.5 CHA y el Halving en 5 años desde el bloque `#220000`
 - La Red *Chaucha* está basada en [Litecoin](https://litecoin.org/).
 
 
