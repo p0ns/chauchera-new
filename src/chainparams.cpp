@@ -145,15 +145,15 @@ public:
 
 	checkpointData = (CCheckpointData) {
 		boost::assign::map_list_of
-      (  0, uint256S("0x6e27bffd2a104bea1c870be76aab1cce13bebb0db40606773827517da9528174")) //GENESIS
-      (  1, uint256S("0xeadcbcb3f8960778b1c39415d1447a5cb45981ac15b269e31924f5f4701ea0e8")) //PREMINE
-      ( 2833, uint256S("0xe281b0a49fd63613fd9ceffc758cd2044f72278cc9606fc7c7f86422d977e44f")) //POOL
-      ( 50000, uint256S("0x1f676ba037561706283a5cdac53d20c4d81576faffb4940ea3f0ddaa3a91f04b")) //BLOCK 50.000
-      ( 80000, uint256S("0x36813083a53ef7dc73037a92b245fbdced69f091bb8549da520331f159fdbf6b")) //BLOCK 80.000
-      ( 144875, uint256S("0xbb0eb7a10ba79bfa10a15e59c3cca0963087a349a2063266b2dc91997ef9d192")), //BLOCK 144.875 PRE-RELEASE CHAUCHERA2.0
-      ( 220000, uint256S("0x00a2c535a27da237b60a50db41a9309b9c7afd06bfcb948aed2d06c2e3241aec")), // PMC 1
-      ( 300000, uint256S("0xeeea1dcbe84fc64a0ec1cddf8fa3e403e10fdc77c202233342091f2af7c44646")), // BLOCK 300.000
-      ( 327000, uint256S('0xb4eb1c952656e75eaa93e1033f4e675f083196cc90a14ca63e865164debb8dd4')), // OP_HODL TESTING
+      (      0, uint256S("0x6e27bffd2a104bea1c870be76aab1cce13bebb0db40606773827517da9528174")) //GENESIS
+      (      1, uint256S("0xeadcbcb3f8960778b1c39415d1447a5cb45981ac15b269e31924f5f4701ea0e8")) //PREMINE
+      (   2833, uint256S("0xe281b0a49fd63613fd9ceffc758cd2044f72278cc9606fc7c7f86422d977e44f")) //POOL
+      (  50000, uint256S("0x1f676ba037561706283a5cdac53d20c4d81576faffb4940ea3f0ddaa3a91f04b")) //BLOCK 50.000
+      (  80000, uint256S("0x36813083a53ef7dc73037a92b245fbdced69f091bb8549da520331f159fdbf6b")) //BLOCK 80.000
+      ( 144875, uint256S("0xbb0eb7a10ba79bfa10a15e59c3cca0963087a349a2063266b2dc91997ef9d192")) //BLOCK 144.875 PRE-RELEASE CHAUCHERA2.0
+      ( 220000, uint256S("0x00a2c535a27da237b60a50db41a9309b9c7afd06bfcb948aed2d06c2e3241aec")) // PMC 1
+      ( 300000, uint256S("0xeeea1dcbe84fc64a0ec1cddf8fa3e403e10fdc77c202233342091f2af7c44646")) // BLOCK 300.000
+      ( 327000, uint256S("0xb4eb1c952656e75eaa93e1033f4e675f083196cc90a14ca63e865164debb8dd4")), // OP_HODL TESTING
 
 
 			1528446238, // * UNIX timestamp of last checkpoint block
