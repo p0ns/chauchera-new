@@ -271,7 +271,7 @@ class CRegTestParams : public CChainParams {
 public:
     CRegTestParams() {
         strNetworkID = "regtest";
-        consensus.nSubsidyHalvingInterval = 150;
+        consensus.nSubsidyHalvingInterval = 200;
         consensus.nMajorityEnforceBlockUpgrade = 750;
         consensus.nMajorityRejectBlockOutdated = 950;
         consensus.nMajorityWindow = 1000;
@@ -298,7 +298,7 @@ public:
         consensus.nPowDGWHeight = 0; //DGW always on
 
         // Propuestas de Mejora para Chaucha (PMC)
-        consensus.PMC1 = 6500;
+        consensus.PMC1 = 1; // 1.5 CHA
 
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x00");
