@@ -278,8 +278,8 @@ public:
         consensus.BIP34Height = -1; // BIP34 has not necessarily activated on regtest
         consensus.BIP34Hash = uint256();
         consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
-        consensus.nPowTargetTimespan = 3.5 * 24 * 60 * 60; // two weeks
-        consensus.nPowTargetSpacing = 2.5 * 60;
+        consensus.nPowTargetTimespan = 30 * 60; // two weeks
+        consensus.nPowTargetSpacing = 1 * 60;
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = true;
         consensus.nRuleChangeActivationThreshold = 108; // 75% for testchains
@@ -297,6 +297,9 @@ public:
         /** DarkGravityWell v3 Fork Params - Humwerthuz @ 30/12/2017 **/
         consensus.nPowDGWHeight = 0; //DGW always on
 
+        // Propuestas de Mejora para Chaucha (PMC)
+        consensus.PMC1 = 235;
+
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x00");
 
@@ -307,9 +310,9 @@ public:
         nDefaultPort = 19444;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1296688602, 0, 0x207fffff, 1, 50 * COIN);
+        genesis = CreateGenesisBlock(1530840480, 3462792, 0x1e0ffff0, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x1c2dd9c1b9f51f42266ce370d28cb2bc551f6c6e25b742acc54c432b17a3f704"));
+        assert(consensus.hashGenesisBlock == uint256S("0x75d057806094af24532e9489f8ced2f935a658c42e074963ee984e09e51a8a45"));
         assert(genesis.hashMerkleRoot == uint256S("0x1b54ad13e84ece043533beb59d6b666047ffc77a4496034a101791601d711998"));
 
         vFixedSeeds.clear(); //!< Regtest mode doesn't have any fixed seeds.
