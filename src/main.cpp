@@ -3485,9 +3485,9 @@ bool IsWitnessEnabled(const CBlockIndex* pindexPrev, const Consensus::Params& pa
     LOCK(cs_main);
 
     /*
-    # PMC2
+    // PMC2
     const int nHeight = pindexPrev == NULL ? 0 : pindexPrev->nHeight + 1;
-    if (nHeight >= 20) {
+    if (nHeight > params.PMC2) {
       return true;
     }
     */

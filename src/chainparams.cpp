@@ -92,6 +92,7 @@ public:
 
         // Propuestas de Mejora para Chaucha (PMC)
         consensus.PMC1 = 220000;
+        consensus.PMC2 = 1000000;  // 1 millon mientras se decide
 
         // Deployment of BIP68, BIP112, and BIP113.
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
@@ -195,6 +196,7 @@ public:
 
         // Propuestas de Mejora para Chaucha (PMC)
         consensus.PMC1 = 235;
+        consensus.PMC2 = 500;
 
         // Deployment of BIP68, BIP112, and BIP113.
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
@@ -299,6 +301,7 @@ public:
 
         // Propuestas de Mejora para Chaucha (PMC)
         consensus.PMC1 = 1; // 1.5 CHA
+        consensus.PMC2 = 20;
 
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x00");
