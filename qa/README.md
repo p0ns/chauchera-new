@@ -11,17 +11,17 @@ Before running the tests, the following must be installed.
 
 Unix
 ----
-`python3-zmq` and `chaucha_scrypt` are required. On Ubuntu or Debian they can be installed via:
+`python3-zmq` and `litecoin_scrypt` are required. On Ubuntu or Debian they can be installed via:
 ```
 sudo apt-get install python3-zmq
-pip3 install chaucha_scrypt
+pip3 install litecoin_scrypt
 ```
 
 OS X
 ------
 ```
 pip3 install pyzmq
-pip3 install chaucha_scrypt
+pip3 install litecoin_scrypt
 ```
 
 Running tests
