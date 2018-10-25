@@ -1,5 +1,7 @@
 # Proyecto [Chaucha](http://chaucha.cl)
 
+*Read this in other languages: [Spanish](README.md), [English](README.en.md)*
+
 El objetivo principal del Proyecto Chaucha ([www.chaucha.cl](http://www.chaucha.cl)) es educar a la población Chilena sobre la utilización de criptomonedas,
 proponiendo un sistema monetario confiable, transparente y descentralizado,
 junto con la documentación necesaria para comprender de manera simple el funcionamiento de la red y la tecnología utilizada.
