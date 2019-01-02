@@ -154,11 +154,14 @@ public:
       ( 144875, uint256S("0xbb0eb7a10ba79bfa10a15e59c3cca0963087a349a2063266b2dc91997ef9d192")) //BLOCK 144.875 PRE-RELEASE CHAUCHERA2.0
       ( 220000, uint256S("0x00a2c535a27da237b60a50db41a9309b9c7afd06bfcb948aed2d06c2e3241aec")) // PMC 1
       ( 300000, uint256S("0xeeea1dcbe84fc64a0ec1cddf8fa3e403e10fdc77c202233342091f2af7c44646")) // BLOCK 300.000
-      ( 327000, uint256S("0xb4eb1c952656e75eaa93e1033f4e675f083196cc90a14ca63e865164debb8dd4")), // OP_HODL TESTING
+      ( 327000, uint256S("0xb4eb1c952656e75eaa93e1033f4e675f083196cc90a14ca63e865164debb8dd4")) // OP_HODL TESTING
+      ( 400000, uint256S("0xa754fc389835d8e375cb9fb22a8d3b852c376e2d4ec7b978e08761faf9814d18")) // BLOCK 400.000
+      ( 500000, uint256S("0xcd01a0a68e367cf7dd33598c58ba81b7e0ef4c938e313a3fbfff2db3df4e3e71")) // BLOCK 500.000
+      ( 600000, uint256S("0x86b223e8e49f05d16ce5ef9b12b2b4f5a09926f6ad2dbf97f8965830d1b45312")),// BLOCK 600.000
 
 
-			1528446238, // * UNIX timestamp of last checkpoint block
-			381167,   // * total number of transactions between genesis and last checkpoint
+			1545734610, // * UNIX timestamp of last checkpoint block
+			678837,   // * total number of transactions between genesis and last checkpoint
 			//   (the tx=... number in the SetBestChain debug.log lines)
 			1440.0     // * estimated number of transactions per day after checkpoint
 	};
