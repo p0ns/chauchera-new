@@ -324,7 +324,7 @@ static bool rest_getblockhash(HTTPRequest* req, const std::string& strURIPart)
 
     switch (rf) {
     case RF_JSON: {
-        string strJSON = pblockindex->GetBlockHash().ToString() + "\n";
+        string strJSON = pblockindex->GetBlockHash().ToString();
         req->WriteHeader("Content-Type", "application/json");
         req->WriteReply(HTTP_OK, strJSON);
         return true;
