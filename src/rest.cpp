@@ -301,6 +301,43 @@ static bool rest_chaininfo(HTTPRequest* req, const std::string& strURIPart)
     return true; // continue to process further HTTP reqs on this cxn
 }
 
+
+// CHAUCHITA UPDATE - GetBlockHash
+static bool rest_getblockhash(HTTPRequest* req, const std::string& strURIPart)
+{
+    if (!CheckWarmup(req))
+        return false;
+    std::string param;
+    const RetFormat rf = ParseDataFormat(param, strURIPart);
+    
+    vector<string> path;
+    boost::split(path, param, boost::is_any_of("/"));
+
+    if (path.size() != 1)
+        return RESTERR(req, HTTP_BAD_REQUEST, "No block height specified. Use /rest/getblockhash/<height>.json");
+
+    long nHeight = strtol(path[0].c_str(), NULL, 10);
+    if (nHeight < 0 || nHeight > chainActive.Height())
+        return RESTERR(req, HTTP_BAD_REQUEST, "Height is out of range");
+
+    CBlockIndex* pblockindex = chainActive[nHeight];
+
+    switch (rf) {
+    case RF_JSON: {
+        string strJSON = pblockindex->GetBlockHash().ToString() + "\n";
+        req->WriteHeader("Content-Type", "application/json");
+        req->WriteReply(HTTP_OK, strJSON);
+        return true;
+
+    }
+    default: {
+        return RESTERR(req, HTTP_NOT_FOUND, "output format not found (available: json)");
+    }
+    }
+
+    return true;
+}
+
 static bool rest_mempool_info(HTTPRequest* req, const std::string& strURIPart)
 {
     if (!CheckWarmup(req))
@@ -611,6 +648,7 @@ static const struct {
       {"/rest/mempool/contents", rest_mempool_contents},
       {"/rest/headers/", rest_headers},
       {"/rest/getutxos", rest_getutxos},
+      {"/rest/getblockhash/", rest_getblockhash},
 };
 
 bool StartREST()
