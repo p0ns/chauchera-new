@@ -1,10 +1,14 @@
 RPC Tools
 ---------------------
 
-### [RPCUser](/share/rpcuser) ###
+### [RPC User](/share/rpcuser) ###
 
-Create an RPC user login credential.
+Create login credentials for a JSON-RPC user.
 
 Usage:
 
     ./rpcuser.py <username>
+
+in which case the script will generate a password. To specify a custom password do:
+
+    ./rpcuser.py <username> <password>
