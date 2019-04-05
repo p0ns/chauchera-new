@@ -133,7 +133,7 @@ bool AppInit(int argc, char* argv[])
         fDaemon = GetBoolArg("-daemon", false);
         if (fDaemon)
         {
-            fprintf(stdout, "Chaucha server starting\n");
+            fprintf(stdout, "\n                              .+x+\n              $:             -$. #!\n       :xx!   Hx             $!  $$\n     !$x.x#   -H-   +$$.    :H. :x!Hxxx+-'\n    xH.  :'    xH  xx +#- .xx#xxx   ''\n   x#         .$H::H   !$Hx:  :'\n   H!        :$-+$$-\n  -#:       xH.  H$\n   #x     :H+    :'\n   -#x!!xx+\n    '!!'\n\n");
 
             // Daemonize
             pid_t pid = fork();
