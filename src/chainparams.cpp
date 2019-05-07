@@ -98,9 +98,18 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1517356801; // January 31st, 2018
 
         // Deployment of SegWit (BIP141, BIP143, and BIP147)
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].bit = 1;
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].bit = 0;
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nStartTime = 1485561600; // January 28, 2017
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1517356801; // January 31st, 2018
+
+        
+        /** DarkGravityWell v3 Fork Params - Humwerthuz @ 30/12/2017 **/
+        consensus.nPowDGWHeight = 147000; //DGW on starting from block 147.000
+
+        // Propuestas de Mejora para Chaucha (PMC)
+        consensus.PMC1 = 220000;
+        consensus.PMC2 = 1000000;  // 1 millon mientras se decide
+
 
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x00000000000000000000000000000000000000000000000009a1eaf4200a15a0");
