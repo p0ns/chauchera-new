@@ -130,8 +130,8 @@
         <translation>Reindexando bloques no disco...</translation>
     </message>
     <message>
-        <source>Send coins to a Chaucha address</source>
-        <translation>Enviar moedas a unha dirección Chaucha</translation>
+        <source>Send coins to a Litecoin address</source>
+        <translation>Enviar moedas a unha dirección Litecoin</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -154,8 +154,8 @@
         <translation>&amp;Verificar mensaxe...</translation>
     </message>
     <message>
-        <source>Chaucha</source>
-        <translation>Chaucha</translation>
+        <source>Litecoin</source>
+        <translation>Litecoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -182,12 +182,12 @@
         <translation>Encriptar as claves privadas que pertencen ao teu moedeiro</translation>
     </message>
     <message>
-        <source>Sign messages with your Chaucha addresses to prove you own them</source>
-        <translation>Asina mensaxes coas túas direccións Chaucha para probar que te pertencen</translation>
+        <source>Sign messages with your Litecoin addresses to prove you own them</source>
+        <translation>Asina mensaxes coas túas direccións Litecoin para probar que te pertencen</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Chaucha addresses</source>
-        <translation>Verificar mensaxes para asegurar que foron asinados con direccións Chaucha dadas.</translation>
+        <source>Verify messages to ensure they were signed with specified Litecoin addresses</source>
+        <translation>Verificar mensaxes para asegurar que foron asinados con direccións Litecoin dadas.</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -206,8 +206,8 @@
         <translation>Barra de ferramentas</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and chaucha: URIs)</source>
-        <translation>Solicitar pagos (xenera códigos QR e chaucha: URIs)</translation>
+        <source>Request payments (generates QR codes and litecoin: URIs)</source>
+        <translation>Solicitar pagos (xenera códigos QR e litecoin: URIs)</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -218,16 +218,12 @@
         <translation>Amosar a listaxe de etiquetas e direccións para recibir empregadas</translation>
     </message>
     <message>
-        <source>Open a chaucha: URI or payment request</source>
-        <translation>Abrir un chaucha: URI ou solicitude de pago</translation>
+        <source>Open a litecoin: URI or payment request</source>
+        <translation>Abrir un litecoin: URI ou solicitude de pago</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
         <translation>Opcións da liña de comandos</translation>
-    </message>
-    <message>
-        <source>No block source available...</source>
-        <translation>Non hai orixe de bloques dispoñible...</translation>
     </message>
     <message>
         <source>%1 behind</source>
@@ -277,7 +273,7 @@
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
         <translation>O moedeiro está &lt;b&gt;encriptado&lt;/b&gt; e actualmente &lt;b&gt;bloqueado&lt;/b&gt;</translation>
     </message>
-</context>
+    </context>
 <context>
     <name>CoinControlDialog</name>
     <message>
@@ -291,10 +287,6 @@
     <message>
         <source>Amount:</source>
         <translation>Importe:</translation>
-    </message>
-    <message>
-        <source>Priority:</source>
-        <translation>Prioridade:</translation>
     </message>
     <message>
         <source>Fee:</source>
@@ -331,10 +323,6 @@
     <message>
         <source>Confirmed</source>
         <translation>Confirmado</translation>
-    </message>
-    <message>
-        <source>Priority</source>
-        <translation>Prioridade</translation>
     </message>
     </context>
 <context>
@@ -417,8 +405,23 @@
         <translation>Empregar un directorio de datos personalizado</translation>
     </message>
     <message>
+        <source>Litecoin</source>
+        <translation>Litecoin</translation>
+    </message>
+    <message>
         <source>Error</source>
         <translation>Erro</translation>
+    </message>
+    </context>
+<context>
+    <name>ModalOverlay</name>
+    <message>
+        <source>Form</source>
+        <translation>Formulario</translation>
+    </message>
+    <message>
+        <source>Last block time</source>
+        <translation>Hora do último bloque</translation>
     </message>
     </context>
 <context>
@@ -467,8 +470,8 @@
         <translation>Moedeiro</translation>
     </message>
     <message>
-        <source>Automatically open the Chaucha client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Abrir automáticamente o porto do cliente Chaucha no router. Esto so funciona se o teu router soporta UPnP e está habilitado.</translation>
+        <source>Automatically open the Litecoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Abrir automáticamente o porto do cliente Litecoin no router. Esto so funciona se o teu router soporta UPnP e está habilitado.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
@@ -535,6 +538,10 @@
         <translation>Confirmar opcións de restaurar</translation>
     </message>
     <message>
+        <source>Error</source>
+        <translation>Erro</translation>
+    </message>
+    <message>
         <source>The supplied proxy address is invalid.</source>
         <translation>A dirección de proxy suministrada é inválida.</translation>
     </message>
@@ -546,8 +553,8 @@
         <translation>Formulario</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Chaucha network after a connection is established, but this process has not completed yet.</source>
-        <translation>A información amosada por estar desactualizada. O teu moedeiro sincronízase automáticamente coa rede Chaucha despois de que se estableza unha conexión, pero este proceso non está todavía rematado.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Litecoin network after a connection is established, but this process has not completed yet.</source>
+        <translation>A información amosada por estar desactualizada. O teu moedeiro sincronízase automáticamente coa rede Litecoin despois de que se estableza unha conexión, pero este proceso non está todavía rematado.</translation>
     </message>
     <message>
         <source>Your current spendable balance</source>
@@ -598,6 +605,29 @@
         <source>N/A</source>
         <translation>N/A</translation>
     </message>
+    <message>
+        <source>%1 B</source>
+        <translation>%1 B</translation>
+    </message>
+    <message>
+        <source>%1 KB</source>
+        <translation>%1 KB</translation>
+    </message>
+    <message>
+        <source>%1 MB</source>
+        <translation>%1 MB</translation>
+    </message>
+    <message>
+        <source>%1 GB</source>
+        <translation>%1 GB</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>descoñecido</translation>
+    </message>
+</context>
+<context>
+    <name>QObject::QObject</name>
     </context>
 <context>
     <name>QRImageWidget</name>
@@ -657,10 +687,6 @@
         <translation>&amp;Tráfico de Rede</translation>
     </message>
     <message>
-        <source>&amp;Clear</source>
-        <translation>&amp;Limpar</translation>
-    </message>
-    <message>
         <source>Totals</source>
         <translation>Totais</translation>
     </message>
@@ -680,30 +706,6 @@
         <source>Clear console</source>
         <translation>Limpar consola</translation>
     </message>
-    <message>
-        <source>Use up and down arrows to navigate history, and &lt;b&gt;Ctrl-L&lt;/b&gt; to clear screen.</source>
-        <translation>Emprega as flechas arriba e abaixo para navegar polo historial, e &lt;b&gt;Ctrl-L&lt;/b&gt; para limpar a pantalla.</translation>
-    </message>
-    <message>
-        <source>Type &lt;b&gt;help&lt;/b&gt; for an overview of available commands.</source>
-        <translation>Escribe &lt;b&gt;axuda&lt;/b&gt; para unha vista xeral dos comandos dispoñibles.</translation>
-    </message>
-    <message>
-        <source>%1 B</source>
-        <translation>%1 B</translation>
-    </message>
-    <message>
-        <source>%1 KB</source>
-        <translation>%1 KB</translation>
-    </message>
-    <message>
-        <source>%1 MB</source>
-        <translation>%1 MB</translation>
-    </message>
-    <message>
-        <source>%1 GB</source>
-        <translation>%1 GB</translation>
-    </message>
     </context>
 <context>
     <name>ReceiveCoinsDialog</name>
@@ -718,14 +720,6 @@
     <message>
         <source>&amp;Message:</source>
         <translation>&amp;Mensaxe:</translation>
-    </message>
-    <message>
-        <source>Reuse one of the previously used receiving addresses. Reusing addresses has security and privacy issues. Do not use this unless re-generating a payment request made before.</source>
-        <translation>Reutilizar unha das direccións para recibir previas. Reutilizar direccións ten problemas de seguridade e privacidade. Non empregues esto agás que antes se fixese unha solicitude de rexeneración dun pago.</translation>
-    </message>
-    <message>
-        <source>R&amp;euse an existing receiving address (not recommended)</source>
-        <translation>R&amp;eutilizar unha dirección para recibir existente (non recomendado)</translation>
     </message>
     <message>
         <source>Clear all fields of the form.</source>
@@ -783,10 +777,6 @@
     <message>
         <source>Amount:</source>
         <translation>Importe:</translation>
-    </message>
-    <message>
-        <source>Priority:</source>
-        <translation>Prioridade:</translation>
     </message>
     <message>
         <source>Fee:</source>
@@ -929,8 +919,8 @@
         <translation>Copiar a sinatura actual ao portapapeis do sistema</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Chaucha address</source>
-        <translation>Asina a mensaxe para probar que posees esta dirección Chaucha</translation>
+        <source>Sign the message to prove you own this Litecoin address</source>
+        <translation>Asina a mensaxe para probar que posees esta dirección Litecoin</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
@@ -949,8 +939,8 @@
         <translation>&amp;Verificar Mensaxe</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Chaucha address</source>
-        <translation>Verificar a mensaxe para asegurar que foi asinada coa dirección Chaucha especificada</translation>
+        <source>Verify the message to ensure it was signed with the specified Litecoin address</source>
+        <translation>Verificar a mensaxe para asegurar que foi asinada coa dirección Litecoin especificada</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>
@@ -1030,12 +1020,8 @@
         <translation>Executar no fondo como un demo e aceptar comandos</translation>
     </message>
     <message>
-        <source>Accept connections from outside (default: 1 if no -proxy or -connect)</source>
-        <translation>Aceptar conexións de fóra (por defecto: 1 se non -proxy ou -connect)</translation>
-    </message>
-    <message>
-        <source>Chauchera</source>
-        <translation>Core de Chaucha</translation>
+        <source>Litecoin Core</source>
+        <translation>Core de Litecoin</translation>
     </message>
     <message>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>
@@ -1046,28 +1032,16 @@
         <translation>Executar comando cando unha transacción do moedeiro cambia (%s no comando é substituído por TxID)</translation>
     </message>
     <message>
-        <source>This is a pre-release test build - use at your own risk - do not use for mining or merchant applications</source>
-        <translation>Esta é unha build de test pre-lanzamento - emprégaa baixo o teu propio risco - non empregar para minado ou aplicacións de comerciantes</translation>
-    </message>
-    <message>
-        <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
-        <translation>Precaución: A rede non parece estar totalmente de acordo! Algúns mineitos parecen estar experimentando problemas.</translation>
-    </message>
-    <message>
-        <source>Warning: We do not appear to fully agree with our peers! You may need to upgrade, or other nodes may need to upgrade.</source>
-        <translation>Precaución: Non parece que esteamos totalmente de acordo cos nosos pares! Pode que precises actualizar, ou outros nodos poden precisar actualizarse.</translation>
-    </message>
-    <message>
         <source>&lt;category&gt; can be:</source>
         <translation>&lt;categoría&gt; pode ser:</translation>
     </message>
     <message>
-        <source>Block creation options:</source>
-        <translation>Opcións de creación de bloque:</translation>
+        <source>Accept connections from outside (default: 1 if no -proxy or -connect)</source>
+        <translation>Aceptar conexións de fóra (por defecto: 1 se non -proxy ou -connect)</translation>
     </message>
     <message>
-        <source>Connect only to the specified node(s)</source>
-        <translation>Conectar so ao(s) nodo(s) especificado(s)</translation>
+        <source>Block creation options:</source>
+        <translation>Opcións de creación de bloque:</translation>
     </message>
     <message>
         <source>Corrupted block database detected</source>
@@ -1106,10 +1080,6 @@
         <translation>Bloque genesis incorrecto o no existente. Datadir erróneo para a rede?</translation>
     </message>
     <message>
-        <source>Invalid -onion address: '%s'</source>
-        <translation>Dirección -onion inválida: '%s'</translation>
-    </message>
-    <message>
         <source>Not enough file descriptors available.</source>
         <translation>Non hai suficientes descritores de arquivo dispoñibles.</translation>
     </message>
@@ -1120,14 +1090,6 @@
     <message>
         <source>Verifying blocks...</source>
         <translation>Verificando bloques...</translation>
-    </message>
-    <message>
-        <source>Verifying wallet...</source>
-        <translation>Verificando moedeiro...</translation>
-    </message>
-    <message>
-        <source>Wallet %s resides outside data directory %s</source>
-        <translation>O moedeiro %s reside fóra do directorio de datos %s</translation>
     </message>
     <message>
         <source>Execute command when a relevant alert is received or we see a really long fork (%s in cmd is replaced by message)</source>
@@ -1154,10 +1116,6 @@
         <translation>A cantidade da transacción é demasiado pequena</translation>
     </message>
     <message>
-        <source>Transaction amounts must be positive</source>
-        <translation>As cantidades da transacción deben ser positivas</translation>
-    </message>
-    <message>
         <source>Transaction too large</source>
         <translation>A transacción é demasiado grande</translation>
     </message>
@@ -1168,6 +1126,10 @@
     <message>
         <source>Warning</source>
         <translation>Precaución</translation>
+    </message>
+    <message>
+        <source>You need to rebuild the database using -reindex to change -txindex</source>
+        <translation>Precisas reconstruír a base de datos empregando -reindex para cambiar -txindex</translation>
     </message>
     <message>
         <source>Password for JSON-RPC connections</source>
@@ -1182,14 +1144,6 @@
         <translation>Permitir lookup de DNS para -addnote, -seednote e -connect</translation>
     </message>
     <message>
-        <source>Loading addresses...</source>
-        <translation>Cargando direccións...</translation>
-    </message>
-    <message>
-        <source>Invalid -proxy address: '%s'</source>
-        <translation>Dirección -proxy inválida: '%s'</translation>
-    </message>
-    <message>
         <source>Unknown network specified in -onlynet: '%s'</source>
         <translation>Rede descoñecida especificada en -onlynet: '%s'</translation>
     </message>
@@ -1202,20 +1156,12 @@
         <translation>Cargando índice de bloques...</translation>
     </message>
     <message>
-        <source>Add a node to connect to and attempt to keep the connection open</source>
-        <translation>Engadir un nodo ao que conectarse e tentar manter a conexión aberta</translation>
-    </message>
-    <message>
         <source>Loading wallet...</source>
         <translation>Cargando moedeiro...</translation>
     </message>
     <message>
         <source>Cannot downgrade wallet</source>
         <translation>Non se pode desactualizar o moedeiro</translation>
-    </message>
-    <message>
-        <source>Cannot write default address</source>
-        <translation>Non se pode escribir a dirección por defecto</translation>
     </message>
     <message>
         <source>Rescanning...</source>

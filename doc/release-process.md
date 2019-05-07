@@ -5,44 +5,40 @@ Before every release candidate:
 
 * Update translations (ping wumpus on IRC) see [translation_process.md](https://github.com/bitcoin/bitcoin/blob/master/doc/translation_process.md#synchronising-translations).
 
+* Update manpages, see [gen-manpages.sh](https://github.com/litecoin-project/litecoin/blob/master/contrib/devtools/README.md#gen-manpagessh).
+
 Before every minor and major release:
 
 * Update [bips.md](bips.md) to account for changes since the last release.
-* Update version in sources (see below)
+* Update version in `configure.ac` (don't forget to set `CLIENT_VERSION_IS_RELEASE` to `true`)
 * Write release notes (see below)
 * Update `src/chainparams.cpp` nMinimumChainWork with information from the getblockchaininfo rpc.
+* Update `src/chainparams.cpp` defaultAssumeValid  with information from the getblockhash rpc.
+  - The selected value must not be orphaned so it may be useful to set the value two blocks back from the tip.
+  - Testnet should be set some tens of thousands back from the tip due to reorgs there.
+  - This update should be reviewed with a reindex-chainstate with assumevalid=0 to catch any defect
+     that causes rejection of blocks in the past history.
 
 Before every major release:
 
 * Update hardcoded [seeds](/contrib/seeds/README.md), see [this pull request](https://github.com/bitcoin/bitcoin/pull/7415) for an example.
+* Update [`BLOCK_CHAIN_SIZE`](/src/qt/intro.cpp) to the current size plus some overhead.
+* Update `src/chainparams.cpp` chainTxData with statistics about the transaction count and rate.
+* Update version of `contrib/gitian-descriptors/*.yml`: usually one'd want to do this on master after branching off the release - but be sure to at least do it before a new major release
 
 ### First time / New builders
+
+If you're using the automated script (found in [contrib/gitian-build.sh](/contrib/gitian-build.sh)), then at this point you should run it with the "--setup" command. Otherwise ignore this.
 
 Check out the source code in the following directory hierarchy.
 
     cd /path/to/your/toplevel/build
-    git clone https://github.com/chaucha-project/gitian.sigs.ltc.git
-    git clone https://github.com/proyecto-chaucha/chauchera-detached-sigs.git
+    git clone https://github.com/litecoin-project/gitian.sigs.ltc.git
+    git clone https://github.com/litecoin-project/litecoin-detached-sigs.git
     git clone https://github.com/devrandom/gitian-builder.git
-    git clone https://github.com/proyecto-chaucha/chauchera.git
+    git clone https://github.com/litecoin-project/litecoin.git
 
-### Chaucha maintainers/release engineers, update version in sources
-
-Update the following:
-
-- `configure.ac`:
-    - `_CLIENT_VERSION_MAJOR`
-    - `_CLIENT_VERSION_MINOR`
-    - `_CLIENT_VERSION_REVISION`
-    - Don't forget to set `_CLIENT_VERSION_IS_RELEASE` to `true`
-- `src/clientversion.h`: (this mirrors `configure.ac` - see issue #3539)
-    - `CLIENT_VERSION_MAJOR`
-    - `CLIENT_VERSION_MINOR`
-    - `CLIENT_VERSION_REVISION`
-    - Don't forget to set `CLIENT_VERSION_IS_RELEASE` to `true`
-- `doc/README.md` and `doc/README_windows.txt`
-- `doc/Doxyfile`: `PROJECT_NUMBER` contains the full version
-- `contrib/gitian-descriptors/*.yml`: usually one'd want to do this on master after branching off the release - but be sure to at least do it before a new major release
+### Litecoin maintainers/release engineers, suggestion for writing release notes
 
 Write release notes. git shortlog helps a lot, for example:
 
@@ -61,9 +57,11 @@ Tag version (or release candidate) in git
 
 ### Setup and perform Gitian builds
 
+If you're using the automated script (found in [contrib/gitian-build.sh](/contrib/gitian-build.sh)), then at this point you should run it with the "--build" command. Otherwise ignore this.
+
 Setup Gitian descriptors:
 
-    pushd ./chaucha
+    pushd ./litecoin
     export SIGNER=(your Gitian key, ie bluematt, sipa, etc)
     export VERSION=(new version, e.g. 0.8.0)
     git fetch
@@ -97,7 +95,7 @@ Create the OS X SDK tarball, see the [OS X readme](README_osx.md) for details, a
 By default, Gitian will fetch source files as needed. To cache them ahead of time:
 
     pushd ./gitian-builder
-    make -C ../chaucha/depends download SOURCES_PATH=`pwd`/cache/common
+    make -C ../litecoin/depends download SOURCES_PATH=`pwd`/cache/common
     popd
 
 Only missing files will be fetched, so this is safe to re-run for each build.
@@ -105,49 +103,50 @@ Only missing files will be fetched, so this is safe to re-run for each build.
 NOTE: Offline builds must use the --url flag to ensure Gitian fetches only from local URLs. For example:
 
     pushd ./gitian-builder
-    ./bin/gbuild --url chaucha=/path/to/chaucha,signature=/path/to/sigs {rest of arguments}
+    ./bin/gbuild --url litecoin=/path/to/litecoin,signature=/path/to/sigs {rest of arguments}
     popd
 
 The gbuild invocations below <b>DO NOT DO THIS</b> by default.
 
-### Build and sign Chauchera for Linux, Windows, and OS X:
+### Build and sign Litecoin Core for Linux, Windows, and OS X:
 
     pushd ./gitian-builder
-    ./bin/gbuild --memory 3000 --commit chaucha=v${VERSION} ../chaucha/contrib/gitian-descriptors/gitian-linux.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs.ltc/ ../chaucha/contrib/gitian-descriptors/gitian-linux.yml
-    mv build/out/chaucha-*.tar.gz build/out/src/chaucha-*.tar.gz ../
+    ./bin/gbuild --num-make 2 --memory 3000 --commit litecoin=v${VERSION} ../litecoin/contrib/gitian-descriptors/gitian-linux.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs.ltc/ ../litecoin/contrib/gitian-descriptors/gitian-linux.yml
+    mv build/out/litecoin-*.tar.gz build/out/src/litecoin-*.tar.gz ../
 
-    ./bin/gbuild --memory 3000 --commit chaucha=v${VERSION} ../chaucha/contrib/gitian-descriptors/gitian-win.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs.ltc/ ../chaucha/contrib/gitian-descriptors/gitian-win.yml
-    mv build/out/chaucha-*-win-unsigned.tar.gz inputs/chaucha-win-unsigned.tar.gz
-    mv build/out/chaucha-*.zip build/out/chaucha-*.exe ../
+    ./bin/gbuild --num-make 2 --memory 3000 --commit litecoin=v${VERSION} ../litecoin/contrib/gitian-descriptors/gitian-win.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs.ltc/ ../litecoin/contrib/gitian-descriptors/gitian-win.yml
+    mv build/out/litecoin-*-win-unsigned.tar.gz inputs/litecoin-win-unsigned.tar.gz
+    mv build/out/litecoin-*.zip build/out/litecoin-*.exe ../
 
-    ./bin/gbuild --memory 3000 --commit chaucha=v${VERSION} ../chaucha/contrib/gitian-descriptors/gitian-osx.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs.ltc/ ../chaucha/contrib/gitian-descriptors/gitian-osx.yml
-    mv build/out/chaucha-*-osx-unsigned.tar.gz inputs/chaucha-osx-unsigned.tar.gz
-    mv build/out/chaucha-*.tar.gz build/out/chaucha-*.dmg ../
+    ./bin/gbuild --num-make 2 --memory 3000 --commit litecoin=v${VERSION} ../litecoin/contrib/gitian-descriptors/gitian-osx.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs.ltc/ ../litecoin/contrib/gitian-descriptors/gitian-osx.yml
+    mv build/out/litecoin-*-osx-unsigned.tar.gz inputs/litecoin-osx-unsigned.tar.gz
+    mv build/out/litecoin-*.tar.gz build/out/litecoin-*.dmg ../
     popd
 
 Build output expected:
 
-  1. source tarball (`chaucha-${VERSION}.tar.gz`)
-  2. linux 32-bit and 64-bit dist tarballs (`chaucha-${VERSION}-linux[32|64].tar.gz`)
-  3. windows 32-bit and 64-bit unsigned installers and dist zips (`chaucha-${VERSION}-win[32|64]-setup-unsigned.exe`, `chaucha-${VERSION}-win[32|64].zip`)
-  4. OS X unsigned installer and dist tarball (`chaucha-${VERSION}-osx-unsigned.dmg`, `chaucha-${VERSION}-osx64.tar.gz`)
+  1. source tarball (`litecoin-${VERSION}.tar.gz`)
+  2. linux 32-bit and 64-bit dist tarballs (`litecoin-${VERSION}-linux[32|64].tar.gz`)
+  3. windows 32-bit and 64-bit unsigned installers and dist zips (`litecoin-${VERSION}-win[32|64]-setup-unsigned.exe`, `litecoin-${VERSION}-win[32|64].zip`)
+  4. OS X unsigned installer and dist tarball (`litecoin-${VERSION}-osx-unsigned.dmg`, `litecoin-${VERSION}-osx64.tar.gz`)
   5. Gitian signatures (in `gitian.sigs.ltc/${VERSION}-<linux|{win,osx}-unsigned>/(your Gitian key)/`)
 
 ### Verify other gitian builders signatures to your own. (Optional)
 
-Add other gitian builders keys to your gpg keyring
+Add other gitian builders keys to your gpg keyring, and/or refresh keys.
 
-    gpg --import chaucha/contrib/gitian-keys/*.pgp
+    gpg --import litecoin/contrib/gitian-keys/*.pgp
+    gpg --refresh-keys
 
 Verify the signatures
 
     pushd ./gitian-builder
-    ./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-linux ../chaucha/contrib/gitian-descriptors/gitian-linux.yml
-    ./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-win-unsigned ../chaucha/contrib/gitian-descriptors/gitian-win.yml
-    ./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-osx-unsigned ../chaucha/contrib/gitian-descriptors/gitian-osx.yml
+    ./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-linux ../litecoin/contrib/gitian-descriptors/gitian-linux.yml
+    ./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-win-unsigned ../litecoin/contrib/gitian-descriptors/gitian-win.yml
+    ./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-osx-unsigned ../litecoin/contrib/gitian-descriptors/gitian-osx.yml
     popd
 
 ### Next steps:
@@ -162,28 +161,59 @@ Commit your signature to gitian.sigs.ltc:
     git push  # Assuming you can push to the gitian.sigs.ltc tree
     popd
 
-Wait for Windows/OS X detached signatures:
+Codesigner only: Create Windows/OS X detached signatures:
+- Only one person handles codesigning. Everyone else should skip to the next step.
+- Only once the Windows/OS X builds each have 3 matching signatures may they be signed with their respective release keys.
+
+Codesigner only: Sign the osx binary:
+
+    transfer litecoin-osx-unsigned.tar.gz to osx for signing
+    tar xf litecoin-osx-unsigned.tar.gz
+    ./detached-sig-create.sh -s "Key ID"
+    Enter the keychain password and authorize the signature
+    Move signature-osx.tar.gz back to the gitian host
+
+Codesigner only: Sign the windows binaries:
+
+    tar xf litecoin-win-unsigned.tar.gz
+    ./detached-sig-create.sh -key /path/to/codesign.key
+    Enter the passphrase for the key when prompted
+    signature-win.tar.gz will be created
+
+Codesigner only: Commit the detached codesign payloads:
+
+    cd ~/litecoin-detached-sigs
+    checkout the appropriate branch for this release series
+    rm -rf *
+    tar xf signature-osx.tar.gz
+    tar xf signature-win.tar.gz
+    git add -a
+    git commit -m "point to ${VERSION}"
+    git tag -s v${VERSION} HEAD
+    git push the current branch and new tag
+
+Non-codesigners: wait for Windows/OS X detached signatures:
 
 - Once the Windows/OS X builds each have 3 matching signatures, they will be signed with their respective release keys.
-- Detached signatures will then be committed to the [chaucha-detached-sigs](https://github.com/proyecto-chaucha/chauchera-detached-sigs) repository, which can be combined with the unsigned apps to create signed binaries.
+- Detached signatures will then be committed to the [litecoin-detached-sigs](https://github.com/litecoin-project/litecoin-detached-sigs) repository, which can be combined with the unsigned apps to create signed binaries.
 
 Create (and optionally verify) the signed OS X binary:
 
     pushd ./gitian-builder
-    ./bin/gbuild -i --commit signature=v${VERSION} ../chaucha/contrib/gitian-descriptors/gitian-osx-signer.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs.ltc/ ../chaucha/contrib/gitian-descriptors/gitian-osx-signer.yml
-    ./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-osx-signed ../chaucha/contrib/gitian-descriptors/gitian-osx-signer.yml
-    mv build/out/chaucha-osx-signed.dmg ../chaucha-${VERSION}-osx.dmg
+    ./bin/gbuild -i --commit signature=v${VERSION} ../litecoin/contrib/gitian-descriptors/gitian-osx-signer.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs.ltc/ ../litecoin/contrib/gitian-descriptors/gitian-osx-signer.yml
+    ./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-osx-signed ../litecoin/contrib/gitian-descriptors/gitian-osx-signer.yml
+    mv build/out/litecoin-osx-signed.dmg ../litecoin-${VERSION}-osx.dmg
     popd
 
 Create (and optionally verify) the signed Windows binaries:
 
     pushd ./gitian-builder
-    ./bin/gbuild -i --commit signature=v${VERSION} ../chaucha/contrib/gitian-descriptors/gitian-win-signer.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs.ltc/ ../chaucha/contrib/gitian-descriptors/gitian-win-signer.yml
-    ./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-win-signed ../chaucha/contrib/gitian-descriptors/gitian-win-signer.yml
-    mv build/out/chaucha-*win64-setup.exe ../chaucha-${VERSION}-win64-setup.exe
-    mv build/out/chaucha-*win32-setup.exe ../chaucha-${VERSION}-win32-setup.exe
+    ./bin/gbuild -i --commit signature=v${VERSION} ../litecoin/contrib/gitian-descriptors/gitian-win-signer.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs.ltc/ ../litecoin/contrib/gitian-descriptors/gitian-win-signer.yml
+    ./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-win-signed ../litecoin/contrib/gitian-descriptors/gitian-win-signer.yml
+    mv build/out/litecoin-*win64-setup.exe ../litecoin-${VERSION}-win64-setup.exe
+    mv build/out/litecoin-*win32-setup.exe ../litecoin-${VERSION}-win32-setup.exe
     popd
 
 Commit your signature for the signed OS X/Windows binaries:
@@ -205,23 +235,23 @@ sha256sum * > SHA256SUMS
 
 The list of files should be:
 ```
-chaucha-${VERSION}-aarch64-linux-gnu.tar.gz
-chaucha-${VERSION}-arm-linux-gnueabihf.tar.gz
-chaucha-${VERSION}-i686-pc-linux-gnu.tar.gz
-chaucha-${VERSION}-x86_64-linux-gnu.tar.gz
-chaucha-${VERSION}-osx64.tar.gz
-chaucha-${VERSION}-osx.dmg
-chaucha-${VERSION}.tar.gz
-chaucha-${VERSION}-win32-setup.exe
-chaucha-${VERSION}-win32.zip
-chaucha-${VERSION}-win64-setup.exe
-chaucha-${VERSION}-win64.zip
+litecoin-${VERSION}-aarch64-linux-gnu.tar.gz
+litecoin-${VERSION}-arm-linux-gnueabihf.tar.gz
+litecoin-${VERSION}-i686-pc-linux-gnu.tar.gz
+litecoin-${VERSION}-x86_64-linux-gnu.tar.gz
+litecoin-${VERSION}-osx64.tar.gz
+litecoin-${VERSION}-osx.dmg
+litecoin-${VERSION}.tar.gz
+litecoin-${VERSION}-win32-setup.exe
+litecoin-${VERSION}-win32.zip
+litecoin-${VERSION}-win64-setup.exe
+litecoin-${VERSION}-win64.zip
 ```
 The `*-debug*` files generated by the gitian build contain debug symbols
 for troubleshooting by developers. It is assumed that anyone that is interested
 in debugging can run gitian to generate the files for themselves. To avoid
 end-user confusion about which file to pick, as well as save storage
-space *do not upload these to the chaucha.org server, nor put them in the torrent*.
+space *do not upload these to the litecoin.org server, nor put them in the torrent*.
 
 - GPG-sign it, delete the unsigned file:
 ```
@@ -231,24 +261,24 @@ rm SHA256SUMS
 (the digest algorithm is forced to sha256 to avoid confusion of the `Hash:` header that GPG adds with the SHA256 used for the files)
 Note: check that SHA256SUMS itself doesn't end up in SHA256SUMS, which is a spurious/nonsensical entry.
 
-- Upload zips and installers, as well as `SHA256SUMS.asc` from last step, to the chaucha.org server.
+- Upload zips and installers, as well as `SHA256SUMS.asc` from last step, to the litecoin.org server.
 
-- Update chaucha.org version
+```
+
+- Update litecoin.org version
 
 - Announce the release:
 
-  - chaucha-dev mailing list
+  - litecoin-dev and litecoin-dev mailing list
 
-  - Chauchera announcements list https://groups.google.com/forum/#!forum/chaucha-dev
+  - blog.litecoin.org blog post
 
-  - blog.chaucha.org blog post
+  - Update title of #litecoin and #litecoin-dev on Freenode IRC
 
-  - chauchatalk.io forum announcement
+  - Optionally twitter, reddit /r/Litecoin, ... but this will usually sort out itself
 
-  - Update title of #chaucha on Freenode IRC
+  - Archive release notes for the new version to `doc/release-notes/` (branch `master` and branch of the release)
 
-  - Optionally twitter, reddit /r/Chaucha, ... but this will usually sort out itself
-
-  - Add release notes for the new version to the directory `doc/release-notes` in git master
+  - Create a [new GitHub release](https://github.com/litecoin-project/litecoin/releases/new) with a link to the archived release notes.
 
   - Celebrate

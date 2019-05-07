@@ -114,8 +114,8 @@
         <translation>Recreans indicem frustorum in disco...</translation>
     </message>
     <message>
-        <source>Send coins to a Chaucha address</source>
-        <translation>Mitte nummos ad inscriptionem Chaucha</translation>
+        <source>Send coins to a Litecoin address</source>
+        <translation>Mitte nummos ad inscriptionem Litecoin</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -138,8 +138,8 @@
         <translation>&amp;Verifica nuntium...</translation>
     </message>
     <message>
-        <source>Chaucha</source>
-        <translation>Chaucha</translation>
+        <source>Litecoin</source>
+        <translation>Litecoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -166,12 +166,12 @@
         <translation>Cifra claves privatas quae cassidili tui sunt</translation>
     </message>
     <message>
-        <source>Sign messages with your Chaucha addresses to prove you own them</source>
-        <translation>Signa nuntios cum tuis inscriptionibus Chaucha ut demonstres te eas possidere</translation>
+        <source>Sign messages with your Litecoin addresses to prove you own them</source>
+        <translation>Signa nuntios cum tuis inscriptionibus Litecoin ut demonstres te eas possidere</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Chaucha addresses</source>
-        <translation>Verifica nuntios ut certus sis eos signatos esse cum specificatis inscriptionibus Chaucha</translation>
+        <source>Verify messages to ensure they were signed with specified Litecoin addresses</source>
+        <translation>Verifica nuntios ut certus sis eos signatos esse cum specificatis inscriptionibus Litecoin</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -192,10 +192,6 @@
     <message>
         <source>&amp;Command-line options</source>
         <translation>Optiones mandati initiantis</translation>
-    </message>
-    <message>
-        <source>No block source available...</source>
-        <translation>Nulla fons frustorum absens...</translation>
     </message>
     <message>
         <source>%1 behind</source>
@@ -245,7 +241,7 @@
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
         <translation>Cassidile &lt;b&gt;cifratum&lt;/b&gt; est et iam nunc &lt;b&gt;seratum&lt;/b&gt;</translation>
     </message>
-</context>
+    </context>
 <context>
     <name>CoinControlDialog</name>
     <message>
@@ -305,8 +301,23 @@
 <context>
     <name>Intro</name>
     <message>
+        <source>Litecoin</source>
+        <translation>Litecoin</translation>
+    </message>
+    <message>
         <source>Error</source>
         <translation>Error</translation>
+    </message>
+    </context>
+<context>
+    <name>ModalOverlay</name>
+    <message>
+        <source>Form</source>
+        <translation>Schema</translation>
+    </message>
+    <message>
+        <source>Last block time</source>
+        <translation>Hora postremi frusti</translation>
     </message>
     </context>
 <context>
@@ -339,8 +350,8 @@
         <translation>Cassidile</translation>
     </message>
     <message>
-        <source>Automatically open the Chaucha client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Aperi per se portam clientis Chaucha in itineratore.  Hoc tantum effectivum est si itineratrum tuum supportat UPnP et id activum est.</translation>
+        <source>Automatically open the Litecoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Aperi per se portam clientis Litecoin in itineratore.  Hoc tantum effectivum est si itineratrum tuum supportat UPnP et id activum est.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
@@ -407,6 +418,10 @@
         <translation>Confirma optionum reconstituere</translation>
     </message>
     <message>
+        <source>Error</source>
+        <translation>Error</translation>
+    </message>
+    <message>
         <source>The supplied proxy address is invalid.</source>
         <translation>Inscriptio vicarii tradita non valida est.</translation>
     </message>
@@ -418,8 +433,8 @@
         <translation>Schema</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Chaucha network after a connection is established, but this process has not completed yet.</source>
-        <translation>Monstrata informatio fortasse non recentissima est.  Tuum cassidile per se synchronizat cum rete Chaucha postquam conexio constabilita est, sed hoc actio nondum perfecta est.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Litecoin network after a connection is established, but this process has not completed yet.</source>
+        <translation>Monstrata informatio fortasse non recentissima est.  Tuum cassidile per se synchronizat cum rete Litecoin postquam conexio constabilita est, sed hoc actio nondum perfecta est.</translation>
     </message>
     <message>
         <source>Immature:</source>
@@ -446,6 +461,13 @@
         <source>N/A</source>
         <translation>N/A</translation>
     </message>
+    <message>
+        <source>unknown</source>
+        <translation>ignotum</translation>
+    </message>
+</context>
+<context>
+    <name>QObject::QObject</name>
     </context>
 <context>
     <name>QRImageWidget</name>
@@ -507,14 +529,6 @@
     <message>
         <source>Clear console</source>
         <translation>Vacuefac terminale</translation>
-    </message>
-    <message>
-        <source>Use up and down arrows to navigate history, and &lt;b&gt;Ctrl-L&lt;/b&gt; to clear screen.</source>
-        <translation>Utere sagittis sursum deorsumque ut per historiam naviges, et &lt;b&gt;Ctrl+L&lt;/b&gt; ut scrinium vacuefacias.</translation>
-    </message>
-    <message>
-        <source>Type &lt;b&gt;help&lt;/b&gt; for an overview of available commands.</source>
-        <translation>Scribe &lt;b&gt;help&lt;/b&gt; pro summario possibilium mandatorum.</translation>
     </message>
     </context>
 <context>
@@ -661,8 +675,8 @@
         <translation>Copia signationem in latibulum systematis</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Chaucha address</source>
-        <translation>Signa nuntium ut demonstres hanc inscriptionem Chaucha a te possessa esse</translation>
+        <source>Sign the message to prove you own this Litecoin address</source>
+        <translation>Signa nuntium ut demonstres hanc inscriptionem Litecoin a te possessa esse</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
@@ -681,8 +695,8 @@
         <translation>&amp;Verifica Nuntium</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Chaucha address</source>
-        <translation>Verifica nuntium ut cures signatum esse cum specifica inscriptione Chaucha</translation>
+        <source>Verify the message to ensure it was signed with the specified Litecoin address</source>
+        <translation>Verifica nuntium ut cures signatum esse cum specifica inscriptione Litecoin</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>
@@ -758,12 +772,8 @@
         <translation>Operare infere sicut daemon et mandata accipe</translation>
     </message>
     <message>
-        <source>Accept connections from outside (default: 1 if no -proxy or -connect)</source>
-        <translation>Accipe conexiones externas (praedefinitum: 1 nisi -proxy neque -connect)</translation>
-    </message>
-    <message>
-        <source>Chauchera</source>
-        <translation>Chaucha Nucleus</translation>
+        <source>Litecoin Core</source>
+        <translation>Litecoin Nucleus</translation>
     </message>
     <message>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>
@@ -774,16 +784,12 @@
         <translation>Facere mandatum quotiescumque cassidilis transactio mutet (%s in mandato sbstituitur ab TxID)</translation>
     </message>
     <message>
-        <source>This is a pre-release test build - use at your own risk - do not use for mining or merchant applications</source>
-        <translation>Hoc est prae-dimittum experimentala aedes - utere eo periculo tuo proprio - nolite utere fodendo vel applicationibus mercatoriis</translation>
+        <source>Accept connections from outside (default: 1 if no -proxy or -connect)</source>
+        <translation>Accipe conexiones externas (praedefinitum: 1 nisi -proxy neque -connect)</translation>
     </message>
     <message>
         <source>Block creation options:</source>
         <translation>Optiones creandi frustorum:</translation>
-    </message>
-    <message>
-        <source>Connect only to the specified node(s)</source>
-        <translation>Conecte sole ad nodos specificatos (vel nodum specificatum)</translation>
     </message>
     <message>
         <source>Corrupted block database detected</source>
@@ -826,10 +832,6 @@
         <translation>Verificante frusta...</translation>
     </message>
     <message>
-        <source>Verifying wallet...</source>
-        <translation>Verificante cassidilem...</translation>
-    </message>
-    <message>
         <source>Information</source>
         <translation>Informatio</translation>
     </message>
@@ -848,10 +850,6 @@
     <message>
         <source>Transaction amount too small</source>
         <translation>Magnitudo transactionis nimis parva</translation>
-    </message>
-    <message>
-        <source>Transaction amounts must be positive</source>
-        <translation>Necesse est magnitudines transactionum positivas esse.</translation>
     </message>
     <message>
         <source>Transaction too large</source>
@@ -878,14 +876,6 @@
         <translation>Permitte quaerenda DNS pro -addnode, -seednode, et -connect</translation>
     </message>
     <message>
-        <source>Loading addresses...</source>
-        <translation>Legens inscriptiones...</translation>
-    </message>
-    <message>
-        <source>Invalid -proxy address: '%s'</source>
-        <translation>Inscriptio -proxy non valida: '%s'</translation>
-    </message>
-    <message>
         <source>Unknown network specified in -onlynet: '%s'</source>
         <translation>Ignotum rete specificatum in -onlynet: '%s'</translation>
     </message>
@@ -898,20 +888,12 @@
         <translation>Legens indicem frustorum...</translation>
     </message>
     <message>
-        <source>Add a node to connect to and attempt to keep the connection open</source>
-        <translation>Adice nodum cui conectere et conare sustinere conexionem apertam</translation>
-    </message>
-    <message>
         <source>Loading wallet...</source>
         <translation>Legens cassidile...</translation>
     </message>
     <message>
         <source>Cannot downgrade wallet</source>
         <translation>Non posse cassidile regredi</translation>
-    </message>
-    <message>
-        <source>Cannot write default address</source>
-        <translation>Non posse scribere praedefinitam inscriptionem</translation>
     </message>
     <message>
         <source>Rescanning...</source>

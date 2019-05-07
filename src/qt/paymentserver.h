@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2015 The Bitcoin Core developers
+// Copyright (c) 2011-2017 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -21,10 +21,10 @@
 //
 // When startup is finished and the main window is
 // shown, a signal is sent to slot uiReady(), which
-// emits a receivedURL() signal for any payment
+// emits a receivedURI() signal for any payment
 // requests that happened during startup.
 //
-// After startup, receivedURL() happens as usual.
+// After startup, receivedURI() happens as usual.
 //
 // This class has one more feature: a static
 // method that finds URIs passed in the command line
@@ -32,8 +32,8 @@
 // sends them to the server.
 //
 
-#include "paymentrequestplus.h"
-#include "walletmodel.h"
+#include <qt/paymentrequestplus.h>
+#include <qt/walletmodel.h>
 
 #include <QObject>
 #include <QString>
@@ -53,7 +53,7 @@ class QUrl;
 QT_END_NAMESPACE
 
 // BIP70 max payment request size in bytes (DoS protection)
-extern const qint64 BIP70_MAX_PAYMENTREQUEST_SIZE;
+static const qint64 BIP70_MAX_PAYMENTREQUEST_SIZE = 50000;
 
 class PaymentServer : public QObject
 {
@@ -72,15 +72,15 @@ public:
     static bool ipcSendCommandLine();
 
     // parent should be QApplication object
-    PaymentServer(QObject* parent, bool startLocalServer = true);
+    explicit PaymentServer(QObject* parent, bool startLocalServer = true);
     ~PaymentServer();
 
-    // Load root certificate authorities. Pass NULL (default)
+    // Load root certificate authorities. Pass nullptr (default)
     // to read from the file specified in the -rootcertificates setting,
     // or, if that's not set, to use the system default root certificates.
     // If you pass in a store, you should not X509_STORE_free it: it will be
     // freed either at exit or when another set of CAs are loaded.
-    static void LoadRootCAs(X509_STORE* store = NULL);
+    static void LoadRootCAs(X509_STORE* store = nullptr);
 
     // Return certificate store
     static X509_STORE* getCertStore();
@@ -113,7 +113,7 @@ public Q_SLOTS:
     void uiReady();
 
     // Submit Payment message to a merchant, get back PaymentACK:
-    void fetchPaymentACK(CWallet* wallet, SendCoinsRecipient recipient, QByteArray transaction);
+    void fetchPaymentACK(CWallet* wallet, const SendCoinsRecipient& recipient, QByteArray transaction);
 
     // Handle an incoming URI, URI with local file scheme or file
     void handleURIOrFile(const QString& s);

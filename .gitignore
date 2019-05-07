@@ -1,12 +1,13 @@
 *.tar.gz
 
 *.exe
-src/chaucha
-src/chauchad
-src/chaucha-cli
-src/chaucha-tx
-src/test/test_chaucha
-src/qt/test/test_chauchera
+src/litecoin
+src/litecoind
+src/litecoin-cli
+src/litecoin-tx
+src/test/test_litecoin
+src/test/test_litecoin_fuzzy
+src/qt/test/test_litecoin-qt
 
 # autoreconf
 Makefile.in
@@ -43,6 +44,12 @@ src/qt/forms/ui_*.h
 
 src/qt/test/moc*.cpp
 
+src/qt/bitcoin-qt.config
+src/qt/bitcoin-qt.creator
+src/qt/bitcoin-qt.creator.user
+src/qt/bitcoin-qt.files
+src/qt/bitcoin-qt.includes
+
 .deps
 .dirstamp
 .libs
@@ -55,7 +62,6 @@ src/qt/test/moc*.cpp
 *.o
 *.o-*
 *.patch
-.chaucha
 *.a
 *.pb.cc
 *.pb.h
@@ -74,17 +80,16 @@ src/qt/test/moc*.cpp
 # Compilation and Qt preprocessor part
 *.qm
 Makefile
-chauchera
-Chauchera.app
+litecoin-qt
+litecoin-Qt.app
+background.tiff*
 
 # Unit-tests
 Makefile.test
-chauchera_test
-src/test/buildenv.py
+litecoin-qt_test
 
 # Resources cpp
 qrc_*.cpp
-
 # Mac specific
 .DS_Store
 build
@@ -93,7 +98,7 @@ build
 *.gcno
 *.gcda
 /*.info
-test_bitcoin.coverage/
+test_litecoin.coverage/
 total.coverage/
 coverage_percent.txt
 
@@ -101,13 +106,8 @@ coverage_percent.txt
 linux-coverage-build
 linux-build
 win32-build
-qa/pull-tester/run-bitcoind-for-test.sh
-qa/pull-tester/tests_config.py
-qa/pull-tester/cache/*
-qa/pull-tester/test.*/*
-qa/tmp
-cache/
-share/BitcoindComparisonTool.jar
+test/config.ini
+test/cache/*
 
 !src/leveldb*/Makefile
 
@@ -115,5 +115,3 @@ share/BitcoindComparisonTool.jar
 
 libbitcoinconsensus.pc
 contrib/devtools/split-debug.sh
-
-dist/*

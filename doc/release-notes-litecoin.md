@@ -1,70 +1,66 @@
-Chauchera version 0.13.3 is now available from:
+Litecoin Core version 0.16.3 is now available from:
 
-  <https://download.chaucha.org/chaucha-0.13.3/>
+  <https://download.litecoin.org/litecoin-0.16.3/>
 
-This is a new minor version release, including new features, various bugfixes and performance improvements.
-It is recommended to upgrade to this version.
+This is a new minor version release, with various bugfixes
+as well as updated translations.
 
-Please report bugs using the issue tracker at github:
+Please report bugs using the issue tracker at GitHub:
 
-  <https://github.com/proyecto-chaucha/chauchera/issues>
+  <https://github.com/litecoin-project/litecoin/issues>
+
+To receive security and update notifications, please subscribe to:
+
+  <https://groups.google.com/forum/#!forum/litecoin-dev>
+
+How to Upgrade
+==============
+
+If you are running an older version, shut it down. Wait until it has completely
+shut down (which might take a few minutes for older versions), then run the
+installer (on Windows) or just copy over `/Applications/Litecoin-Qt` (on Mac)
+or `litecoind`/`litecoin-qt` (on Linux).
+
+The first time you run version 0.15.0 or newer, your chainstate database will be converted to a
+new format, which will take anywhere from a few minutes to half an hour,
+depending on the speed of your machine.
+
+Note that the block database format also changed in version 0.8.0 and there is no
+automatic upgrade code from before version 0.8 to version 0.15.0 or higher. Upgrading
+directly from 0.7.x and earlier without re-downloading the blockchain is not supported.
+However, as usual, old wallet versions are still supported.
+
+Downgrading warning
+-------------------
+
+Wallets created in 0.16 and later are not compatible with versions prior to 0.16
+and will not work if you try to use newly created wallets in older versions. Existing
+wallets that were created with older versions are not affected by this.
 
 Compatibility
 ==============
 
-Microsoft ended support for Windows XP on [April 8th, 2014](https://www.microsoft.com/en-us/WindowsForBusiness/end-of-xp-support),
-an OS initially released in 2001. This means that not even critical security
-updates will be released anymore. Without security updates, using a chaucha
-wallet on a XP machine is irresponsible at least.
+Litecoin Core is extensively tested on multiple operating systems using
+the Linux kernel, macOS 10.8+, and Windows Vista and later. Windows XP is not supported.
 
-In addition to that, with 0.12.x there have been varied reports of Bitcoin Core
-randomly crashing on Windows XP. It is [not clear](https://github.com/bitcoin/bitcoin/issues/7681#issuecomment-217439891)
-what the source of these crashes is, but it is likely that upstream
-libraries such as Qt are no longer being tested on XP.
-
-We do not have time nor resources to provide support for an OS that is
-end-of-life. From 0.13.0 on, Windows XP is no longer supported. Users are
-suggested to upgrade to a newer version of Windows, or install an alternative OS
-that is supported.
-
-No attempt is made to prevent installing or running the software on Windows XP,
-you can still do so at your own risk, but do not expect it to work: do not
-report issues about Windows XP to the issue tracker.
-
-From 0.13.1 onwards OS X 10.7 is no longer supported. 0.13.0 was intended to work on 10.7+,
-but severe issues with the libc++ version on 10.7.x keep it from running reliably.
-0.13.1 now requires 10.8+, and will communicate that to 10.7 users, rather than crashing unexpectedly.
+Litecoin Core should also work on most other Unix-like systems but is not
+frequently tested on them.
 
 Notable changes
 ===============
 
-New Multisig Address Prefix
----------------------------
+Denial-of-Service vulnerability
+-------------------------------
 
-Chauchera now supports P2SH addresses beginning with M on mainnet and Q on testnet.
-P2SH addresses beginning with 3 on mainnet and m or n on testnet will continue to be valid.
-Old and new addresses can be used interchangeably.
+A denial-of-service vulnerability exploitable by miners has been discovered in
+Litecoin Core versions 0.14.0 up to 0.16.2. It is recommended to upgrade any of
+the vulnerable versions to 0.16.3 as soon as possible.
 
-miniupnp CVE-2017-8798
-----------------------
+0.16.3 change log
+------------------
 
-Bundled miniupnpc was updated to 2.0.20170509. This fixes an integer signedness error (present in MiniUPnPc v1.4.20101221 through v2.0) that allows remote attackers (within the LAN) to cause a denial of service or possibly have unspecified other impact.
-
-This only affects users that have explicitly enabled UPnP through the GUI setting or through the -upnp option, as since the last UPnP vulnerability (in Chauchera 0.10.4) it has been disabled by default.
-
-If you use this option, it is recommended to upgrade to this version as soon as possible.
-
-Reset Testnet
--------------
-
-Testnet3 has been deprecated and replaced with Testnet4. The server port has been changed to 19335 however the RPC port remains
-the same (19332).
-
-Testnet faucets can be located at:
-- http://testnet.chauchatools.com
-- http://testnet.thrasher.io
-
-Developers who require the new testnet blockchain paramaters can find them [here](https://github.com/proyecto-chaucha/chauchera/blob/0.13/src/chainparams.cpp#L214).
+### Consensus
+- #14249 `696b936` Fix crash bug with duplicate inputs within a transaction (TheBlueMatt, sdaftuar)
 
 Credits
 =======
@@ -73,8 +69,24 @@ Thanks to everyone who directly contributed to this release:
 
 - [The Bitcoin Core Developers](/doc/release-notes)
 - Adrian Gallagher
-- Shaolin Fry
-- Xinxi Wang
-- Out0fmemory
-- Erasmospunk
-- Romanornr
+- aunyks
+- coblee
+- cryptonexii
+- gabrieldov
+- jmutkawoa
+- Martin Smith
+- NeMO84
+- ppm0
+- romanornr
+- shaolinfry
+- spl0i7
+- stedwms
+- ultragtx
+- VKoskiv
+- voidmain
+- wbsmolen
+- xinxi
+
+And to those that reported security issues:
+
+- beardnboobies
