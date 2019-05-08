@@ -26,10 +26,6 @@
         <translation>Schliessen</translation>
     </message>
     <message>
-        <source>Delete the currently selected address from the list</source>
-        <translation>Ausgewählte Adresse aus der Liste löschen</translation>
-    </message>
-    <message>
         <source>Export the data in the current tab to a file</source>
         <translation>Daten des aktiven Fensters exportieren</translation>
     </message>
@@ -50,10 +46,6 @@
         <translation>Wähle die Empfangsadresse</translation>
     </message>
     <message>
-        <source>C&amp;hoose</source>
-        <translation>Auswählen</translation>
-    </message>
-    <message>
         <source>Sending addresses</source>
         <translation>Sendeadressen</translation>
     </message>
@@ -62,16 +54,12 @@
         <translation>Empfangsadressen</translation>
     </message>
     <message>
-        <source>These are your Litecoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Dies sind Ihre Litecoin-Adressen zum Senden von Zahlungen. Überprüfen Sie immer die Menge und die Empfangsadresse, bevor Sie Litecoins senden.</translation>
+        <source>These are your Bitcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Dies sind Ihre Bitcoin-Adressen zum Senden von Zahlungen. Überprüfen Sie immer die Menge und die Empfangsadresse, bevor Sie Bitcoins senden.</translation>
     </message>
     <message>
-        <source>These are your Litecoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Dies sind Ihre Litecoin-Adressen für den Empfang von Zahlungen. Es wird empfohlen, für jede Transaktion eine neue Empfangsadresse zu verwenden.</translation>
-    </message>
-    <message>
-        <source>&amp;Copy Address</source>
-        <translation>&amp;Kopiere Adresse</translation>
+        <source>These are your Bitcoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Dies sind Ihre Bitcoin-Adressen für den Empfang von Zahlungen. Es wird empfohlen, für jede Transaktion eine neue Empfangsadresse zu verwenden.</translation>
     </message>
     <message>
         <source>Copy &amp;Label</source>
@@ -80,14 +68,6 @@
     <message>
         <source>&amp;Edit</source>
         <translation>&amp;Bearbeiten</translation>
-    </message>
-    <message>
-        <source>Export Address List</source>
-        <translation>Export Adressliste</translation>
-    </message>
-    <message>
-        <source>Comma separated file (*.csv)</source>
-        <translation>Komma getrenntes Dokument (*.csv)</translation>
     </message>
     <message>
         <source>Exporting Failed</source>
@@ -136,14 +116,6 @@
         <translation>Geben Sie das neue Passwort Ihrer digitalen Geldbörse ein.&lt;br/&gt;Verwenden Sie bitte ein Passwort bestehend aus &lt;b&gt;zehn oder mehr zufälligen Zeichen&lt;/b&gt;, oder aus &lt;b&gt;acht oder mehr Wörtern&lt;/b&gt;.</translation>
     </message>
     <message>
-        <source>Encrypt wallet</source>
-        <translation>Brieftasche verschlüsseln</translation>
-    </message>
-    <message>
-        <source>This operation needs your wallet passphrase to unlock the wallet.</source>
-        <translation>Diese Aktion benötigt ihr Passwort zum entsperren der Wallet.</translation>
-    </message>
-    <message>
         <source>Unlock wallet</source>
         <translation>Brieftasche entschlüsseln</translation>
     </message>
@@ -160,16 +132,8 @@
         <translation>Passwort ändern</translation>
     </message>
     <message>
-        <source>Enter the old passphrase and new passphrase to the wallet.</source>
-        <translation>Geben Sie das alte und neue Passwort Ihrer Wallet ein.</translation>
-    </message>
-    <message>
-        <source>Confirm wallet encryption</source>
-        <translation>Brieftaschenverschlüsselung bestätigen</translation>
-    </message>
-    <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR LITECOINS&lt;/b&gt;!</source>
-        <translation>Achtung: Wenn Sie Ihre Wallet verschlüsseln und das Passwort verlieren, gehen &lt;b&gt;alle Ihre Litecoins verloren&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR BITCOINS&lt;/b&gt;!</source>
+        <translation>Achtung: Wenn Sie Ihre Wallet verschlüsseln und das Passwort verlieren, gehen &lt;b&gt;alle Ihre Bitcoins verloren&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -192,20 +156,8 @@
         <translation>Die Wallet-Verschlüsselung ist aufgrund eines internen Fehlers fehlgeschlagen. Ihre Wallet wurde nicht verschlüsselt.</translation>
     </message>
     <message>
-        <source>The supplied passphrases do not match.</source>
-        <translation>Die eingegebenen Passwörter stimmen nicht überein.</translation>
-    </message>
-    <message>
         <source>Wallet unlock failed</source>
         <translation>Brieftasche öffnen fehlgeschlagen</translation>
-    </message>
-    <message>
-        <source>The passphrase entered for the wallet decryption was incorrect.</source>
-        <translation>Inkorrektes Passwort um die Brieftasche zu entschlüsseln</translation>
-    </message>
-    <message>
-        <source>Wallet decryption failed</source>
-        <translation>Brieftasche entschlüsseln fehlgeschlagen</translation>
     </message>
     <message>
         <source>Wallet passphrase was successfully changed.</source>
@@ -234,16 +186,8 @@
         <translation>Über das Netzwerk abgleichen</translation>
     </message>
     <message>
-        <source>&amp;Overview</source>
-        <translation>&amp;Übersicht</translation>
-    </message>
-    <message>
         <source>Node</source>
         <translation>Knoten</translation>
-    </message>
-    <message>
-        <source>Show general overview of wallet</source>
-        <translation>Generelle Übersicht der Brieftasche </translation>
     </message>
     <message>
         <source>&amp;Transactions</source>
@@ -266,14 +210,6 @@
         <translation>&amp;Über %1</translation>
     </message>
     <message>
-        <source>Show information about %1</source>
-        <translation>Zeige Informationen zu %1</translation>
-    </message>
-    <message>
-        <source>About &amp;Qt</source>
-        <translation>Über &amp;Qt</translation>
-    </message>
-    <message>
         <source>Show information about Qt</source>
         <translation>Informationen über Qt anzeigen</translation>
     </message>
@@ -282,60 +218,24 @@
         <translation>&amp;Einstellungen...</translation>
     </message>
     <message>
-        <source>Modify configuration options for %1</source>
-        <translation>Ändern Sie die Konfigurationsoptionen für %1</translation>
-    </message>
-    <message>
-        <source>&amp;Encrypt Wallet...</source>
-        <translation>&amp;Brieftasche verschlüsseln...</translation>
-    </message>
-    <message>
         <source>&amp;Backup Wallet...</source>
         <translation>Sicherungskopie der Brieftasche...</translation>
-    </message>
-    <message>
-        <source>&amp;Change Passphrase...</source>
-        <translation>&amp;Passwort ändern...</translation>
-    </message>
-    <message>
-        <source>&amp;Sending addresses...</source>
-        <translation>&amp;Adressen senden...</translation>
-    </message>
-    <message>
-        <source>&amp;Receiving addresses...</source>
-        <translation>&amp;Adressen empfangen...</translation>
     </message>
     <message>
         <source>Open &amp;URI...</source>
         <translation>Öffne &amp;URI...</translation>
     </message>
     <message>
-        <source>Click to disable network activity.</source>
-        <translation>Klicken Sie, um die Netzwerkaktivität zu deaktivieren.</translation>
-    </message>
-    <message>
         <source>Network activity disabled.</source>
         <translation>Netzwerkaktivität wurde deaktiviert.</translation>
-    </message>
-    <message>
-        <source>Click to enable network activity again.</source>
-        <translation>Klicken Sie, um die Netzwerkaktivität wieder zu aktivieren.</translation>
-    </message>
-    <message>
-        <source>Syncing Headers (%1%)...</source>
-        <translation>Synchronisiere Header (%1%)...</translation>
     </message>
     <message>
         <source>Reindexing blocks on disk...</source>
         <translation>Reindexiere Blöcke auf dem Datenträger...</translation>
     </message>
     <message>
-        <source>Send coins to a Litecoin address</source>
-        <translation>Coins an eine Litecoin-Adresse senden</translation>
-    </message>
-    <message>
-        <source>Backup wallet to another location</source>
-        <translation>Wallet an einen anderen Ort sichern</translation>
+        <source>Send coins to a Bitcoin address</source>
+        <translation>Coins an eine Bitcoin-Adresse senden</translation>
     </message>
     <message>
         <source>Change the passphrase used for wallet encryption</source>
@@ -346,20 +246,12 @@
         <translation>&amp;Debug Fenster</translation>
     </message>
     <message>
-        <source>Open debugging and diagnostic console</source>
-        <translation>Die Debugging- und Diagnosekonsole öffnen</translation>
-    </message>
-    <message>
         <source>&amp;Verify message...</source>
         <translation>Nachricht &amp;bestätigen</translation>
     </message>
     <message>
-        <source>Litecoin</source>
-        <translation>Litecoin</translation>
-    </message>
-    <message>
-        <source>Wallet</source>
-        <translation>Brieftasche</translation>
+        <source>Bitcoin</source>
+        <translation>Bitcoin</translation>
     </message>
     <message>
         <source>&amp;Send</source>
@@ -374,24 +266,12 @@
         <translation>&amp;anzeigen / verstecken</translation>
     </message>
     <message>
-        <source>Show or hide the main Window</source>
-        <translation>Das Hauptfenster ein- oder ausblenden</translation>
-    </message>
-    <message>
         <source>Encrypt the private keys that belong to your wallet</source>
         <translation>Verschlüssele die Private Keys, die zu deiner Brieftasche gehören</translation>
     </message>
     <message>
-        <source>Sign messages with your Litecoin addresses to prove you own them</source>
-        <translation>Nachrichten mit Ihrer Litecoin-Adresse signieren, um zu beweisen, dass sie Ihnen gehören</translation>
-    </message>
-    <message>
-        <source>Verify messages to ensure they were signed with specified Litecoin addresses</source>
-        <translation>Überprüfen Sie Nachrichten, um sicherzustellen, dass sie mit den angegebenen Litecoin-Adressen signiert wurden</translation>
-    </message>
-    <message>
-        <source>&amp;File</source>
-        <translation>&amp;Datei</translation>
+        <source>Sign messages with your Bitcoin addresses to prove you own them</source>
+        <translation>Nachrichten mit Ihrer Bitcoin-Adresse signieren, um zu beweisen, dass sie Ihnen gehören</translation>
     </message>
     <message>
         <source>&amp;Settings</source>
@@ -400,14 +280,6 @@
     <message>
         <source>&amp;Help</source>
         <translation>&amp;Hilfe</translation>
-    </message>
-    <message>
-        <source>Tabs toolbar</source>
-        <translation>Registerkarten-Symbolleiste</translation>
-    </message>
-    <message>
-        <source>Show the list of used sending addresses and labels</source>
-        <translation>Liste der benutzten Sendeadressen und -etiketten</translation>
     </message>
     <message>
         <source>Show the list of used receiving addresses and labels</source>
@@ -428,10 +300,6 @@
     <message>
         <source>Transactions after this will not yet be visible.</source>
         <translation>Transaktionen danach sind noch nicht sichtbar.</translation>
-    </message>
-    <message>
-        <source>Error</source>
-        <translation>Fehler</translation>
     </message>
     <message>
         <source>Warning</source>
@@ -460,31 +328,15 @@
         <translation>Menge: %1</translation>
     </message>
     <message>
-        <source>Sent transaction</source>
-        <translation>Überweisung gesendet</translation>
-    </message>
-    <message>
         <source>Incoming transaction</source>
         <translation>Überweisung empfangen</translation>
     </message>
-    <message>
-        <source>A fatal error occurred. Litecoin can no longer continue safely and will quit.</source>
-        <translation>Ein schwerwiegender Fehler ist aufgetreten. Litecoin kann nicht mehr sicher fortfahren und beendet sich.</translation>
-    </message>
-</context>
+    </context>
 <context>
     <name>CoinControlDialog</name>
     <message>
-        <source>Quantity:</source>
-        <translation>Anzahl:</translation>
-    </message>
-    <message>
         <source>Bytes:</source>
         <translation>Byte:</translation>
-    </message>
-    <message>
-        <source>Amount:</source>
-        <translation>Betrag:</translation>
     </message>
     <message>
         <source>Fee:</source>
@@ -495,16 +347,8 @@
         <translation>Dust:</translation>
     </message>
     <message>
-        <source>After Fee:</source>
-        <translation>Nach Gebühr:</translation>
-    </message>
-    <message>
         <source>Amount</source>
         <translation>Betrag</translation>
-    </message>
-    <message>
-        <source>Date</source>
-        <translation>Datum</translation>
     </message>
     <message>
         <source>Confirmations</source>
@@ -562,20 +406,8 @@
         <translation>&amp;Adresse</translation>
     </message>
     <message>
-        <source>New receiving address</source>
-        <translation>Neue Empfangsadresse</translation>
-    </message>
-    <message>
-        <source>New sending address</source>
-        <translation>Neue Sendeadresse</translation>
-    </message>
-    <message>
         <source>Edit receiving address</source>
         <translation>Empfangsadresse bearbeiten</translation>
-    </message>
-    <message>
-        <source>Edit sending address</source>
-        <translation>Sendeadresse bearbeiten</translation>
     </message>
     </context>
 <context>
@@ -599,8 +431,8 @@
         <translation>Willkommen</translation>
     </message>
     <message>
-        <source>Litecoin</source>
-        <translation>Litecoin</translation>
+        <source>Bitcoin</source>
+        <translation>Bitcoin</translation>
     </message>
     <message>
         <source>Error</source>
@@ -623,10 +455,6 @@
     </context>
 <context>
     <name>OptionsDialog</name>
-    <message>
-        <source>Error</source>
-        <translation>Fehler</translation>
-    </message>
     </context>
 <context>
     <name>OverviewPage</name>
@@ -640,20 +468,12 @@
     </context>
 <context>
     <name>PeerTableModel</name>
-    <message>
-        <source>Ping</source>
-        <translation>Ping</translation>
-    </message>
     </context>
 <context>
     <name>QObject</name>
     <message>
-        <source>Amount</source>
-        <translation>Betrag</translation>
-    </message>
-    <message>
-        <source>Enter a Litecoin address (e.g. %1)</source>
-        <translation>Litecoin Adresse eingeben (z.B. %1)</translation>
+        <source>Enter a Bitcoin address (e.g. %1)</source>
+        <translation>Bitcoin Adresse eingeben (z.B. %1)</translation>
     </message>
     <message>
         <source>N/A</source>
@@ -687,10 +507,6 @@
 <context>
     <name>ReceiveRequestDialog</name>
     <message>
-        <source>Address</source>
-        <translation>Adresse</translation>
-    </message>
-    <message>
         <source>Amount</source>
         <translation>Betrag</translation>
     </message>
@@ -721,10 +537,6 @@
         <translation>Anzahl:</translation>
     </message>
     <message>
-        <source>Bytes:</source>
-        <translation>Byte:</translation>
-    </message>
-    <message>
         <source>Amount:</source>
         <translation>Betrag:</translation>
     </message>
@@ -739,10 +551,6 @@
     <message>
         <source>Dust:</source>
         <translation>Dust:</translation>
-    </message>
-    <message>
-        <source>Copy quantity</source>
-        <translation>Menge kopieren</translation>
     </message>
     <message>
         <source>Copy amount</source>
@@ -773,14 +581,6 @@
     </context>
 <context>
     <name>TransactionDesc</name>
-    <message>
-        <source>Date</source>
-        <translation>Datum</translation>
-    </message>
-    <message>
-        <source>Amount</source>
-        <translation>Betrag</translation>
-    </message>
     </context>
 <context>
     <name>TransactionDescDialog</name>
@@ -788,16 +588,8 @@
 <context>
     <name>TransactionTableModel</name>
     <message>
-        <source>Date</source>
-        <translation>Datum</translation>
-    </message>
-    <message>
         <source>Label</source>
         <translation>Etikett</translation>
-    </message>
-    <message>
-        <source>(no label)</source>
-        <translation>(kein Etikett)</translation>
     </message>
     </context>
 <context>
@@ -815,14 +607,6 @@
         <translation>Betrag kopieren</translation>
     </message>
     <message>
-        <source>Copy transaction ID</source>
-        <translation>Transaktions ID kopieren</translation>
-    </message>
-    <message>
-        <source>Comma separated file (*.csv)</source>
-        <translation>Komma getrenntes Dokument (*.csv)</translation>
-    </message>
-    <message>
         <source>Confirmed</source>
         <translation>Bestätigt</translation>
     </message>
@@ -837,10 +621,6 @@
     <message>
         <source>Address</source>
         <translation>Adresse</translation>
-    </message>
-    <message>
-        <source>Exporting Failed</source>
-        <translation>Export fehlgeschlagen</translation>
     </message>
     </context>
 <context>
@@ -857,10 +637,6 @@
     <message>
         <source>&amp;Export</source>
         <translation>&amp;Exportieren</translation>
-    </message>
-    <message>
-        <source>Export the data in the current tab to a file</source>
-        <translation>Daten des aktiven Fensters exportieren</translation>
     </message>
     <message>
         <source>Backup Failed</source>
@@ -886,24 +662,12 @@
         <translation>Achtung</translation>
     </message>
     <message>
-        <source>Starting network threads...</source>
-        <translation>Starte Netzwerk-Threads...</translation>
-    </message>
-    <message>
-        <source>This is the minimum transaction fee you pay on every transaction.</source>
-        <translation>Das ist die Mindestgebühr für jede Transaktion</translation>
-    </message>
-    <message>
         <source>This is the transaction fee you will pay if you send a transaction.</source>
         <translation>Das ist die Gebühr für die Überweisung</translation>
     </message>
     <message>
         <source>Transaction amounts must not be negative</source>
         <translation>Überweisungsbetrag kann nicht negativ sein</translation>
-    </message>
-    <message>
-        <source>Transaction must have at least one recipient</source>
-        <translation>Überweisung muss mindestens einen Empfänger haben </translation>
     </message>
     <message>
         <source>Insufficient funds</source>

@@ -1,115 +1,139 @@
-<TS language="ur_PK" version="2.1">
+<TS language="nl_BE" version="2.1">
 <context>
     <name>AddressBookPage</name>
     <message>
         <source>Right-click to edit address or label</source>
-        <translation>پتہ تبدیل کرے کے لیے دائیاں کلک کریں</translation>
+        <translation>Rechtermuisklik om het adres of label te wijzigen</translation>
     </message>
     <message>
         <source>Create a new address</source>
-        <translation>نیا ایڈریس بنائیں</translation>
+        <translation>Maak een nieuw adres aan</translation>
     </message>
     <message>
         <source>&amp;New</source>
-        <translation>نیا</translation>
+        <translation>&amp;Nieuw</translation>
     </message>
     <message>
         <source>Copy the currently selected address to the system clipboard</source>
-        <translation>سلیکٹڈ پتے کو کمپوٹر کی عارضی جگہ رکھیں</translation>
+        <translation>Kopieer het geselecteerd adres naar het klembord</translation>
     </message>
     <message>
         <source>&amp;Copy</source>
-        <translation>نقل</translation>
+        <translation>&amp;Kopieer</translation>
     </message>
     <message>
         <source>C&amp;lose</source>
-        <translation>بند</translation>
+        <translation>S&amp;luit</translation>
     </message>
     <message>
         <source>Delete the currently selected address from the list</source>
-        <translation>سلیکٹڈ پتے کو مٹائیں</translation>
+        <translation>Verwijder het geselecteerd adres van de lijst</translation>
     </message>
     <message>
         <source>Export the data in the current tab to a file</source>
-        <translation>موجودہ ڈیٹا کو فائیل میں محفوظ کریں</translation>
+        <translation>Exporteer de gegevens in het huidige venster naar een folder</translation>
     </message>
     <message>
         <source>&amp;Export</source>
-        <translation>برآمد</translation>
+        <translation>&amp;Exporteer</translation>
     </message>
     <message>
         <source>&amp;Delete</source>
-        <translation>مٹا</translation>
+        <translation>&amp;Verwijder</translation>
     </message>
     <message>
         <source>Choose the address to send coins to</source>
-        <translation>کوئین وصول کرنے والے کا پتہ</translation>
+        <translation>Kies het adres naar waar u coins wilt versturen</translation>
     </message>
     <message>
         <source>Choose the address to receive coins with</source>
-        <translation>کوئین وصول کرنے والے کا پتہ</translation>
+        <translation>Kies het adres waarmee u coins wilt ontvangen</translation>
     </message>
     <message>
         <source>C&amp;hoose</source>
-        <translation>چننا</translation>
+        <translation>K&amp;ies</translation>
     </message>
     <message>
         <source>Sending addresses</source>
-        <translation>پتے ارسال کیے جارہے ہیں</translation>
+        <translation>Adressen aan het verzenden</translation>
     </message>
     <message>
         <source>Receiving addresses</source>
-        <translation>پتے موصول ہورہے ہیں</translation>
+        <translation>Adressen verkrijgen</translation>
+    </message>
+    <message>
+        <source>These are your Bitcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Dit zijn uw Bitcoin adressen om betalingen te verzenden. Controleer altijd het bedrag en het ontvang adres voordat u Bitcoins verstuurd.</translation>
+    </message>
+    <message>
+        <source>These are your Bitcoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Dit zijn uw Bitcoin adressen om betalingen te verzenden. Het is aangeraden om een nieuw ontvang adres te gebruiken voor iedere transactie.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
-        <translation>&amp;پتا نقل کریں</translation>
+        <translation>&amp;Kopieer Adres</translation>
     </message>
     <message>
         <source>Copy &amp;Label</source>
-        <translation>&amp;لیبل نقل کریں</translation>
+        <translation>Kopieer &amp;Stempel</translation>
     </message>
     <message>
         <source>&amp;Edit</source>
-        <translation>&amp;تدوین</translation>
+        <translation>&amp;Wijzig</translation>
     </message>
     <message>
         <source>Export Address List</source>
-        <translation>پتا فہرست ایکسپورٹ کریں</translation>
+        <translation>Exporteer Adres Lijst</translation>
     </message>
     <message>
         <source>Comma separated file (*.csv)</source>
-        <translation>کاما سے جدا فائلیں (*.csv)</translation>
+        <translation>Komma, gescheiden bestand (*.csv)</translation>
     </message>
     <message>
         <source>Exporting Failed</source>
-        <translation>ایکسپورٹ ناکام ہوا</translation>
+        <translation>Exporteren mislukt</translation>
     </message>
-    </context>
+    <message>
+        <source>There was an error trying to save the address list to %1. Please try again.</source>
+        <translation>Er is een fout opgetreden tijdens het opslaan van de adres lijst naar %1. Gelieve opnieuw te proberen.</translation>
+    </message>
+</context>
 <context>
     <name>AddressTableModel</name>
     <message>
         <source>Label</source>
-        <translation>لیبل</translation>
+        <translation>Label</translation>
     </message>
     <message>
         <source>Address</source>
-        <translation> پتہ</translation>
+        <translation>Adres</translation>
     </message>
-    </context>
+    <message>
+        <source>(no label)</source>
+        <translation>(geen label)</translation>
+    </message>
+</context>
 <context>
     <name>AskPassphraseDialog</name>
     <message>
+        <source>Passphrase Dialog</source>
+        <translation>Wachtwoordzin</translation>
+    </message>
+    <message>
         <source>Enter passphrase</source>
-        <translation>پاس فریز داخل کریں</translation>
+        <translation>vul de wachtwoordzin in</translation>
     </message>
     <message>
         <source>New passphrase</source>
-        <translation>نیا پاس فریز</translation>
+        <translation>Nieuwe wachtwoordzin</translation>
     </message>
     <message>
         <source>Repeat new passphrase</source>
-        <translation>نیا پاس فریز دہرائیں</translation>
+        <translation>herhaal een nieuwe wachtwoordzin</translation>
+    </message>
+    <message>
+        <source>Show password</source>
+        <translation>Toon wachtwoord</translation>
     </message>
     </context>
 <context>
@@ -118,35 +142,23 @@
 <context>
     <name>BitcoinGUI</name>
     <message>
-        <source>Error</source>
-        <translation>نقص</translation>
+        <source>Bitcoin</source>
+        <translation>Bitcoin</translation>
+    </message>
+    <message>
+        <source>Wallet</source>
+        <translation>Portefeuille</translation>
     </message>
     </context>
 <context>
     <name>CoinControlDialog</name>
     <message>
-        <source>Amount:</source>
-        <translation>رقم:</translation>
-    </message>
-    <message>
-        <source>Amount</source>
-        <translation>رقم</translation>
-    </message>
-    <message>
-        <source>Date</source>
-        <translation>تاریخ</translation>
+        <source>(no label)</source>
+        <translation>(geen label)</translation>
     </message>
     </context>
 <context>
     <name>EditAddressDialog</name>
-    <message>
-        <source>&amp;Label</source>
-        <translation>چٹ</translation>
-    </message>
-    <message>
-        <source>&amp;Address</source>
-        <translation> پتہ</translation>
-    </message>
     </context>
 <context>
     <name>FreespaceChecker</name>
@@ -157,8 +169,8 @@
 <context>
     <name>Intro</name>
     <message>
-        <source>Error</source>
-        <translation>نقص</translation>
+        <source>Bitcoin</source>
+        <translation>Bitcoin</translation>
     </message>
     </context>
 <context>
@@ -169,10 +181,6 @@
     </context>
 <context>
     <name>OptionsDialog</name>
-    <message>
-        <source>Error</source>
-        <translation>نقص</translation>
-    </message>
     </context>
 <context>
     <name>OverviewPage</name>
@@ -185,10 +193,6 @@
     </context>
 <context>
     <name>QObject</name>
-    <message>
-        <source>Amount</source>
-        <translation>رقم</translation>
-    </message>
     </context>
 <context>
     <name>QObject::QObject</name>
@@ -205,40 +209,32 @@
 <context>
     <name>ReceiveRequestDialog</name>
     <message>
-        <source>Copy &amp;Address</source>
-        <translation>کاپی پتہ</translation>
-    </message>
-    <message>
         <source>Address</source>
-        <translation> پتہ</translation>
+        <translation>Adres</translation>
     </message>
     <message>
         <source>Label</source>
-        <translation>لیبل</translation>
+        <translation>Label</translation>
     </message>
     </context>
 <context>
     <name>RecentRequestsTableModel</name>
     <message>
         <source>Label</source>
-        <translation>لیبل</translation>
+        <translation>Label</translation>
+    </message>
+    <message>
+        <source>(no label)</source>
+        <translation>(geen label)</translation>
     </message>
     </context>
 <context>
     <name>SendCoinsDialog</name>
     <message>
-        <source>Insufficient funds!</source>
-        <translation>ناکافی فنڈز</translation>
+        <source>(no label)</source>
+        <translation>(geen label)</translation>
     </message>
-    <message>
-        <source>Amount:</source>
-        <translation>رقم:</translation>
-    </message>
-    <message>
-        <source>Balance:</source>
-        <translation>بیلنس:</translation>
-    </message>
-    </context>
+</context>
 <context>
     <name>SendCoinsEntry</name>
     </context>
@@ -267,26 +263,30 @@
     <name>TransactionTableModel</name>
     <message>
         <source>Label</source>
-        <translation>لیبل</translation>
+        <translation>Label</translation>
+    </message>
+    <message>
+        <source>(no label)</source>
+        <translation>(geen label)</translation>
     </message>
     </context>
 <context>
     <name>TransactionView</name>
     <message>
         <source>Comma separated file (*.csv)</source>
-        <translation>کاما سے جدا فائلیں (*.csv)</translation>
+        <translation>Komma, gescheiden bestand (*.csv)</translation>
     </message>
     <message>
         <source>Label</source>
-        <translation>لیبل</translation>
+        <translation>Label</translation>
     </message>
     <message>
         <source>Address</source>
-        <translation> پتہ</translation>
+        <translation>Adres</translation>
     </message>
     <message>
         <source>Exporting Failed</source>
-        <translation>ایکسپورٹ ناکام ہوا</translation>
+        <translation>Exporteren mislukt</translation>
     </message>
     </context>
 <context>
@@ -300,16 +300,16 @@
     </context>
 <context>
     <name>WalletView</name>
+    <message>
+        <source>&amp;Export</source>
+        <translation>&amp;Exporteer</translation>
+    </message>
+    <message>
+        <source>Export the data in the current tab to a file</source>
+        <translation>Exporteer de gegevens in het huidige venster naar een folder</translation>
+    </message>
     </context>
 <context>
     <name>bitcoin-core</name>
-    <message>
-        <source>Insufficient funds</source>
-        <translation>ناکافی فنڈز</translation>
-    </message>
-    <message>
-        <source>Error</source>
-        <translation>نقص</translation>
-    </message>
-</context>
+    </context>
 </TS>

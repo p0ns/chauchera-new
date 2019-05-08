@@ -62,12 +62,12 @@
         <translation>Helbideak jasotzen</translation>
     </message>
     <message>
-        <source>These are your Litecoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Hauek dira zuk dirua jaso dezaketen Litecoin helbideak. Egiaztatu beti diru-kopurua eta dirua jasoko duen helbidea zuzen egon daitezen, txanponak bidali baino lehen.</translation>
+        <source>These are your Bitcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Hauek dira zuk dirua jaso dezaketen Bitcoin helbideak. Egiaztatu beti diru-kopurua eta dirua jasoko duen helbidea zuzen egon daitezen, txanponak bidali baino lehen.</translation>
     </message>
     <message>
-        <source>These are your Litecoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Hauek dira zure dirua jasotzeko Litecoin helbideak. Gomendagarria da, operazio bakoitza helbide berri batekin egitea.</translation>
+        <source>These are your Bitcoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Hauek dira zure dirua jasotzeko Bitcoin helbideak. Gomendagarria da, operazio bakoitza helbide berri batekin egitea.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -132,6 +132,14 @@
         <translation>Pasahitz berria errepiikatu</translation>
     </message>
     <message>
+        <source>Show password</source>
+        <translation>Erakutsi pasahitza</translation>
+    </message>
+    <message>
+        <source>Enter the new passphrase to the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;ten or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
+        <translation>Sartu pasaesaldi bat diru-zorrorako. Mesedez erabili ausazko hamar edo gehiago karaktere edo zortzi edo gehiago hitz.</translation>
+    </message>
+    <message>
         <source>Encrypt wallet</source>
         <translation>Diruzorroa enkriptatu</translation>
     </message>
@@ -160,8 +168,8 @@
         <translation>Diruorroaren enkriptazioa berretsi</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR LITECOINS&lt;/b&gt;!</source>
-        <translation>Abisua: Diruzorroa enkriptatzen baduzu eta zure pasahitza galtzen baduzu, &lt;b&gt;LITECOIN GUZTIAK GALDUKO DITUZU&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR BITCOINS&lt;/b&gt;!</source>
+        <translation>Abisua: Diruzorroa enkriptatzen baduzu eta zure pasahitza galtzen baduzu, &lt;b&gt;BITCOIN GUZTIAK GALDUKO DITUZU&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -270,6 +278,10 @@
         <translation>Fitxen tresna-barra</translation>
     </message>
     <message>
+        <source>Error</source>
+        <translation>Akatsa</translation>
+    </message>
+    <message>
         <source>Up to date</source>
         <translation>Eguneratua</translation>
     </message>
@@ -372,6 +384,10 @@
     </context>
 <context>
     <name>Intro</name>
+    <message>
+        <source>Error</source>
+        <translation>Akatsa</translation>
+    </message>
     </context>
 <context>
     <name>ModalOverlay</name>
@@ -388,6 +404,10 @@
     <message>
         <source>Options</source>
         <translation>Aukerak</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>Akatsa</translation>
     </message>
     </context>
 <context>
@@ -824,6 +844,10 @@
         <translation>Aukerak:</translation>
     </message>
     <message>
+        <source>Loading wallet...</source>
+        <translation>Diru-zorroa kargatzen</translation>
+    </message>
+    <message>
         <source>Rescanning...</source>
         <translation>Birbilatzen...</translation>
     </message>
@@ -831,5 +855,9 @@
         <source>Done loading</source>
         <translation>Zamaketa amaitua</translation>
     </message>
-    </context>
+    <message>
+        <source>Error</source>
+        <translation>Akatsa</translation>
+    </message>
+</context>
 </TS>

@@ -18,6 +18,14 @@
         <translation>चुनिन्दा पते को सिस्टम क्लिपबोर्ड पर कापी करे !</translation>
     </message>
     <message>
+        <source>&amp;Copy</source>
+        <translation>&amp;कॉपी </translation>
+    </message>
+    <message>
+        <source>C&amp;lose</source>
+        <translation>सी&amp;लूज़ </translation>
+    </message>
+    <message>
         <source>Delete the currently selected address from the list</source>
         <translation>सूची से वर्तमान में चयनित पता हटाएं</translation>
     </message>
@@ -50,19 +58,55 @@
         <translation>पतों को प्राप्त कर रहा है</translation>
     </message>
     <message>
-        <source>These are your Litecoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <source>These are your Bitcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
         <translation>ये भुगतान भेजने के लिए ये आपके बिटकॉइन पते हैं। हमेशा सिक्के भेजने से पहले राशि और प्राप्तकर्ता पते की जांच करें।</translation>
     </message>
     <message>
-        <source>These are your Litecoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <source>These are your Bitcoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
         <translation>भुगतान प्राप्त करने के लिए ये आपके बीटकोइन पते हैं प्रत्येक लेनदेन के लिए एक नया प्राप्त पता उपयोग करने की सिफारिश की जाती है।</translation>
+    </message>
+    <message>
+        <source>&amp;Copy Address</source>
+        <translation>&amp;पता कॉपी करें </translation>
+    </message>
+    <message>
+        <source>&amp;Edit</source>
+        <translation>&amp;संशोधित करें </translation>
+    </message>
+    <message>
+        <source>Export Address List</source>
+        <translation>निर्यात पता सूची</translation>
+    </message>
+    <message>
+        <source>Comma separated file (*.csv)</source>
+        <translation>कोमा द्वारा अलग की गई फ़ाइल (* .csv)</translation>
+    </message>
+    <message>
+        <source>Exporting Failed</source>
+        <translation>निर्यात विफल रहा</translation>
     </message>
     </context>
 <context>
     <name>AddressTableModel</name>
-    </context>
+    <message>
+        <source>Label</source>
+        <translation>परचा</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>पता </translation>
+    </message>
+    <message>
+        <source>(no label)</source>
+        <translation>(कोई परचा नहीं )</translation>
+    </message>
+</context>
 <context>
     <name>AskPassphraseDialog</name>
+    <message>
+        <source>Passphrase Dialog</source>
+        <translation>पासफ़्रेज़ डायलॉग</translation>
+    </message>
     <message>
         <source>Enter passphrase</source>
         <translation>पहचान शब्द/अक्षर डालिए !</translation>
@@ -74,6 +118,18 @@
     <message>
         <source>Repeat new passphrase</source>
         <translation>दोबारा नया पहचान शब्द/अक्षर डालिए !</translation>
+    </message>
+    <message>
+        <source>Show password</source>
+        <translation>पासवर्ड दिखाए</translation>
+    </message>
+    <message>
+        <source>Encrypt wallet</source>
+        <translation>वॉलेट एन्क्रिप्ट करें</translation>
+    </message>
+    <message>
+        <source>Change passphrase</source>
+        <translation>पासफ़्रेज़ बदलें</translation>
     </message>
     </context>
 <context>
@@ -123,7 +179,7 @@
         <translation>पहचान शब्द/अक्षर जो वॉलेट एनक्रिपशन के लिए इस्तेमाल किया है उसे बदलिए!</translation>
     </message>
     <message>
-        <source>Litecoin</source>
+        <source>Bitcoin</source>
         <translation>बीटकोइन</translation>
     </message>
     <message>
@@ -201,6 +257,10 @@
         <source>Confirmed</source>
         <translation>पक्का</translation>
     </message>
+    <message>
+        <source>(no label)</source>
+        <translation>(कोई परचा नहीं )</translation>
+    </message>
     </context>
 <context>
     <name>EditAddressDialog</name>
@@ -234,7 +294,7 @@
 <context>
     <name>Intro</name>
     <message>
-        <source>Litecoin</source>
+        <source>Bitcoin</source>
         <translation>बीटकोइन</translation>
     </message>
     <message>
@@ -339,9 +399,25 @@
         <source>Copy &amp;Address</source>
         <translation>&amp;पता कॉपी करे</translation>
     </message>
+    <message>
+        <source>Address</source>
+        <translation>पता </translation>
+    </message>
+    <message>
+        <source>Label</source>
+        <translation>परचा</translation>
+    </message>
     </context>
 <context>
     <name>RecentRequestsTableModel</name>
+    <message>
+        <source>Label</source>
+        <translation>परचा</translation>
+    </message>
+    <message>
+        <source>(no label)</source>
+        <translation>(कोई परचा नहीं )</translation>
+    </message>
     </context>
 <context>
     <name>SendCoinsDialog</name>
@@ -365,7 +441,11 @@
         <source>Confirm the send action</source>
         <translation>भेजने की पुष्टि करें</translation>
     </message>
-    </context>
+    <message>
+        <source>(no label)</source>
+        <translation>(कोई परचा नहीं )</translation>
+    </message>
+</context>
 <context>
     <name>SendCoinsEntry</name>
     <message>
@@ -444,9 +524,33 @@
     </context>
 <context>
     <name>TransactionTableModel</name>
+    <message>
+        <source>Label</source>
+        <translation>परचा</translation>
+    </message>
+    <message>
+        <source>(no label)</source>
+        <translation>(कोई परचा नहीं )</translation>
+    </message>
     </context>
 <context>
     <name>TransactionView</name>
+    <message>
+        <source>Comma separated file (*.csv)</source>
+        <translation>कोमा द्वारा अलग की गई फ़ाइल (* .csv)</translation>
+    </message>
+    <message>
+        <source>Label</source>
+        <translation>परचा</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>पता </translation>
+    </message>
+    <message>
+        <source>Exporting Failed</source>
+        <translation>निर्यात विफल रहा</translation>
+    </message>
     </context>
 <context>
     <name>UnitDisplayStatusBarControl</name>

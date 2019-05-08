@@ -22,6 +22,10 @@
         <translation>&amp;Kopírovat</translation>
     </message>
     <message>
+        <source>C&amp;lose</source>
+        <translation>Z&amp;avřít</translation>
+    </message>
+    <message>
         <source>Delete the currently selected address from the list</source>
         <translation>Odstraní aktuálně vybrané adresy ze seznamu</translation>
     </message>
@@ -36,6 +40,18 @@
     <message>
         <source>&amp;Delete</source>
         <translation>&amp;Odstranit</translation>
+    </message>
+    <message>
+        <source>C&amp;hoose</source>
+        <translation>V&amp;ybrat</translation>
+    </message>
+    <message>
+        <source>&amp;Copy Address</source>
+        <translation>&amp;Kopírovat adresu</translation>
+    </message>
+    <message>
+        <source>&amp;Edit</source>
+        <translation>&amp;Upravit</translation>
     </message>
     <message>
         <source>Comma separated file (*.csv)</source>
@@ -70,6 +86,10 @@
     <message>
         <source>Repeat new passphrase</source>
         <translation>Zopakujte nové heslo</translation>
+    </message>
+    <message>
+        <source>Show password</source>
+        <translation>Zobrazit heslo</translation>
     </message>
     <message>
         <source>Encrypt wallet</source>
@@ -125,7 +145,7 @@
     </message>
     <message>
         <source>Wallet decryption failed</source>
-        <translation>Deěifrování peněženky selhalo</translation>
+        <translation>Dešifrování peněženky selhalo</translation>
     </message>
     </context>
 <context>
@@ -140,6 +160,10 @@
     <message>
         <source>&amp;Overview</source>
         <translation>&amp;Přehled</translation>
+    </message>
+    <message>
+        <source>Node</source>
+        <translation>Uzel</translation>
     </message>
     <message>
         <source>Show general overview of wallet</source>
@@ -166,8 +190,12 @@
         <translation>Změnit heslo k šifrování peněženky</translation>
     </message>
     <message>
-        <source>Litecoin</source>
-        <translation>Litecoin</translation>
+        <source>Bitcoin</source>
+        <translation>Bitcoin</translation>
+    </message>
+    <message>
+        <source>Wallet</source>
+        <translation>Peněženka</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -297,8 +325,8 @@
 <context>
     <name>Intro</name>
     <message>
-        <source>Litecoin</source>
-        <translation>Litecoin</translation>
+        <source>Bitcoin</source>
+        <translation>Bitcoin</translation>
     </message>
     </context>
 <context>

@@ -42,15 +42,35 @@
         <translation>Recibiendo direcciones</translation>
     </message>
     <message>
-        <source>These are your Litecoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Estas son sus direcciones de Litecoin para enviar sus pagos. Siempre revise el monto y la dirección recibida antes de enviar monedas.</translation>
+        <source>These are your Bitcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Estas son sus direcciones de Bitcoin para enviar sus pagos. Siempre revise el monto y la dirección recibida antes de enviar monedas.</translation>
     </message>
     </context>
 <context>
     <name>AddressTableModel</name>
-    </context>
+    <message>
+        <source>Address</source>
+        <translation>Direccion </translation>
+    </message>
+    <message>
+        <source>(no label)</source>
+        <translation>(no etiqueta)</translation>
+    </message>
+</context>
 <context>
     <name>AskPassphraseDialog</name>
+    <message>
+        <source>Enter passphrase</source>
+        <translation>Introducir frase de contraseña</translation>
+    </message>
+    <message>
+        <source>New passphrase</source>
+        <translation>Nueva frase de contraseña</translation>
+    </message>
+    <message>
+        <source>Decrypt wallet</source>
+        <translation>Descifrar la billetera </translation>
+    </message>
     </context>
 <context>
     <name>BanTableModel</name>
@@ -60,6 +80,10 @@
     </context>
 <context>
     <name>CoinControlDialog</name>
+    <message>
+        <source>(no label)</source>
+        <translation>(no etiqueta)</translation>
+    </message>
     </context>
 <context>
     <name>EditAddressDialog</name>
@@ -108,13 +132,25 @@
     </context>
 <context>
     <name>ReceiveRequestDialog</name>
+    <message>
+        <source>Address</source>
+        <translation>Direccion </translation>
+    </message>
     </context>
 <context>
     <name>RecentRequestsTableModel</name>
+    <message>
+        <source>(no label)</source>
+        <translation>(no etiqueta)</translation>
+    </message>
     </context>
 <context>
     <name>SendCoinsDialog</name>
-    </context>
+    <message>
+        <source>(no label)</source>
+        <translation>(no etiqueta)</translation>
+    </message>
+</context>
 <context>
     <name>SendCoinsEntry</name>
     </context>
@@ -141,9 +177,17 @@
     </context>
 <context>
     <name>TransactionTableModel</name>
+    <message>
+        <source>(no label)</source>
+        <translation>(no etiqueta)</translation>
+    </message>
     </context>
 <context>
     <name>TransactionView</name>
+    <message>
+        <source>Address</source>
+        <translation>Direccion </translation>
+    </message>
     </context>
 <context>
     <name>UnitDisplayStatusBarControl</name>
