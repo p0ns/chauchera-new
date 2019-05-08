@@ -182,21 +182,21 @@ public:
 };
 
 /**
- * Testnet (v3)
+ * Testnet (v4)
  */
 class CTestNetParams : public CChainParams {
 public:
     CTestNetParams() {
         strNetworkID = "test";
-        consensus.nSubsidyHalvingInterval = 840000;
+        consensus.nSubsidyHalvingInterval = 250;
         consensus.BIP16Height = 0; // always enforce P2SH BIP16 on regtest
-        consensus.BIP34Height = 76;
-        consensus.BIP34Hash = uint256S("8075c771ed8b495ffd943980a95f702ab34fce3c8c54e379548bda33cc8c0573");
-        consensus.BIP65Height = 76; // 8075c771ed8b495ffd943980a95f702ab34fce3c8c54e379548bda33cc8c0573
-        consensus.BIP66Height = 76; // 8075c771ed8b495ffd943980a95f702ab34fce3c8c54e379548bda33cc8c0573
+        consensus.BIP34Height = 0;
+        consensus.BIP34Hash = uint256S("f0a673496ca33e8d84df16f2ad99eba0732ee41971658be4d927f30c8f27aa65");
+        consensus.BIP65Height = 0;
+        consensus.BIP66Height = 0;
         consensus.powLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
-        consensus.nPowTargetTimespan = 3.5 * 24 * 60 * 60; // 3.5 days
-        consensus.nPowTargetSpacing = 2.5 * 60;
+        consensus.nPowTargetTimespan = 30 * 60; // 3.5 days
+        consensus.nPowTargetSpacing = 1 * 60;
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = false;
         consensus.nRuleChangeActivationThreshold = 1512; // 75% for testchains
@@ -216,38 +216,45 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1517356801; // January 31st, 2018
 
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = uint256S("0x000000000000000000000000000000000000000000000000001df7b5aa1700ce");
+        consensus.nMinimumChainWork = uint256S("");
 
         // By default assume that the signatures in ancestors of this block are valid.
         consensus.defaultAssumeValid = uint256S("0x1efb29c8187d5a496a33377941d1df415169c3ce5d8c05d055f25b683ec3f9a3"); //612653
 
-        pchMessageStart[0] = 0xfd;
-        pchMessageStart[1] = 0xd2;
-        pchMessageStart[2] = 0xc8;
-        pchMessageStart[3] = 0xf1;
-        nDefaultPort = 19335;
-        nPruneAfterHeight = 1000;
+        /** DarkGravityWell v3 Fork Params - Humwerthuz @ 30/12/2017 **/
+        consensus.nPowDGWHeight = 200; //DGW always on
 
-        genesis = CreateGenesisBlock(1486949366, 293345, 0x1e0ffff0, 1, 50 * COIN);
+        // Propuestas de Mejora para Chaucha (PMC)
+        consensus.PMC1 = 235;
+        consensus.PMC2 = 500;
+
+        pchMessageStart[0] = 0xfc;
+        pchMessageStart[1] = 0xd1;
+        pchMessageStart[2] = 0xb7;
+        pchMessageStart[3] = 0xdc;
+        nDefaultPort = 19335;
+        nPruneAfterHeight = 100000;
+
+        genesis = CreateGenesisBlock(1514919398, 304091, 0x1e0ffff0, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x4966625a4b2851d9fdee139e56211a0d88575f59ed816ff5e6a63deb4e3e29a0"));
-        assert(genesis.hashMerkleRoot == uint256S("0x97ddfbbae6be97fd6cdf3e7ca13232a3afff2353e29badfab7f73011edd4ced9"));
+        assert(consensus.hashGenesisBlock == uint256S("0xf0a673496ca33e8d84df16f2ad99eba0732ee41971658be4d927f30c8f27aa65"));
+        assert(genesis.hashMerkleRoot == uint256S("0x1b54ad13e84ece043533beb59d6b666047ffc77a4496034a101791601d711998"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
         // nodes with support for servicebits filtering should be at the top
-        vSeeds.emplace_back("testnet-seed.litecointools.com");
-        vSeeds.emplace_back("seed-b.litecoin.loshan.co.uk");
-        vSeeds.emplace_back("dnsseed-testnet.thrasher.io");
+        vSeeds.emplace_back("fn1.cha.harc.cl");
+        vSeeds.emplace_back("fn2.cha.harc.cl");
+        vSeeds.emplace_back("testnet.chaucha.party");
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,111);
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,65);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,196);
         base58Prefixes[SCRIPT_ADDRESS2] = std::vector<unsigned char>(1,58);
-        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
+        base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1,239);
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x35, 0x87, 0xCF};
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x35, 0x83, 0x94};
 
-        bech32_hrp = "tltc";
+        bech32_hrp = "tcha";
 
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_test, pnSeed6_test + ARRAYLEN(pnSeed6_test));
 
@@ -257,15 +264,15 @@ public:
 
         checkpointData = (CCheckpointData) {
             {
-                {2056, uint256S("17748a31ba97afdc9a4f86837a39d287e3e7c7290a08a1d816c5969c78a83289")},
+                {0, consensus.hashGenesisBlock},
             }
         };
 
         chainTxData = ChainTxData{
             // Data as of block a0afbded94d4be233e191525dc2d467af5c7eab3143c852c3cd549831022aad6 (height 343833)
-            1516406749,
-            794057,
-            0.01
+            0,
+            0,
+            0
         };
 
     }
@@ -278,15 +285,15 @@ class CRegTestParams : public CChainParams {
 public:
     CRegTestParams() {
         strNetworkID = "regtest";
-        consensus.nSubsidyHalvingInterval = 150;
+        consensus.nSubsidyHalvingInterval = 200;
         consensus.BIP16Height = 0; // always enforce P2SH BIP16 on regtest
-        consensus.BIP34Height = 100000000; // BIP34 has not activated on regtest (far in the future so block v1 are not rejected in tests)
+        consensus.BIP34Height = 0; // BIP34 has not activated on regtest (far in the future so block v1 are not rejected in tests)
         consensus.BIP34Hash = uint256();
-        consensus.BIP65Height = 1351; // BIP65 activated on regtest (Used in rpc activation tests)
-        consensus.BIP66Height = 1251; // BIP66 activated on regtest (Used in rpc activation tests)
+        consensus.BIP65Height = 0; // BIP65 activated on regtest (Used in rpc activation tests)
+        consensus.BIP66Height = 0; // BIP66 activated on regtest (Used in rpc activation tests)
         consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
-        consensus.nPowTargetTimespan = 3.5 * 24 * 60 * 60; // two weeks
-        consensus.nPowTargetSpacing = 2.5 * 60;
+        consensus.nPowTargetTimespan = 30 * 60; // two weeks
+        consensus.nPowTargetSpacing = 1 * 60;
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = true;
         consensus.nRuleChangeActivationThreshold = 108; // 75% for testchains
@@ -307,6 +314,13 @@ public:
         // By default assume that the signatures in ancestors of this block are valid.
         consensus.defaultAssumeValid = uint256S("0x00");
 
+        /** DarkGravityWell v3 Fork Params - Humwerthuz @ 30/12/2017 **/
+        consensus.nPowDGWHeight = 0; //DGW always on
+
+        // Propuestas de Mejora para Chaucha (PMC)
+        consensus.PMC1 = 1; // 1.5 CHA
+        consensus.PMC2 = 20;
+
         pchMessageStart[0] = 0xfa;
         pchMessageStart[1] = 0xbf;
         pchMessageStart[2] = 0xb5;
@@ -314,11 +328,11 @@ public:
         nDefaultPort = 19444;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1296688602, 0, 0x207fffff, 1, 50 * COIN);
+        genesis = CreateGenesisBlock(1530840480, 3462792, 0x1e0ffff0, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x530827f38f93b43ed12af0b3ad25a288dc02ed74d6d7857862df51fc56c416f9"));
-        assert(genesis.hashMerkleRoot == uint256S("0x97ddfbbae6be97fd6cdf3e7ca13232a3afff2353e29badfab7f73011edd4ced9"));
-
+        assert(consensus.hashGenesisBlock == uint256S("0x75d057806094af24532e9489f8ced2f935a658c42e074963ee984e09e51a8a45"));
+        assert(genesis.hashMerkleRoot == uint256S("0x1b54ad13e84ece043533beb59d6b666047ffc77a4496034a101791601d711998"));
+        
         vFixedSeeds.clear(); //!< Regtest mode doesn't have any fixed seeds.
         vSeeds.clear();      //!< Regtest mode doesn't have any DNS seeds.
 
@@ -328,7 +342,7 @@ public:
 
         checkpointData = {
             {
-                {0, uint256S("530827f38f93b43ed12af0b3ad25a288dc02ed74d6d7857862df51fc56c416f9")},
+                {0, consensus.hashGenesisBlock},
             }
         };
 
@@ -338,14 +352,14 @@ public:
             0
         };
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,111);
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,196);
-        base58Prefixes[SCRIPT_ADDRESS2] = std::vector<unsigned char>(1,58);
-        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,28);
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,35);
+        base58Prefixes[SCRIPT_ADDRESS2] = std::vector<unsigned char>(1,40);
+        base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1,239);
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x35, 0x87, 0xCF};
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x35, 0x83, 0x94};
 
-        bech32_hrp = "rltc";
+        bech32_hrp = "rcha";
     }
 };
 
