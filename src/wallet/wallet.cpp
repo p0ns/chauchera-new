@@ -4163,7 +4163,6 @@ bool CWalletTx::AcceptToMemoryPool(const CAmount& nAbsurdFee, CValidationState& 
 }
 
 static const std::string OUTPUT_TYPE_STRING_LEGACY = "legacy";
-static const std::string OUTPUT_TYPE_STRING_P2SH_SEGWIT = "p2sh-segwit";
 static const std::string OUTPUT_TYPE_STRING_BECH32 = "bech32";
 
 OutputType ParseOutputType(const std::string& type, OutputType default_type)
@@ -4172,8 +4171,6 @@ OutputType ParseOutputType(const std::string& type, OutputType default_type)
         return default_type;
     } else if (type == OUTPUT_TYPE_STRING_LEGACY) {
         return OUTPUT_TYPE_LEGACY;
-    } else if (type == OUTPUT_TYPE_STRING_P2SH_SEGWIT) {
-        return OUTPUT_TYPE_P2SH_SEGWIT;
     } else if (type == OUTPUT_TYPE_STRING_BECH32) {
         return OUTPUT_TYPE_BECH32;
     } else {
@@ -4185,7 +4182,6 @@ const std::string& FormatOutputType(OutputType type)
 {
     switch (type) {
     case OUTPUT_TYPE_LEGACY: return OUTPUT_TYPE_STRING_LEGACY;
-    case OUTPUT_TYPE_P2SH_SEGWIT: return OUTPUT_TYPE_STRING_P2SH_SEGWIT;
     case OUTPUT_TYPE_BECH32: return OUTPUT_TYPE_STRING_BECH32;
     default: assert(false);
     }
@@ -4193,7 +4189,7 @@ const std::string& FormatOutputType(OutputType type)
 
 void CWallet::LearnRelatedScripts(const CPubKey& key, OutputType type)
 {
-    if (key.IsCompressed() && (type == OUTPUT_TYPE_P2SH_SEGWIT || type == OUTPUT_TYPE_BECH32)) {
+    if (key.IsCompressed() && (type == OUTPUT_TYPE_BECH32)) {
         CTxDestination witdest = WitnessV0KeyHash(key.GetID());
         CScript witprog = GetScriptForDestination(witdest);
         // Make sure the resulting program is solvable.
@@ -4205,23 +4201,18 @@ void CWallet::LearnRelatedScripts(const CPubKey& key, OutputType type)
 void CWallet::LearnAllRelatedScripts(const CPubKey& key)
 {
     // OUTPUT_TYPE_P2SH_SEGWIT always adds all necessary scripts for all types.
-    LearnRelatedScripts(key, OUTPUT_TYPE_P2SH_SEGWIT);
+    LearnRelatedScripts(key, OUTPUT_TYPE_BECH32);
 }
 
 CTxDestination GetDestinationForKey(const CPubKey& key, OutputType type)
 {
     switch (type) {
     case OUTPUT_TYPE_LEGACY: return key.GetID();
-    case OUTPUT_TYPE_P2SH_SEGWIT:
     case OUTPUT_TYPE_BECH32: {
         if (!key.IsCompressed()) return key.GetID();
         CTxDestination witdest = WitnessV0KeyHash(key.GetID());
         CScript witprog = GetScriptForDestination(witdest);
-        if (type == OUTPUT_TYPE_P2SH_SEGWIT) {
-            return CScriptID(witprog);
-        } else {
-            return witdest;
-        }
+        return witdest;
     }
     default: assert(false);
     }
@@ -4245,7 +4236,6 @@ CTxDestination CWallet::AddAndGetDestinationForScript(const CScript& script, Out
     switch (type) {
     case OUTPUT_TYPE_LEGACY:
         return CScriptID(script);
-    case OUTPUT_TYPE_P2SH_SEGWIT:
     case OUTPUT_TYPE_BECH32: {
         WitnessV0ScriptHash hash;
         CSHA256().Write(script.data(), script.size()).Finalize(hash.begin());
