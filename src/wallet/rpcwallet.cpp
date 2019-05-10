@@ -145,7 +145,7 @@ UniValue getnewaddress(const JSONRPCRequest& request)
             "so payments received with the address will be credited to 'account'.\n"
             "\nArguments:\n"
             "1. \"account\"        (string, optional) DEPRECATED. The account name for the address to be linked to. If not provided, the default account \"\" is used. It can also be set to the empty string \"\" to represent the default account. The account does not need to exist, it will be created if there is no account by the given name.\n"
-            "2. \"address_type\"   (string, optional) The address type to use. Options are \"legacy\", \"p2sh-segwit\", and \"bech32\". Default is set by -addresstype.\n"
+            "2. \"address_type\"   (string, optional) The address type to use. Options are \"legacy\", and \"bech32\". Default is set by -addresstype.\n"
             "\nResult:\n"
             "\"address\"    (string) The new litecoin address\n"
             "\nExamples:\n"
@@ -243,7 +243,7 @@ UniValue getrawchangeaddress(const JSONRPCRequest& request)
             "\nReturns a new Litecoin address, for receiving change.\n"
             "This is for use with raw transactions, NOT normal use.\n"
             "\nArguments:\n"
-            "1. \"address_type\"           (string, optional) The address type to use. Options are \"legacy\", \"p2sh-segwit\", and \"bech32\". Default is set by -changetype.\n"
+            "1. \"address_type\"           (string, optional) The address type to use. Options are \"legacy\", and \"bech32\". Default is set by -changetype.\n"
             "\nResult:\n"
             "\"address\"    (string) The address\n"
             "\nExamples:\n"
@@ -1185,7 +1185,7 @@ UniValue addmultisigaddress(const JSONRPCRequest& request)
             "       ...,\n"
             "     ]\n"
             "3. \"account\"                      (string, optional) DEPRECATED. An account to assign the addresses to.\n"
-            "4. \"address_type\"                 (string, optional) The address type to use. Options are \"legacy\", \"p2sh-segwit\", and \"bech32\". Default is set by -addresstype.\n"
+            "4. \"address_type\"                 (string, optional) The address type to use. Options are \"legacy\" and \"bech32\". Default is set by -addresstype.\n"
 
             "\nResult:\n"
             "{\n"
@@ -1317,7 +1317,7 @@ UniValue addwitnessaddress(const JSONRPCRequest& request)
     if (request.fHelp || request.params.size() < 1 || request.params.size() > 2)
     {
         std::string msg = "addwitnessaddress \"address\" ( p2sh )\n"
-            "\nDEPRECATED: set the address_type argument of getnewaddress, or option -addresstype=[bech32|p2sh-segwit] instead.\n"
+            "\nDEPRECATED: set the address_type argument of getnewaddress, or option -addresstype=[bech32|legacy] instead.\n"
             "Add a witness address for a script (with pubkey or redeemscript known). Requires a new wallet backup.\n"
             "It returns the witness script.\n"
 
@@ -1335,7 +1335,7 @@ UniValue addwitnessaddress(const JSONRPCRequest& request)
     if (!IsDeprecatedRPCEnabled("addwitnessaddress")) {
         throw JSONRPCError(RPC_METHOD_DEPRECATED, "addwitnessaddress is deprecated and will be fully removed in v0.17. "
             "To use addwitnessaddress in v0.16, restart litecoind with -deprecatedrpc=addwitnessaddress.\n"
-            "Projects should transition to using the address_type argument of getnewaddress, or option -addresstype=[bech32|p2sh-segwit] instead.\n");
+            "Projects should transition to using the address_type argument of getnewaddress, or option -addresstype=[bech32|legacy] instead.\n");
     }
 
     {
@@ -3065,7 +3065,7 @@ UniValue fundrawtransaction(const JSONRPCRequest& request)
                             "   {\n"
                             "     \"changeAddress\"          (string, optional, default pool address) The litecoin address to receive the change\n"
                             "     \"changePosition\"         (numeric, optional, default random) The index of the change output\n"
-                            "     \"change_type\"            (string, optional) The output type to use. Only valid if changeAddress is not specified. Options are \"legacy\", \"p2sh-segwit\", and \"bech32\". Default is set by -changetype.\n"
+                            "     \"change_type\"            (string, optional) The output type to use. Only valid if changeAddress is not specified. Options are \"legacy\", and \"bech32\". Default is set by -changetype.\n"
                             "     \"includeWatching\"        (boolean, optional, default false) Also select inputs which are watch only\n"
                             "     \"lockUnspents\"           (boolean, optional, default false) Lock selected unspent outputs\n"
                             "     \"feeRate\"                (numeric, optional, default not set: makes wallet determine the fee) Set a specific fee rate in " + CURRENCY_UNIT + "/kB\n"
