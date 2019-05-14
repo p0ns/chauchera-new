@@ -139,7 +139,7 @@ bool AppInit(int argc, char* argv[])
         if (gArgs.GetBoolArg("-daemon", false))
         {
 #if HAVE_DECL_DAEMON
-            fprintf(stdout, "Litecoin server starting\n");
+            fprintf(stdout, "\n                              .+x+\n              $:             -$. #!\n       :xx!   Hx             $!  $$\n     !$x.x#   -H-   +$$.    :H. :x!Hxxx+-'\n    xH.  :'    xH  xx +#- .xx#xxx   ''\n   x#         .$H::H   !$Hx:  :'\n   H!        :$-+$$-\n  -#:       xH.  H$\n   #x     :H+    :'\n   -#x!!xx+\n    '!!'\n\n");
 
             // Daemonize
             if (daemon(1, 0)) { // don't chdir (1), do close FDs (0)
