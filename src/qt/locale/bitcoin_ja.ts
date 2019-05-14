@@ -3182,7 +3182,7 @@
         <translation>Bitcoin のコア</translation>
     </message>
     <message>
-        <source>The %s developers</source>
+        <source>Proyecto %s</source>
         <translation>%s の開発者</translation>
     </message>
     <message>

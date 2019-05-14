@@ -3174,7 +3174,7 @@
         <translation>Nucleul Bitcoin</translation>
     </message>
     <message>
-        <source>The %s developers</source>
+        <source>Proyecto %s</source>
         <translation>Dezvoltatorii %s</translation>
     </message>
     <message>

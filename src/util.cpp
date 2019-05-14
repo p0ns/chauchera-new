@@ -83,7 +83,7 @@
 const int64_t nStartupTime = GetTime();
 
 const char * const BITCOIN_CONF_FILENAME = "litecoin.conf";
-const char * const BITCOIN_PID_FILENAME = "litecoind.pid";
+const char * const BITCOIN_PID_FILENAME = "chauchad.pid";
 const char * const DEFAULT_DEBUGLOGFILE = "debug.log";
 
 ArgsManager gArgs;

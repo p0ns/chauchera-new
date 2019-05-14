@@ -1,4 +1,4 @@
-Litecoin Core version 0.10.2.2 is now available from:
+Chauchera version 0.10.2.2 is now available from:
 
   <https://download.litecoin.org/litecoin-0.10.2.2/>
 
@@ -7,7 +7,7 @@ updates. It is recommended to upgrade to this version.
 
 Please report bugs using the issue tracker at github:
 
-  <https://github.com/litecoin-project/litecoin/issues>
+  <https://github.com/proyecto-chaucha/chaucheraissues>
 
 Upgrading and downgrading
 =========================
@@ -17,15 +17,15 @@ How to Upgrade
 
 If you are running an older version, shut it down. Wait until it has completely
 shut down (which might take a few minutes for older versions), then run the
-installer (on Windows) or just copy over /Applications/Litecoin-Qt (on Mac) or
-litecoind/litecoin-qt (on Linux).
+installer (on Windows) or just copy over /Applications/Chauchera (on Mac) or
+chauchad/chauchera (on Linux).
 
 Downgrade warning
 ------------------
 
 Because release 0.10+ and later makes use of headers-first synchronization and
 parallel block download (see further), the block files and databases are not
-backwards-compatible with pre-0.10 versions of Litecoin Core or other software:
+backwards-compatible with pre-0.10 versions of Chauchera or other software:
 
 * Blocks will be stored on disk out of order (in the order they are
 received, really), which makes it incompatible with some tools or
@@ -62,10 +62,10 @@ Protocol:
 - bnProofOfWorkLimit = >> 20    (instead of >> 32)
 - See 9a980612005adffdeb2a17ca7a09fe126dd45e0e for Genesis Parameters
 - zeitgeist2 protection: b1b31d15cc720a1c186431b21ecc9d1a9062bcb6 Slightly different way to calculate difficulty changes.
-- Litecoin Core v0.10.2.2 is protocol version 70003 (instead of 70002)
+- Chauchera v0.10.2.2 is protocol version 70003 (instead of 70002)
 
 Relay:
-- Litecoin Core rounds transaction size up to the nearest 1000 bytes before calculating fees.  This size rounding behavior is to mimic fee calculation of Litecoin v0.6 and v0.8.
+- Chauchera rounds transaction size up to the nearest 1000 bytes before calculating fees.  This size rounding behavior is to mimic fee calculation of Litecoin v0.6 and v0.8.
 - Bitcoin's IsDust() is disabled in favor of Litecoin's fee-based dust penalty.
 - Fee-based Dust Penalty: For each transaction output smaller than DUST_THRESHOLD (currently 0.001 LTC) the default relay/mining policy will expect an additional 1000 bytes of fee.  Otherwise the transaction will be rejected from relay/mining.  Such transactions are also disqualified from the free/high-priority transaction rule.
 - Miners and relays can adjust the expected fee per-KB with the -minrelaytxfee parameter.
@@ -77,7 +77,7 @@ Notable changes since Litecoin v0.8
 ===================================
 
 - The Block data and indexes of v0.10 are incompatible with v0.8 clients.  You can upgrade from v0.8 but you downgrading is not possible.  For this reason you may want to make a backup copy of your Data Directory.
-- litecoind no longer sends RPC commands.  You must use the separate litecoin-cli command line utility.
+- chauchad no longer sends RPC commands.  You must use the separate chaucha-cli command line utility.
 - Watch-Only addresses are now possible.
 
 Credits

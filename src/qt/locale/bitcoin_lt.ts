@@ -2499,7 +2499,7 @@
         <translation>Bitcoin branduolys</translation>
     </message>
     <message>
-        <source>The %s developers</source>
+        <source>Proyecto %s</source>
         <translation>%s kūrėjai</translation>
     </message>
     <message>

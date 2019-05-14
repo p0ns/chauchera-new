@@ -3070,7 +3070,7 @@
         <translation>ליבת ביטקוין</translation>
     </message>
     <message>
-        <source>The %s developers</source>
+        <source>Proyecto %s</source>
         <translation>ה %s מפתחים</translation>
     </message>
     <message>

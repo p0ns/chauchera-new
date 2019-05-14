@@ -3182,7 +3182,7 @@
         <translation>Bitcoin Core</translation>
     </message>
     <message>
-        <source>The %s developers</source>
+        <source>Proyecto %s</source>
         <translation>Udviklerne af %s</translation>
     </message>
     <message>

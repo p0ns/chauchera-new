@@ -4101,12 +4101,12 @@
     </message>
     <message>
         <location line="-395"/>
-        <source>Litecoin Core</source>
-        <translation type="unfinished">Litecoin Core</translation>
+        <source>Chauchera</source>
+        <translation type="unfinished">Chauchera</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>The %s developers</source>
+        <source>Proyecto %s</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

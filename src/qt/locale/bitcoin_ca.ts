@@ -3150,7 +3150,7 @@
         <translation>Bitcoin Core</translation>
     </message>
     <message>
-        <source>The %s developers</source>
+        <source>Proyecto %s</source>
         <translation>Els desenvolupadors %s</translation>
     </message>
     <message>

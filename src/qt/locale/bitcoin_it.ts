@@ -3175,7 +3175,7 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
         <translation>Bitcoin Core</translation>
     </message>
     <message>
-        <source>The %s developers</source>
+        <source>Proyecto %s</source>
         <translation>Sviluppatori di %s</translation>
     </message>
     <message>

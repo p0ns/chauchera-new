@@ -1,7 +1,7 @@
-Contributing to Litecoin Core
+Contributing to Chauchera
 ============================
 
-The Litecoin Core project operates an open contributor model where anyone is
+The Chauchera project operates an open contributor model where anyone is
 welcome to contribute towards development in the form of peer review, testing
 and patches. This document explains the practical process and guidelines for
 contributing.
@@ -57,7 +57,7 @@ the pull request affects. Valid areas as:
 
   - *Consensus* for changes to consensus critical code
   - *Docs* for changes to the documentation
-  - *Qt* for changes to litecoin-qt
+  - *Qt* for changes to chauchera
   - *Mining* for changes to the mining code
   - *Net* or *P2P* for changes to the peer-to-peer network code
   - *RPC/REST/ZMQ* for changes to the RPC, REST or ZMQ APIs
@@ -169,11 +169,11 @@ workload on reviewing.
 "Decision Making" Process
 -------------------------
 
-The following applies to code changes to the Litecoin Core project (and related
+The following applies to code changes to the Chauchera project (and related
 projects such as libsecp256k1), and is not to be confused with overall Litecoin
 Network Protocol consensus changes.
 
-Whether a pull request is merged into Litecoin Core rests with the project merge
+Whether a pull request is merged into Chauchera rests with the project merge
 maintainers and ultimately the project lead.
 
 Maintainers will take into consideration if a patch is in line with the general
@@ -272,7 +272,7 @@ about:
 Release Policy
 --------------
 
-The project leader is the release manager for each Litecoin Core release.
+The project leader is the release manager for each Chauchera release.
 
 Copyright
 ---------

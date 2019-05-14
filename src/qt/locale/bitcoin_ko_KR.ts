@@ -3183,7 +3183,7 @@
         <translation>비트코인 코어</translation>
     </message>
     <message>
-        <source>The %s developers</source>
+        <source>Proyecto %s</source>
         <translation>%s 개발자</translation>
     </message>
     <message>

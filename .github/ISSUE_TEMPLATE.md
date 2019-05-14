@@ -1,4 +1,4 @@
-<!-- This issue tracker is only for technical issues related to Litecoin Core.
+<!-- This issue tracker is only for technical issues related to Chauchera.
 
 General litecoin questions and/or support requests and are best directed to the [litecointalk.io forums](https://litecointalk.io/).
 
@@ -13,7 +13,7 @@ If the node is "stuck" during sync or giving "block checksum mismatch" errors, p
 
 <!--- How reliably can you reproduce the issue, what are the steps to do so? -->
 
-<!-- What version of Litecoin Core are you using, where did you get it (website, self-compiled, etc)? -->
+<!-- What version of Chauchera are you using, where did you get it (website, self-compiled, etc)? -->
 
 <!-- What type of machine are you observing the error on (OS/CPU and disk type)? -->
 

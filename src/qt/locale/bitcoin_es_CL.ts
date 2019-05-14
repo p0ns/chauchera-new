@@ -2942,7 +2942,7 @@
         <translation>bitcoin core</translation>
     </message>
     <message>
-        <source>The %s developers</source>
+        <source>Proyecto %s</source>
         <translation>Los desarrolladores de %s</translation>
     </message>
     <message>

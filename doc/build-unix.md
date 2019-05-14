@@ -1,6 +1,6 @@
 UNIX BUILD NOTES
 ====================
-Some notes on how to build Litecoin Core in Unix.
+Some notes on how to build Chauchera in Unix.
 
 (for OpenBSD specific instructions, see [build-openbsd.md](build-openbsd.md))
 
@@ -24,7 +24,7 @@ make
 make install # optional
 ```
 
-This will build litecoin-qt as well if the dependencies are met.
+This will build chauchera as well if the dependencies are met.
 
 Dependencies
 ---------------------
@@ -55,7 +55,7 @@ Memory Requirements
 --------------------
 
 C++ compilers are memory-hungry. It is recommended to have at least 1.5 GB of
-memory available when compiling Litecoin Core. On systems with less, gcc can be
+memory available when compiling Chauchera. On systems with less, gcc can be
 tuned to conserve memory with additional CXXFLAGS:
 
 
@@ -94,7 +94,7 @@ BerkeleyDB 5.1 or later, which break binary wallet compatibility with the distri
 are based on BerkeleyDB 4.8. If you do not care about wallet compatibility,
 pass `--with-incompatible-bdb` to configure.
 
-See the section "Disable-wallet mode" to build Litecoin Core without wallet.
+See the section "Disable-wallet mode" to build Chauchera without wallet.
 
 Optional (see --with-miniupnpc and --enable-upnp-default):
 
@@ -107,7 +107,7 @@ ZMQ dependencies (provides ZMQ API 4.x):
 Dependencies for the GUI: Ubuntu & Debian
 -----------------------------------------
 
-If you want to build Litecoin-Qt, make sure that the required packages for Qt development
+If you want to build Chauchera, make sure that the required packages for Qt development
 are installed. Either Qt 5 or Qt 4 are necessary to build the GUI.
 If both Qt 4 and Qt 5 are installed, Qt 5 will be used. Pass `--with-gui=qt4` to configure to choose Qt4.
 To build without GUI pass `--without-gui`.
@@ -124,7 +124,7 @@ libqrencode (optional) can be installed with:
 
     sudo apt-get install libqrencode-dev
 
-Once these are installed, they will be found by configure and a litecoin-qt executable will be
+Once these are installed, they will be found by configure and a chauchera executable will be
 built by default.
 
 Dependency Build Instructions: Fedora
@@ -147,7 +147,7 @@ libqrencode (optional) can be installed with:
 
 Notes
 -----
-The release is built with GCC and then "strip litecoind" to strip the debug
+The release is built with GCC and then "strip chauchad" to strip the debug
 symbols, which reduces the executable size by about 90%.
 
 
@@ -269,7 +269,7 @@ Note:
 Enabling wallet support requires either compiling against a Berkeley DB newer than 4.8 (package `db`) using `--with-incompatible-bdb`,
 or building and depending on a local version of Berkeley DB 4.8. The readily available Arch Linux packages are currently built using
 `--with-incompatible-bdb` according to the [PKGBUILD](https://projects.archlinux.org/svntogit/community.git/tree/bitcoin/trunk/PKGBUILD).
-As mentioned above, when maintaining portability of the wallet between the standard Litecoin Core distributions and independently built
+As mentioned above, when maintaining portability of the wallet between the standard Chauchera distributions and independently built
 node software is desired, Berkeley DB 4.8 must be used.
 
 

@@ -3182,8 +3182,8 @@
         <translation>Bitcoin Core</translation>
     </message>
     <message>
-        <source>The %s developers</source>
-        <translation>The %s developers</translation>
+        <source>Proyecto %s</source>
+        <translation>Proyecto %s</translation>
     </message>
     <message>
         <source>A fee rate (in %s/kB) that will be used when fee estimation has insufficient data (default: %s)</source>

@@ -29,16 +29,16 @@
   <string>????</string>
 
   <key>CFBundleExecutable</key>
-  <string>Litecoin-Qt</string>
+  <string>Chauchera</string>
   
   <key>CFBundleName</key>
-  <string>Litecoin-Qt</string>
+  <string>Chauchera</string>
 
   <key>LSHasLocalizedDisplayName</key>
   <true/>
 
   <key>CFBundleIdentifier</key>
-  <string>org.litecoin.Litecoin-Qt</string>
+  <string>org.litecoin.Chauchera</string>
 
   <key>CFBundleURLTypes</key>
   <array>

@@ -5,18 +5,18 @@ and tests weren't explicitly disabled.
 
 After configuring, they can be run with `make check`.
 
-To run the litecoind tests manually, launch `src/test/test_litecoin`. To recompile
+To run the chauchad tests manually, launch `src/test/test_litecoin`. To recompile
 after a test file was modified, run `make` and then run the test again. If you
 modify a non-test file, use `make -C src/test` to recompile only what's needed
-to run the litecoind tests.
+to run the chauchad tests.
 
-To add more litecoind tests, add `BOOST_AUTO_TEST_CASE` functions to the existing
+To add more chauchad tests, add `BOOST_AUTO_TEST_CASE` functions to the existing
 .cpp files in the `test/` directory or add new .cpp files that
 implement new BOOST_AUTO_TEST_SUITE sections.
 
-To run the litecoin-qt tests manually, launch `src/qt/test/test_litecoin-qt`
+To run the chauchera tests manually, launch `src/qt/test/test_chauchera`
 
-To add more litecoin-qt tests, add them to the `src/qt/test/` directory and
+To add more chauchera tests, add them to the `src/qt/test/` directory and
 the `src/qt/test/test_main.cpp` file.
 
 ### Running individual tests

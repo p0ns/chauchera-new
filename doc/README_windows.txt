@@ -1,4 +1,4 @@
-Litecoin Core
+Chauchera
 =============
 
 Intro
@@ -11,9 +11,9 @@ with each other, with the help of a P2P network to check for double-spending.
 
 Setup
 -----
-Unpack the files into a directory and run litecoin-qt.exe.
+Unpack the files into a directory and run chauchera.exe.
 
-Litecoin Core is the original Litecoin client and it builds the backbone of the network.
+Chauchera is the original Litecoin client and it builds the backbone of the network.
 However, it downloads and stores the entire history of Litecoin transactions;
 depending on the speed of your computer and network connection, the synchronization
 process can take anywhere from a few hours to a day or more.

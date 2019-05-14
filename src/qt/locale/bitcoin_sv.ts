@@ -3183,7 +3183,7 @@ Var vänlig och försök igen.</translation>
         <translation>Bitcoin Core</translation>
     </message>
     <message>
-        <source>The %s developers</source>
+        <source>Proyecto %s</source>
         <translation>%s-utvecklarna</translation>
     </message>
     <message>
