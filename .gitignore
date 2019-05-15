@@ -111,6 +111,7 @@ test/cache/*
 !src/leveldb*/Makefile
 
 /doc/doxygen/
+/doc/Doxyfile
 
 libbitcoinconsensus.pc
 contrib/devtools/split-debug.sh
