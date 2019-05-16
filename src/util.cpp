@@ -82,7 +82,7 @@
 // Application startup time (used for uptime calculation)
 const int64_t nStartupTime = GetTime();
 
-const char * const BITCOIN_CONF_FILENAME = "litecoin.conf";
+const char * const BITCOIN_CONF_FILENAME = "chaucha.conf";
 const char * const BITCOIN_PID_FILENAME = "chauchad.pid";
 const char * const DEFAULT_DEBUGLOGFILE = "debug.log";
 
@@ -951,10 +951,10 @@ std::string CopyrightHolders(const std::string& strPrefix)
     if (strprintf(COPYRIGHT_HOLDERS, COPYRIGHT_HOLDERS_SUBSTITUTION).find("Bitcoin Core") == std::string::npos) {
     std::string strYear = strPrefix;
         strYear.replace(strYear.find("2017"), sizeof("2017")-1, "2011");
-        strCopyrightHolders += "\n" + strYear + "The Litecoin Core developers";
+        strCopyrightHolders += "\n" + strYear + "Litecoin Core";
 
         strYear.replace(strYear.find("2011"), sizeof("2011")-1, "2009");
-        strCopyrightHolders += "\n" + strYear + "The Bitcoin Core developers";
+        strCopyrightHolders += "\n" + strYear + "Bitcoin Core";
     }
     return strCopyrightHolders;
 }
