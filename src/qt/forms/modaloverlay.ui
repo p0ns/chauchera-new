@@ -130,7 +130,7 @@ QLabel { color: rgb(40,40,40);  }</string>
              <item>
               <widget class="QLabel" name="infoText">
                <property name="text">
-                <string>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the litecoin network, as detailed below.</string>
+                <string>Las transacciones recientes aún no pueden ser visibles, y por lo tanto el saldo de su monedero podría ser incorrecto. Esta información será correcta cuando su monedero haya terminado de sincronizarse con la red de chaucha, como se detalla abajo.</string>
                </property>
                <property name="textFormat">
                 <enum>Qt::RichText</enum>
@@ -149,7 +149,7 @@ QLabel { color: rgb(40,40,40);  }</string>
                 </font>
                </property>
                <property name="text">
-                <string>Attempting to spend litecoins that are affected by not-yet-displayed transactions will not be accepted by the network.</string>
+                <string>La red no aceptará el intentar gastar chauchas que están afectados por transacciones aún no mostradas.</string>
                </property>
                <property name="textFormat">
                 <enum>Qt::RichText</enum>
