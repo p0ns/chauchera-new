@@ -237,7 +237,7 @@ UniValue stop(const JSONRPCRequest& jsonRequest)
     // Event loop will exit after current HTTP requests have been handled, so
     // this reply will get back to the client.
     StartShutdown();
-    return "Litecoin server stopping";
+    return "\n                              .+x+\n              $:             -$. #!\n       :xx!   Hx             $!  $$\n     !$x.x#   -H-   +$$.    :H. :x!Hxxx+-'\n    xH.  :'    xH  xx +#- .xx#xxx   ''\n   x#         .$H::H   !$Hx:  :'\n   H!        :$-+$$-\n  -#:       xH.  H$\n   #x     :H+    :'\n   -#x!!xx+\n    '!!'\n\n";
 }
 
 UniValue uptime(const JSONRPCRequest& jsonRequest)
