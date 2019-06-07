@@ -570,6 +570,67 @@ static bool rest_getutxos(HTTPRequest* req, const std::string& strURIPart)
     }
 }
 
+static bool rest_blockcount(HTTPRequest* req, const std::string& strURIPart)
+{
+    if (!CheckWarmup(req))
+        return false;
+
+    std::string param;
+    const RetFormat rf = ParseDataFormat(param, strURIPart);
+
+    switch (rf) {
+        case RF_JSON: {
+            int height = chainActive.Height();
+            std::string strJSON = std::to_string(height);
+            req->WriteHeader("Content-Type", "application/json");
+            req->WriteReply(HTTP_OK, strJSON);
+            return true;
+        }
+        default: {
+            return RESTERR(req, HTTP_NOT_FOUND, "output format not found (available: json)");
+        }
+    }
+
+    // not reached
+    return true; // continue to process further HTTP reqs on this cxn
+}
+
+static bool rest_getblockhash(HTTPRequest* req, const std::string& strURIPart)
+{
+    if (!CheckWarmup(req))
+        return false;
+    
+    std::string param;
+    const RetFormat rf = ParseDataFormat(param, strURIPart);
+    
+    std::vector<std::string> path;
+    boost::split(path, param, boost::is_any_of("/"));
+
+    if (path.size() != 1)
+        return RESTERR(req, HTTP_BAD_REQUEST, "No block height specified. Use /rest/getblockhash/<height>.json");
+
+    long nHeight = strtol(path[0].c_str(), NULL, 10);
+    if (nHeight < 0 || nHeight > chainActive.Height())
+        return RESTERR(req, HTTP_BAD_REQUEST, "Height is out of range");
+
+    CBlockIndex* pblockindex = chainActive[nHeight];
+
+    switch (rf) {
+        case RF_JSON: {
+            std::string strJSON = pblockindex->GetBlockHash().ToString();
+            req->WriteHeader("Content-Type", "application/json");
+            req->WriteReply(HTTP_OK, strJSON);
+            return true;
+
+        }
+        default: {
+            return RESTERR(req, HTTP_NOT_FOUND, "output format not found (available: json)");
+        }
+    }
+
+    return true;
+}
+
 static const struct {
     const char* prefix;
     bool (*handler)(HTTPRequest* req, const std::string& strReq);
@@ -578,6 +639,8 @@ static const struct {
       {"/rest/block/notxdetails/", rest_block_notxdetails},
       {"/rest/block/", rest_block_extended},
       {"/rest/chaininfo", rest_chaininfo},
+      {"/rest/blockcount/", rest_blockcount},
+      {"/rest/blockhash/", rest_getblockhash},
       {"/rest/mempool/info", rest_mempool_info},
       {"/rest/mempool/contents", rest_mempool_contents},
       {"/rest/headers/", rest_headers},
