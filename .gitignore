@@ -1,11 +1,11 @@
 *.tar.gz
 
 *.exe
-src/chaucha
 src/chauchad
 src/chaucha-cli
 src/chaucha-tx
 src/test/test_chaucha
+src/test/test_chaucha_fuzzy
 src/qt/test/test_chauchera
 
 # autoreconf
@@ -43,6 +43,12 @@ src/qt/forms/ui_*.h
 
 src/qt/test/moc*.cpp
 
+src/qt/bitcoin-qt.config
+src/qt/bitcoin-qt.creator
+src/qt/bitcoin-qt.creator.user
+src/qt/bitcoin-qt.files
+src/qt/bitcoin-qt.includes
+
 .deps
 .dirstamp
 .libs
@@ -55,7 +61,6 @@ src/qt/test/moc*.cpp
 *.o
 *.o-*
 *.patch
-.chaucha
 *.a
 *.pb.cc
 *.pb.h
@@ -76,15 +81,14 @@ src/qt/test/moc*.cpp
 Makefile
 chauchera
 Chauchera.app
+background.tiff*
 
 # Unit-tests
 Makefile.test
 chauchera_test
-src/test/buildenv.py
 
 # Resources cpp
 qrc_*.cpp
-
 # Mac specific
 .DS_Store
 build
@@ -93,7 +97,7 @@ build
 *.gcno
 *.gcda
 /*.info
-test_bitcoin.coverage/
+test_chaucha.coverage/
 total.coverage/
 coverage_percent.txt
 
@@ -101,19 +105,13 @@ coverage_percent.txt
 linux-coverage-build
 linux-build
 win32-build
-qa/pull-tester/run-bitcoind-for-test.sh
-qa/pull-tester/tests_config.py
-qa/pull-tester/cache/*
-qa/pull-tester/test.*/*
-qa/tmp
-cache/
-share/BitcoindComparisonTool.jar
+test/config.ini
+test/cache/*
 
 !src/leveldb*/Makefile
 
 /doc/doxygen/
+/doc/Doxyfile
 
 libbitcoinconsensus.pc
 contrib/devtools/split-debug.sh
-
-dist/*

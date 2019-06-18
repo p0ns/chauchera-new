@@ -1,25 +1,24 @@
-// Copyright (c) 2011-2015 The Bitcoin Core developers
+// Copyright (c) 2011-2017 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "sendcoinsentry.h"
-#include "ui_sendcoinsentry.h"
+#include <qt/sendcoinsentry.h>
+#include <qt/forms/ui_sendcoinsentry.h>
 
-#include "addressbookpage.h"
-#include "addresstablemodel.h"
-#include "guiutil.h"
-#include "optionsmodel.h"
-#include "platformstyle.h"
-#include "walletmodel.h"
+#include <qt/addressbookpage.h>
+#include <qt/addresstablemodel.h>
+#include <qt/guiutil.h>
+#include <qt/optionsmodel.h>
+#include <qt/platformstyle.h>
 
 #include <QApplication>
 #include <QClipboard>
 
-SendCoinsEntry::SendCoinsEntry(const PlatformStyle *platformStyle, QWidget *parent) :
+SendCoinsEntry::SendCoinsEntry(const PlatformStyle *_platformStyle, QWidget *parent) :
     QStackedWidget(parent),
     ui(new Ui::SendCoinsEntry),
     model(0),
-    platformStyle(platformStyle)
+    platformStyle(_platformStyle)
 {
     ui->setupUi(this);
 
@@ -48,6 +47,7 @@ SendCoinsEntry::SendCoinsEntry(const PlatformStyle *platformStyle, QWidget *pare
     connect(ui->deleteButton, SIGNAL(clicked()), this, SLOT(deleteClicked()));
     connect(ui->deleteButton_is, SIGNAL(clicked()), this, SLOT(deleteClicked()));
     connect(ui->deleteButton_s, SIGNAL(clicked()), this, SLOT(deleteClicked()));
+    connect(ui->useAvailableBalanceButton, SIGNAL(clicked()), this, SLOT(useAvailableBalanceClicked()));
 }
 
 SendCoinsEntry::~SendCoinsEntry()
@@ -79,12 +79,12 @@ void SendCoinsEntry::on_payTo_textChanged(const QString &address)
     updateLabel(address);
 }
 
-void SendCoinsEntry::setModel(WalletModel *model)
+void SendCoinsEntry::setModel(WalletModel *_model)
 {
-    this->model = model;
+    this->model = _model;
 
-    if (model && model->getOptionsModel())
-        connect(model->getOptionsModel(), SIGNAL(displayUnitChanged(int)), this, SLOT(updateDisplayUnit()));
+    if (_model && _model->getOptionsModel())
+        connect(_model->getOptionsModel(), SIGNAL(displayUnitChanged(int)), this, SLOT(updateDisplayUnit()));
 
     clear();
 }
@@ -112,9 +112,19 @@ void SendCoinsEntry::clear()
     updateDisplayUnit();
 }
 
+void SendCoinsEntry::checkSubtractFeeFromAmount()
+{
+    ui->checkboxSubtractFeeFromAmount->setChecked(true);
+}
+
 void SendCoinsEntry::deleteClicked()
 {
     Q_EMIT removeEntry(this);
+}
+
+void SendCoinsEntry::useAvailableBalanceClicked()
+{
+    Q_EMIT useAvailableBalance(this);
 }
 
 bool SendCoinsEntry::validate()
@@ -226,6 +236,11 @@ void SendCoinsEntry::setAddress(const QString &address)
 {
     ui->payTo->setText(address);
     ui->payAmount->setFocus();
+}
+
+void SendCoinsEntry::setAmount(const CAmount &amount)
+{
+    ui->payAmount->setValue(amount);
 }
 
 bool SendCoinsEntry::isClear()

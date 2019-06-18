@@ -1,15 +1,15 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2015 The Bitcoin Core developers
+// Copyright (c) 2009-2017 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "pow.h"
+#include <pow.h>
 
-#include "arith_uint256.h"
-#include "chain.h"
-#include "primitives/block.h"
-#include "uint256.h"
-#include "util.h"
+#include <arith_uint256.h>
+#include <chain.h>
+#include <primitives/block.h>
+#include <uint256.h>
+#include <util.h>
 
 unsigned int static DarkGravityWave(const CBlockIndex* pindexLast, const Consensus::Params& params) {
     /* current difficulty formula, dash - DarkGravity v3, written by Evan Duffield - evan@dash.org */
@@ -63,13 +63,11 @@ unsigned int static DarkGravityWave(const CBlockIndex* pindexLast, const Consens
 
 unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader *pblock, const Consensus::Params& params)
 {
+    assert(pindexLast != nullptr);
     unsigned int nProofOfWorkLimit = UintToArith256(params.powLimit).GetCompact();
 
-    // Genesis block
-    if (pindexLast == NULL)
-        return nProofOfWorkLimit;
-    
-    if(pindexLast->nHeight + 1 >= params.nPowDGWHeight){ //Testnet activation comes in params, nPowDGWHeight should be 0
+    // Dark Gravity Wave
+    if(pindexLast->nHeight + 1 >= params.nPowDGWHeight){
         return DarkGravityWave(pindexLast, params);
     }
 
@@ -96,7 +94,7 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
     }
 
     // Go back by what we want to be 14 days worth of blocks
-    // Chaucha: This fixes an issue where a 51% attack can change difficulty at will.
+    // Litecoin: This fixes an issue where a 51% attack can change difficulty at will.
     // Go back the full period unless it's the first retarget after genesis. Code courtesy of Art Forz
     int blockstogoback = params.DifficultyAdjustmentInterval()-1;
     if ((pindexLast->nHeight+1) != params.DifficultyAdjustmentInterval())
@@ -129,8 +127,9 @@ unsigned int CalculateNextWorkRequired(const CBlockIndex* pindexLast, int64_t nF
     arith_uint256 bnOld;
     bnNew.SetCompact(pindexLast->nBits);
     bnOld = bnNew;
-    // Chaucha: intermediate uint256 can overflow by 1 bit
-    bool fShift = bnNew.bits() > 235;
+    // Litecoin: intermediate uint256 can overflow by 1 bit
+    const arith_uint256 bnPowLimit = UintToArith256(params.powLimit);
+    bool fShift = bnNew.bits() > bnPowLimit.bits() - 1;
     if (fShift)
         bnNew >>= 1;
     bnNew *= nActualTimespan;
@@ -138,7 +137,6 @@ unsigned int CalculateNextWorkRequired(const CBlockIndex* pindexLast, int64_t nF
     if (fShift)
         bnNew <<= 1;
 
-    const arith_uint256 bnPowLimit = UintToArith256(params.powLimit);
     if (bnNew > bnPowLimit)
         bnNew = bnPowLimit;
 

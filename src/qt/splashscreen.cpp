@@ -1,23 +1,23 @@
-// Copyright (c) 2011-2015 The Bitcoin Core developers
+// Copyright (c) 2011-2017 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/bitcoin-config.h"
+#include <config/bitcoin-config.h>
 #endif
 
-#include "splashscreen.h"
+#include <qt/splashscreen.h>
 
-#include "networkstyle.h"
+#include <qt/networkstyle.h>
 
-#include "clientversion.h"
-#include "init.h"
-#include "util.h"
-#include "ui_interface.h"
-#include "version.h"
+#include <clientversion.h>
+#include <init.h>
+#include <util.h>
+#include <ui_interface.h>
+#include <version.h>
 
 #ifdef ENABLE_WALLET
-#include "wallet/wallet.h"
+#include <wallet/wallet.h>
 #endif
 
 #include <QApplication>
@@ -30,8 +30,8 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle *networkStyle) 
     QWidget(0, f), curAlignment(0)
 {
     // set reference point, paddings
-    int paddingRight            = 50;
-    int paddingTop              = 50;
+    int paddingRight            = 70;
+    int paddingTop              = 115;
     int titleVersionVSpace      = 17;
     int titleCopyrightVSpace    = 40;
 
@@ -59,17 +59,17 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle *networkStyle) 
 #endif
 
     QPainter pixPaint(&pixmap);
-    pixPaint.setPen(QColor(100,100,100));
+    pixPaint.setPen(QColor(240,240,240));
 
     // draw a slightly radial gradient
     QRadialGradient gradient(QPoint(0,0), splashSize.width()/devicePixelRatio);
-    gradient.setColorAt(0, Qt::white);
-    gradient.setColorAt(1, QColor(247,247,247));
+    gradient.setColorAt(0, QColor(32,32,32));
+    gradient.setColorAt(1, QColor(32,32,32));
     QRect rGradient(QPoint(0,0), splashSize);
     pixPaint.fillRect(rGradient, gradient);
 
     // draw the bitcoin icon, expected size of PNG: 1024x1024
-    QRect rectIcon(QPoint(-150,-122), QSize(430,430));
+    QRect rectIcon(QPoint(30,36), QSize(210,210));
 
     const QSize requiredSize(1024,1024);
     QPixmap icon(networkStyle->getAppIcon().pixmap(requiredSize));
@@ -131,11 +131,22 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle *networkStyle) 
     move(QApplication::desktop()->screenGeometry().center() - r.center());
 
     subscribeToCoreSignals();
+    installEventFilter(this);
 }
 
 SplashScreen::~SplashScreen()
 {
     unsubscribeFromCoreSignals();
+}
+
+bool SplashScreen::eventFilter(QObject * obj, QEvent * ev) {
+    if (ev->type() == QEvent::KeyPress) {
+        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(ev);
+        if(keyEvent->text()[0] == 'q') {
+            StartShutdown();
+        }
+    }
+    return QObject::eventFilter(obj, ev);
 }
 
 void SplashScreen::slotFinish(QWidget *mainWin)
@@ -156,18 +167,22 @@ static void InitMessage(SplashScreen *splash, const std::string &message)
         Qt::QueuedConnection,
         Q_ARG(QString, QString::fromStdString(message)),
         Q_ARG(int, Qt::AlignBottom|Qt::AlignHCenter),
-        Q_ARG(QColor, QColor(55,55,55)));
+        Q_ARG(QColor, QColor(240,240,240)));
 }
 
-static void ShowProgress(SplashScreen *splash, const std::string &title, int nProgress)
+static void ShowProgress(SplashScreen *splash, const std::string &title, int nProgress, bool resume_possible)
 {
-    InitMessage(splash, title + strprintf("%d", nProgress) + "%");
+    InitMessage(splash, title + std::string("\n") +
+            (resume_possible ? _("(press q to shutdown and continue later)")
+                                : _("press q to shutdown")) +
+            strprintf("\n%d", nProgress) + "%");
 }
 
 #ifdef ENABLE_WALLET
-static void ConnectWallet(SplashScreen *splash, CWallet* wallet)
+void SplashScreen::ConnectWallet(CWallet* wallet)
 {
-    wallet->ShowProgress.connect(boost::bind(ShowProgress, splash, _1, _2));
+    wallet->ShowProgress.connect(boost::bind(ShowProgress, this, _1, _2, false));
+    connectedWallets.push_back(wallet);
 }
 #endif
 
@@ -175,9 +190,9 @@ void SplashScreen::subscribeToCoreSignals()
 {
     // Connect signals to client
     uiInterface.InitMessage.connect(boost::bind(InitMessage, this, _1));
-    uiInterface.ShowProgress.connect(boost::bind(ShowProgress, this, _1, _2));
+    uiInterface.ShowProgress.connect(boost::bind(ShowProgress, this, _1, _2, _3));
 #ifdef ENABLE_WALLET
-    uiInterface.LoadWallet.connect(boost::bind(ConnectWallet, this, _1));
+    uiInterface.LoadWallet.connect(boost::bind(&SplashScreen::ConnectWallet, this, _1));
 #endif
 }
 
@@ -185,10 +200,11 @@ void SplashScreen::unsubscribeFromCoreSignals()
 {
     // Disconnect signals from client
     uiInterface.InitMessage.disconnect(boost::bind(InitMessage, this, _1));
-    uiInterface.ShowProgress.disconnect(boost::bind(ShowProgress, this, _1, _2));
+    uiInterface.ShowProgress.disconnect(boost::bind(ShowProgress, this, _1, _2, _3));
 #ifdef ENABLE_WALLET
-    if(pwalletMain)
-        pwalletMain->ShowProgress.disconnect(boost::bind(ShowProgress, this, _1, _2));
+    for (CWallet* const & pwallet : connectedWallets) {
+        pwallet->ShowProgress.disconnect(boost::bind(ShowProgress, this, _1, _2, false));
+    }
 #endif
 }
 

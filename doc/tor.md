@@ -1,16 +1,16 @@
-TOR SUPPORT IN CHAUCHA
+TOR SUPPORT IN LITECOIN
 ======================
 
-It is possible to run Chaucha as a Tor hidden service, and connect to such services.
+It is possible to run Litecoin as a Tor hidden service, and connect to such services.
 
 The following directions assume you have a Tor proxy running on port 9050. Many distributions default to having a SOCKS proxy listening on port 9050, but others may not. In particular, the Tor Browser Bundle defaults to listening on port 9150. See [Tor Project FAQ:TBBSocksPort](https://www.torproject.org/docs/faq.html.en#TBBSocksPort) for how to properly
 configure Tor.
 
 
-1. Run chaucha behind a Tor proxy
+1. Run litecoin behind a Tor proxy
 ---------------------------------
 
-The first step is running Chaucha behind a Tor proxy. This will already make all
+The first step is running Litecoin behind a Tor proxy. This will already make all
 outgoing connections be anonymized, but more is possible.
 
 	-proxy=ip:port  Set the proxy server. If SOCKS5 is selected (default), this proxy
@@ -31,27 +31,27 @@ outgoing connections be anonymized, but more is possible.
 
 In a typical situation, this suffices to run behind a Tor proxy:
 
-	./chaucha -proxy=127.0.0.1:9050
+	./litecoin -proxy=127.0.0.1:9050
 
 
-2. Run a chaucha hidden server
+2. Run a litecoin hidden server
 ------------------------------
 
 If you configure your Tor system accordingly, it is possible to make your node also
 reachable from the Tor network. Add these lines to your /etc/tor/torrc (or equivalent
 config file):
 
-	HiddenServiceDir /var/lib/tor/chaucha-service/
+	HiddenServiceDir /var/lib/tor/litecoin-service/
 	HiddenServicePort 9333 127.0.0.1:9333
 	HiddenServicePort 19335 127.0.0.1:19335
 
 The directory can be different of course, but (both) port numbers should be equal to
 your chauchad's P2P listen port (9333 by default).
 
-	-externalip=X   You can tell chaucha about its publicly reachable address using
+	-externalip=X   You can tell litecoin about its publicly reachable address using
 	                this option, and this can be a .onion address. Given the above
 	                configuration, you can find your onion address in
-	                /var/lib/tor/chaucha-service/hostname. Onion addresses are given
+	                /var/lib/tor/litecoin-service/hostname. Onion addresses are given
 	                preference for your node to advertise itself with, for connections
 	                coming from unroutable addresses (such as 127.0.0.1, where the
 	                Tor proxy typically runs).
@@ -86,7 +86,7 @@ and open port 9333 on your firewall (or use -upnp).
 If you only want to use Tor to reach onion addresses, but not use it as a proxy
 for normal IPv4/IPv6 communication, use:
 
-	./chaucha -onion=127.0.0.1:9050 -externalip=57qr3yd1nyntf5k.onion -discover
+	./litecoin -onion=127.0.0.1:9050 -externalip=57qr3yd1nyntf5k.onion -discover
 
 3. Automatically listen on Tor
 --------------------------------
@@ -99,10 +99,10 @@ This means that if Tor is running (and proper authentication has been configured
 Chauchera automatically creates a hidden service to listen on. This will positively 
 affect the number of available .onion nodes.
 
-This new feature is enabled by default if Chauchera is listening, and
-a connection to Tor can be made. It can be configured with the `-listenonion`,
-`-torcontrol` and `-torpassword` settings. To show verbose debugging
-information, pass `-debug=tor`.
+This new feature is enabled by default if Chauchera is listening (`-listen`), and
+requires a Tor connection to work. It can be explicitly disabled with `-listenonion=0`
+and, if not disabled, configured using the `-torcontrol` and `-torpassword` settings.
+To show verbose debugging information, pass `-debug=tor`.
 
 Connecting to Tor's control socket API requires one of two authentication methods to be 
 configured. For cookie authentication the user running chauchad must have write access 
@@ -114,3 +114,12 @@ Debian-based systems the user running chauchad can be added to the debian-tor gr
 which has the appropriate permissions. An alternative authentication method is the use 
 of the `-torpassword` flag and a `hash-password` which can be enabled and specified in 
 Tor configuration.
+
+4. Privacy recommendations
+---------------------------
+
+- Do not add anything but litecoin ports to the hidden service created in section 2.
+  If you run a web service too, create a new hidden service for that.
+  Otherwise it is trivial to link them, which may reduce privacy. Hidden
+  services created automatically (as in section 3) always have only one port
+  open.

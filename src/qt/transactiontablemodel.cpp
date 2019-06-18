@@ -1,32 +1,30 @@
-// Copyright (c) 2011-2015 The Bitcoin Core developers
+// Copyright (c) 2011-2017 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "transactiontablemodel.h"
+#include <qt/transactiontablemodel.h>
 
-#include "addresstablemodel.h"
-#include "guiconstants.h"
-#include "guiutil.h"
-#include "optionsmodel.h"
-#include "platformstyle.h"
-#include "transactiondesc.h"
-#include "transactionrecord.h"
-#include "walletmodel.h"
+#include <qt/addresstablemodel.h>
+#include <qt/guiconstants.h>
+#include <qt/guiutil.h>
+#include <qt/optionsmodel.h>
+#include <qt/platformstyle.h>
+#include <qt/transactiondesc.h>
+#include <qt/transactionrecord.h>
+#include <qt/walletmodel.h>
 
-#include "core_io.h"
-#include "main.h"
-#include "sync.h"
-#include "uint256.h"
-#include "util.h"
-#include "wallet/wallet.h"
+#include <core_io.h>
+#include <validation.h>
+#include <sync.h>
+#include <uint256.h>
+#include <util.h>
+#include <wallet/wallet.h>
 
 #include <QColor>
 #include <QDateTime>
 #include <QDebug>
 #include <QIcon>
 #include <QList>
-
-#include <boost/foreach.hpp>
 
 // Amount column is right-aligned it contains numbers
 static int column_alignments[] = {
@@ -59,9 +57,9 @@ struct TxLessThan
 class TransactionTablePriv
 {
 public:
-    TransactionTablePriv(CWallet *wallet, TransactionTableModel *parent) :
-        wallet(wallet),
-        parent(parent)
+    TransactionTablePriv(CWallet *_wallet, TransactionTableModel *_parent) :
+        wallet(_wallet),
+        parent(_parent)
     {
     }
 
@@ -82,10 +80,10 @@ public:
         cachedWallet.clear();
         {
             LOCK2(cs_main, wallet->cs_wallet);
-            for(std::map<uint256, CWalletTx>::iterator it = wallet->mapWallet.begin(); it != wallet->mapWallet.end(); ++it)
+            for (const auto& entry : wallet->mapWallet)
             {
-                if(TransactionRecord::showTransaction(it->second))
-                    cachedWallet.append(TransactionRecord::decomposeTransaction(wallet, it->second));
+                if (TransactionRecord::showTransaction(entry.second))
+                    cachedWallet.append(TransactionRecord::decomposeTransaction(wallet, entry.second));
             }
         }
     }
@@ -145,7 +143,7 @@ public:
                 {
                     parent->beginInsertRows(QModelIndex(), lowerIndex, lowerIndex+toInsert.size()-1);
                     int insert_idx = lowerIndex;
-                    Q_FOREACH(const TransactionRecord &rec, toInsert)
+                    for (const TransactionRecord &rec : toInsert)
                     {
                         cachedWallet.insert(insert_idx, rec);
                         insert_idx += 1;
@@ -168,6 +166,10 @@ public:
         case CT_UPDATED:
             // Miscellaneous updates -- nothing to do, status update will take care of this, and is only computed for
             // visible transactions.
+            for (int i = lowerIndex; i < upperIndex; i++) {
+                TransactionRecord *rec = &cachedWallet[i];
+                rec->status.needsUpdate = true;
+            }
             break;
         }
     }
@@ -228,20 +230,20 @@ public:
         std::map<uint256, CWalletTx>::iterator mi = wallet->mapWallet.find(rec->hash);
         if(mi != wallet->mapWallet.end())
         {
-            std::string strHex = EncodeHexTx(static_cast<CTransaction>(mi->second));
+            std::string strHex = EncodeHexTx(*mi->second.tx);
             return QString::fromStdString(strHex);
         }
         return QString();
     }
 };
 
-TransactionTableModel::TransactionTableModel(const PlatformStyle *platformStyle, CWallet* wallet, WalletModel *parent):
+TransactionTableModel::TransactionTableModel(const PlatformStyle *_platformStyle, CWallet* _wallet, WalletModel *parent):
         QAbstractTableModel(parent),
-        wallet(wallet),
+        wallet(_wallet),
         walletModel(parent),
-        priv(new TransactionTablePriv(wallet, this)),
+        priv(new TransactionTablePriv(_wallet, this)),
         fProcessingQueuedTransactions(false),
-        platformStyle(platformStyle)
+        platformStyle(_platformStyle)
 {
     columns << QString() << QString() << tr("Date") << tr("Type") << tr("Label") << BitcoinUnits::getAmountColumnTitle(walletModel->getOptionsModel()->getDisplayUnit());
     priv->refreshWallet();
@@ -306,9 +308,6 @@ QString TransactionTableModel::formatTxStatus(const TransactionRecord *wtx) cons
     case TransactionStatus::OpenUntilDate:
         status = tr("Open until %1").arg(GUIUtil::dateTimeStr(wtx->status.open_for));
         break;
-    case TransactionStatus::Offline:
-        status = tr("Offline");
-        break;
     case TransactionStatus::Unconfirmed:
         status = tr("Unconfirmed");
         break;
@@ -326,9 +325,6 @@ QString TransactionTableModel::formatTxStatus(const TransactionRecord *wtx) cons
         break;
     case TransactionStatus::Immature:
         status = tr("Immature (%1 confirmations, will be available after %2)").arg(wtx->status.depth).arg(wtx->status.depth + wtx->status.matures_in);
-        break;
-    case TransactionStatus::MaturesWarning:
-        status = tr("This block was not received by any other nodes and will probably not be accepted!");
         break;
     case TransactionStatus::NotAccepted:
         status = tr("Generated but not accepted");
@@ -467,8 +463,6 @@ QVariant TransactionTableModel::txStatusDecoration(const TransactionRecord *wtx)
     case TransactionStatus::OpenUntilBlock:
     case TransactionStatus::OpenUntilDate:
         return COLOR_TX_STATUS_OPENUNTILDATE;
-    case TransactionStatus::Offline:
-        return COLOR_TX_STATUS_OFFLINE;
     case TransactionStatus::Unconfirmed:
         return QIcon(":/icons/transaction_0");
     case TransactionStatus::Abandoned:
@@ -491,7 +485,6 @@ QVariant TransactionTableModel::txStatusDecoration(const TransactionRecord *wtx)
         int part = (wtx->status.depth * 4 / total) + 1;
         return QIcon(QString(":/icons/transaction_%1").arg(part));
         }
-    case TransactionStatus::MaturesWarning:
     case TransactionStatus::NotAccepted:
         return QIcon(":/icons/transaction_0");
     default:
@@ -714,8 +707,8 @@ struct TransactionNotification
 {
 public:
     TransactionNotification() {}
-    TransactionNotification(uint256 hash, ChangeType status, bool showTransaction):
-        hash(hash), status(status), showTransaction(showTransaction) {}
+    TransactionNotification(uint256 _hash, ChangeType _status, bool _showTransaction):
+        hash(_hash), status(_status), showTransaction(_showTransaction) {}
 
     void invoke(QObject *ttm)
     {

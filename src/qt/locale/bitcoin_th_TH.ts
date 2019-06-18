@@ -41,6 +41,18 @@
         <source>&amp;Delete</source>
         <translation>&amp;ลบ</translation>
     </message>
+    <message>
+        <source>Choose the address to send coins to</source>
+        <translation>เลือกที่อยู่เพื่อส่งเหรียญไปไว้</translation>
+    </message>
+    <message>
+        <source>Choose the address to receive coins with</source>
+        <translation>เลือกที่อยู่เพื่อส่งเหรียญไปไว้</translation>
+    </message>
+    <message>
+        <source>Sending addresses</source>
+        <translation>ส่งที่อยู่</translation>
+    </message>
     </context>
 <context>
     <name>AddressTableModel</name>
@@ -151,11 +163,11 @@
     </message>
     <message>
         <source>&amp;Sending addresses...</source>
-        <translation>&amp;ที่เก็บเงิน ที่จะส่ง chaucha</translation>
+        <translation>&amp;ที่เก็บเงิน ที่จะส่ง bitcoin</translation>
     </message>
     <message>
         <source>&amp;Receiving addresses...</source>
-        <translation>&amp;ที่เก็บเงิน ที่จะรับ chaucha</translation>
+        <translation>&amp;ที่เก็บเงิน ที่จะรับ bitcoin</translation>
     </message>
     <message>
         <source>Open &amp;URI...</source>
@@ -166,8 +178,8 @@
         <translation>กำลังทำดัชนี ที่เก็บบล็อก ใหม่ ในดิสก์...</translation>
     </message>
     <message>
-        <source>Send coins to a Chaucha address</source>
-        <translation>ส่ง coins ไปยัง ที่เก็บ Chaucha</translation>
+        <source>Send coins to a Bitcoin address</source>
+        <translation>ส่ง coins ไปยัง ที่เก็บ Bitcoin</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -190,8 +202,8 @@
         <translation>&amp;ยืนยันข้อความ...</translation>
     </message>
     <message>
-        <source>Chaucha</source>
-        <translation>Chaucha</translation>
+        <source>Bitcoin</source>
+        <translation>Bitcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -218,12 +230,12 @@
         <translation>เข้ารหัส private keys/ รหัสส่วนตัว สำหรับกระเป๋าเงินของท่าน</translation>
     </message>
     <message>
-        <source>Sign messages with your Chaucha addresses to prove you own them</source>
-        <translation>เซ็นชื่อด้วยข้อความ ที่เก็บ Chaucha เพื่อแสดงว่าท่านเป็นเจ้าของ chaucha นี้จริง</translation>
+        <source>Sign messages with your Bitcoin addresses to prove you own them</source>
+        <translation>เซ็นชื่อด้วยข้อความ ที่เก็บ Bitcoin เพื่อแสดงว่าท่านเป็นเจ้าของ bitcoin นี้จริง</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Chaucha addresses</source>
-        <translation>ตรวจสอบ ข้อความ เพื่อให้แน่ใจว่า การเซ็นต์ชื่อ ด้วยที่เก็บ Chaucha แล้ว</translation>
+        <source>Verify messages to ensure they were signed with specified Bitcoin addresses</source>
+        <translation>ตรวจสอบ ข้อความ เพื่อให้แน่ใจว่า การเซ็นต์ชื่อ ด้วยที่เก็บ Bitcoin แล้ว</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -242,28 +254,28 @@
         <translation>แถบเครื่องมือ</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and chaucha: URIs)</source>
-        <translation>เรียกเก็บ การชำระเงิน (สร้าง QR codes และ chaucha: URIs)</translation>
+        <source>Request payments (generates QR codes and bitcoin: URIs)</source>
+        <translation>เรียกเก็บ การชำระเงิน (สร้าง QR codes และ bitcoin: URIs)</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
-        <translation>แสดงรายการ ที่เก็บเงินที่จะส่ง chaucha ออก และป้ายชื่อ ที่ใช้ไปแล้ว</translation>
+        <translation>แสดงรายการ ที่เก็บเงินที่จะส่ง bitcoin ออก และป้ายชื่อ ที่ใช้ไปแล้ว</translation>
     </message>
     <message>
         <source>Show the list of used receiving addresses and labels</source>
-        <translation>แสดงรายการ ที่เก็บเงินที่จะรับ chaucha เข้า และป้ายชื่อ ที่ใช้ไปแล้ว</translation>
+        <translation>แสดงรายการ ที่เก็บเงินที่จะรับ bitcoin เข้า และป้ายชื่อ ที่ใช้ไปแล้ว</translation>
     </message>
     <message>
-        <source>Open a chaucha: URI or payment request</source>
-        <translation>เปิด chaucha: URI หรือ การเรียกเก็บเงิน (การเรียกให้ชำระเงิน)</translation>
+        <source>Open a bitcoin: URI or payment request</source>
+        <translation>เปิด bitcoin: URI หรือ การเรียกเก็บเงิน (การเรียกให้ชำระเงิน)</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
         <translation>&amp;ตัวเลือก Command-line</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to Chaucha network</source>
-        <translation><numerusform>%n ช่องการเชื่อมต่อที่ใช้งานได้ เพื่อเชื่อมกับเครือข่าย Chaucha</numerusform></translation>
+        <source>%n active connection(s) to Bitcoin network</source>
+        <translation><numerusform>%n ช่องการเชื่อมต่อที่ใช้งานได้ เพื่อเชื่อมกับเครือข่าย Bitcoin</numerusform></translation>
     </message>
     <message>
         <source>Indexing blocks on disk...</source>
@@ -273,33 +285,9 @@
         <source>Processing blocks on disk...</source>
         <translation>กำลังดำเนินการกับบล็อกในดิสก์...</translation>
     </message>
-    <message>
-        <source>No block source available...</source>
-        <translation>ไม่มีบล็อกเริ่มต้น ให้ใช้ได้...</translation>
-    </message>
     <message numerus="yes">
         <source>Processed %n block(s) of transaction history.</source>
         <translation><numerusform>%n บล็อกในประวัติรายการ ได้รับการดำเนินการเรียบร้อยแล้ว</numerusform></translation>
-    </message>
-    <message numerus="yes">
-        <source>%n hour(s)</source>
-        <translation><numerusform>%n ชั่วโมง</numerusform></translation>
-    </message>
-    <message numerus="yes">
-        <source>%n day(s)</source>
-        <translation><numerusform>%n วัน</numerusform></translation>
-    </message>
-    <message numerus="yes">
-        <source>%n week(s)</source>
-        <translation><numerusform>%n สัปดาห์</numerusform></translation>
-    </message>
-    <message>
-        <source>%1 and %2</source>
-        <translation>%1 และ %2</translation>
-    </message>
-    <message numerus="yes">
-        <source>%n year(s)</source>
-        <translation><numerusform>%n ปี</numerusform></translation>
     </message>
     <message>
         <source>%1 behind</source>
@@ -330,8 +318,8 @@
         <translation>ทันสมัย</translation>
     </message>
     <message>
-        <source>Show the %1 help message to get a list with possible Chaucha command-line options</source>
-        <translation>แสดง %1 ข้อความช่วยเหลือ เพื่อแสดงรายการ ตัวเลือกที่เป็นไปได้สำหรับ Chaucha command-line</translation>
+        <source>Show the %1 help message to get a list with possible Bitcoin command-line options</source>
+        <translation>แสดง %1 ข้อความช่วยเหลือ เพื่อแสดงรายการ ตัวเลือกที่เป็นไปได้สำหรับ Bitcoin command-line</translation>
     </message>
     <message>
         <source>%1 client</source>
@@ -387,7 +375,7 @@
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
         <translation>กระเป๋าเงินถูก &lt;b&gt;เข้ารหัส&lt;/b&gt; และในปัจจุบัน &lt;b&gt;ล็อค &lt;/b&gt;</translation>
     </message>
-</context>
+    </context>
 <context>
     <name>CoinControlDialog</name>
     <message>
@@ -405,10 +393,6 @@
     <message>
         <source>Amount:</source>
         <translation>จำนวน:</translation>
-    </message>
-    <message>
-        <source>Priority:</source>
-        <translation>ความเร่งด่วน:</translation>
     </message>
     <message>
         <source>Fee:</source>
@@ -462,10 +446,6 @@
         <source>Confirmed</source>
         <translation>ยืนยันแล้ว</translation>
     </message>
-    <message>
-        <source>Priority</source>
-        <translation>ระดับความสำคัญ</translation>
-    </message>
     </context>
 <context>
     <name>EditAddressDialog</name>
@@ -499,6 +479,10 @@
     <message>
         <source>name</source>
         <translation>ชื่อ</translation>
+    </message>
+    <message>
+        <source>Directory already exists. Add %1 if you intend to create a new directory here.</source>
+        <translation>ไดเร็กทอรี่มีอยู่แล้ว ใส่เพิ่ม %1 หากท่านต้องการสร้างไดเร็กทอรี่ใหม่ที่นี่</translation>
     </message>
     <message>
         <source>Path already exists, and is not a directory.</source>
@@ -579,16 +563,16 @@
         <translation>นี่เป็นการรันโปรแกรมครั้งแรก ท่านสามารถเลือก ว่าจะเก็บข้อมูลไว้ที่ %1</translation>
     </message>
     <message>
-        <source>%1 will download and store a copy of the Chaucha block chain. At least %2GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>%1 จะดาวน์โหลดและเก็บกอปปี้ชุดหนึ่งของ บล็อกเชน Chaucha ไว้ ข้อมูลขนานอย่างน้อย %2GB จะเก็บไว้ในไดเร็กทอรี่นี้ และข้อมูลจะมีขนาดใหญ่ขึ้นเรื่อยๆ กระเป๋าเงิน จะเก็บไว้ในไดเร็กทอรี่นี้ด้วย</translation>
-    </message>
-    <message>
         <source>Use the default data directory</source>
         <translation>ใช้ไดเร็กทอรี่ข้อมูล ที่เป็นค่าเริ่มต้น</translation>
     </message>
     <message>
         <source>Use a custom data directory:</source>
         <translation>ใช้ไดเร็กทอรี่ข้อมูลที่ตั้งค่าเอง:</translation>
+    </message>
+    <message>
+        <source>Bitcoin</source>
+        <translation>Bitcoin</translation>
     </message>
     <message>
         <source>Error: Specified data directory "%1" cannot be created.</source>
@@ -607,6 +591,13 @@
         <translation><numerusform>(ต้องการพื้นที่ %n GB)</numerusform></translation>
     </message>
 </context>
+<context>
+    <name>ModalOverlay</name>
+    <message>
+        <source>Form</source>
+        <translation>รูป</translation>
+    </message>
+    </context>
 <context>
     <name>OpenURIDialog</name>
     <message>
@@ -657,14 +648,6 @@
         <translation>จำนวนของสคริปท์ &amp;verification threads</translation>
     </message>
     <message>
-        <source>Accept connections from outside</source>
-        <translation>ยอมรับ การเชื่อมต่อจากภายนอก</translation>
-    </message>
-    <message>
-        <source>Allow incoming connections</source>
-        <translation>ยอมให้เชื่อมต่อจากภายนอกได้</translation>
-    </message>
-    <message>
         <source>IP address of the proxy (e.g. IPv4: 127.0.0.1 / IPv6: ::1)</source>
         <translation>IP แอดเดส ของ proxy (เช่น IPv4: 127.0.0.1 / IPv6: ::1)</translation>
     </message>
@@ -675,10 +658,6 @@
     <message>
         <source>Third party URLs (e.g. a block explorer) that appear in the transactions tab as context menu items. %s in the URL is replaced by transaction hash. Multiple URLs are separated by vertical bar |.</source>
         <translation>URL แบบอื่น (ยกตัวอย่าง เอ็กพลอเลอร์บล็อก) ที่อยู่ใน เมนูรายการ ลำดับ %s ใน URL จะถูกเปลี่ยนด้วย รายการแฮช URL ที่เป็นแบบหลายๆอัน จะถูกแยก โดย เครื่องหมายเส้นบาร์ตั้ง |</translation>
-    </message>
-    <message>
-        <source>Third party transaction URLs</source>
-        <translation>URI รายการ แบบของเจ้าอื่นๆ</translation>
     </message>
     <message>
         <source>Active command-line options that override above options:</source>
@@ -721,16 +700,16 @@
         <translation>&amp;ใช้เงินทอนที่ยังไม่ยืนยัน</translation>
     </message>
     <message>
-        <source>Automatically open the Chaucha client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>เปิด Chaucha ไคล์เอ็นท์พอร์ต/client port บน router โดยอัตโนมัติ วิธีนี้ใช้ได้เมื่อ router สนับสนุน UPnP และสถานะเปิดใช้งาน</translation>
+        <source>Automatically open the Bitcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>เปิด Bitcoin ไคล์เอ็นท์พอร์ต/client port บน router โดยอัตโนมัติ วิธีนี้ใช้ได้เมื่อ router สนับสนุน UPnP และสถานะเปิดใช้งาน</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
         <translation>จองพอร์ต โดยใช้ &amp;UPnP</translation>
     </message>
     <message>
-        <source>Connect to the Chaucha network through a SOCKS5 proxy.</source>
-        <translation>เชื่อมต่อกับ Chaucha เน็ตเวิร์ก ผ่านพร็อกซี่แบบ SOCKS5</translation>
+        <source>Connect to the Bitcoin network through a SOCKS5 proxy.</source>
+        <translation>เชื่อมต่อกับ Bitcoin เน็ตเวิร์ก ผ่านพร็อกซี่แบบ SOCKS5</translation>
     </message>
     <message>
         <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
@@ -753,10 +732,6 @@
         <translation>ใช้ในการเข้าถึงอีกฝ่ายหนึ่ง peer โดย:</translation>
     </message>
     <message>
-        <source>Shows, if the supplied default SOCKS5 proxy is used to reach peers via this network type.</source>
-        <translation>แสดง หากใช้พร็อกซี่ SOCKS5 ที่เป็นค่าเริ่มต้น เพื่อเข้าถึง peer อีกฝ่าย ผ่านทางเน็ตเวิร์กชนิดนี้</translation>
-    </message>
-    <message>
         <source>IPv4</source>
         <translation>IPv4</translation>
     </message>
@@ -769,28 +744,20 @@
         <translation>Tor</translation>
     </message>
     <message>
-        <source>Connect to the Chaucha network through a separate SOCKS5 proxy for Tor hidden services.</source>
-        <translation>เชื่อมต่อกับ เครือข่าย Chaucha ผ่านทาง พร้อกซี่ SOCKS5 แยกต่างหาก สำหรับ Tor เซอร์วิส</translation>
-    </message>
-    <message>
-        <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services:</source>
-        <translation>ใช้ พร็อกซี่ SOCKS5 แยก เพื่อเข้าถึง peers ผ่าน Tor เซอร์วิสซ่อน:</translation>
+        <source>Connect to the Bitcoin network through a separate SOCKS5 proxy for Tor hidden services.</source>
+        <translation>เชื่อมต่อกับ เครือข่าย Bitcoin ผ่านทาง พร้อกซี่ SOCKS5 แยกต่างหาก สำหรับ Tor เซอร์วิส</translation>
     </message>
     <message>
         <source>&amp;Window</source>
         <translation>&amp;วันโดว์</translation>
     </message>
     <message>
-        <source>&amp;Hide the icon from the system tray.</source>
-        <translation>&amp;ซ่อนไอคอน จากเทรย์ระบบ</translation>
-    </message>
-    <message>
-        <source>Hide tray icon</source>
-        <translation>ซ่อนไอคอนเทรย์</translation>
-    </message>
-    <message>
         <source>Show only a tray icon after minimizing the window.</source>
         <translation>แสดงเทรย์ไอคอน หลังมืนิไมส์วินโดว์ เท่านั้น</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>ข้อผิดพลาด</translation>
     </message>
     </context>
 <context>
@@ -812,6 +779,13 @@
         <source>Amount</source>
         <translation>จำนวน</translation>
     </message>
+    <message>
+        <source>%1 and %2</source>
+        <translation>%1 และ %2</translation>
+    </message>
+    </context>
+<context>
+    <name>QObject::QObject</name>
     </context>
 <context>
     <name>QRImageWidget</name>
@@ -849,10 +823,6 @@
     <message>
         <source>Amount:</source>
         <translation>จำนวน:</translation>
-    </message>
-    <message>
-        <source>Priority:</source>
-        <translation>ความเร่งด่วน</translation>
     </message>
     <message>
         <source>Fee:</source>

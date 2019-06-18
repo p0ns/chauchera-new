@@ -41,6 +41,23 @@
         <source>&amp;Delete</source>
         <translation>&amp;amp;मेटाउनुहोस्</translation>
     </message>
+    <message>
+        <source>C&amp;hoose</source>
+        <translation>छनौट गर्नुहोस्...</translation>
+    </message>
+    <message>
+        <source>Sending addresses</source>
+        <translation>पठाउने ठेगानाहरू...</translation>
+    </message>
+    <message>
+        <source>Receiving addresses</source>
+        <translation>प्राप्त गर्ने ठेगानाहरू...</translation>
+    </message>
+    <message>
+        <source>&amp;Copy Address</source>
+        <translation>ठेगाना कपी गर्नुहोस्
+</translation>
+    </message>
     </context>
 <context>
     <name>AddressTableModel</name>
@@ -166,8 +183,8 @@
         <translation>डिस्कमा ब्लकलाई पुनः सूचीकरण गरिँदै...</translation>
     </message>
     <message>
-        <source>Send coins to a Chaucha address</source>
-        <translation>Chaucha ठेगानामा सिक्का पठाउनुहोस्</translation>
+        <source>Send coins to a Bitcoin address</source>
+        <translation>बिटकोइन ठेगानामा सिक्का पठाउनुहोस्</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -192,6 +209,11 @@
         <source>Amount</source>
         <translation>रकम</translation>
     </message>
+    <message>
+        <source>Copy address</source>
+        <translation>ठेगाना कपी गर्नुहोस्
+</translation>
+    </message>
     </context>
 <context>
     <name>EditAddressDialog</name>
@@ -206,16 +228,23 @@
     <name>Intro</name>
     </context>
 <context>
+    <name>ModalOverlay</name>
+    </context>
+<context>
     <name>OpenURIDialog</name>
     </context>
 <context>
     <name>OptionsDialog</name>
+    <message>
+        <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
+        <translation>इन्टरफेसमा र सिक्का पठाउँदा देखिने डिफल्ट उपविभाजन एकाइ चयन गर्नुहोस् ।</translation>
+    </message>
     </context>
 <context>
     <name>OverviewPage</name>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Chaucha network after a connection is established, but this process has not completed yet.</source>
-        <translation>देखाइएको सूचना पूरानो हुन सक्छ । कनेक्सन स्थापित भएपछि, तपाईंको वालेट Chaucha नेटवर्कमा स्वचालित रूपमा समिकरण हुन्छ , तर यो प्रक्रिया अहिले सम्म पूरा भएको छैन ।</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Bitcoin network after a connection is established, but this process has not completed yet.</source>
+        <translation>देखाइएको सूचना पूरानो हुन सक्छ । कनेक्सन स्थापित भएपछि, तपाईंको वालेट बिटकोइन नेटवर्कमा स्वचालित रूपमा समिकरण हुन्छ , तर यो प्रक्रिया अहिले सम्म पूरा भएको छैन ।</translation>
     </message>
     <message>
         <source>Watch-only:</source>
@@ -271,17 +300,20 @@
         <source>Node/Service</source>
         <translation>नोड/सेव</translation>
     </message>
-    <message>
-        <source>Ping Time</source>
-        <translation>पिङ समय</translation>
-    </message>
-</context>
+    </context>
 <context>
     <name>QObject</name>
     <message>
         <source>Amount</source>
         <translation>रकम</translation>
     </message>
+    <message>
+        <source>Enter a Bitcoin address (e.g. %1)</source>
+        <translation>कृपया बिटकोइन ठेगाना प्रवेश गर्नुहोस् (उदाहरण %1)</translation>
+    </message>
+    </context>
+<context>
+    <name>QObject::QObject</name>
     </context>
 <context>
     <name>QRImageWidget</name>
@@ -308,16 +340,28 @@
     </context>
 <context>
     <name>SendCoinsDialog</name>
+    <message>
+        <source>Choose...</source>
+        <translation>छनौट गर्नुहोस्...</translation>
+    </message>
     </context>
 <context>
     <name>SendCoinsEntry</name>
     <message>
-        <source>The fee will be deducted from the amount being sent. The recipient will receive less chauchas than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
-        <translation>पठाइँदै गरेको रकमबाट शुल्क कटौती गरिनेछ । प्राप्तकर्ताले तपाईंले रकम क्षेत्रमा प्रवेष गरेको भन्दा थोरै Chaucha प्राप्त गर्ने छन् । धेरै प्राप्तकर्ता चयन गरिएको छ भने समान रूपमा शुल्क विभाजित गरिनेछ ।</translation>
+        <source>Choose previously used address</source>
+        <translation>पहिला प्रयोग गरिएको ठेगाना प्रयोग गर्नुहोस्</translation>
     </message>
     <message>
-        <source>A message that was attached to the chaucha: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Chaucha network.</source>
-        <translation>Chauchaमा संलग्न गरिएको सन्देश: तपाईंको मध्यस्थको लागि कारोबारको साथमा भण्डारण गरिने URI । नोट: यो सन्देश Chaucha नेटवर्क मार्फत पठाइने छैन ।</translation>
+        <source>The fee will be deducted from the amount being sent. The recipient will receive less bitcoins than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
+        <translation>पठाइँदै गरेको रकमबाट शुल्क कटौती गरिनेछ । प्राप्तकर्ताले तपाईंले रकम क्षेत्रमा प्रवेष गरेको भन्दा थोरै बिटकोइन प्राप्त गर्ने छन् । धेरै प्राप्तकर्ता चयन गरिएको छ भने समान रूपमा शुल्क विभाजित गरिनेछ ।</translation>
+    </message>
+    <message>
+        <source>Enter a label for this address to add it to the list of used addresses</source>
+        <translation>यो ठेगानालाई प्रयोग गरिएको ठेगानाको सूचीमा थप्न एउटा लेबल प्रविष्ट गर्नुहोस्</translation>
+    </message>
+    <message>
+        <source>A message that was attached to the bitcoin: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Bitcoin network.</source>
+        <translation>बिटकोइनमा संलग्न गरिएको सन्देश: तपाईंको मध्यस्थको लागि कारोबारको साथमा भण्डारण गरिने URI । नोट: यो सन्देश बिटकोइन नेटवर्क मार्फत पठाइने छैन ।</translation>
     </message>
     </context>
 <context>
@@ -329,8 +373,20 @@
 <context>
     <name>SignVerifyMessageDialog</name>
     <message>
-        <source>You can sign messages/agreements with your addresses to prove you can receive chauchas sent to them. Be careful not to sign anything vague or random, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
-        <translation>आफ्नो ठेगानामा पठाइएको Chaucha प्राप्त गर्न सकिन्छ भनेर प्रमाणित गर्न तपाईंले ती ठेगानाले सन्देश/सम्झौताहरूमा हस्ताक्षर गर्न सक्नुहुन्छ । फिसिङ आक्रमणले तपाईंलाई छक्याएर अरूका लागि तपाईंको परिचयमा हस्ताक्षर गराउने प्रयास गर्न सक्ने भएकाले अस्पष्ट वा जथाभावीमा हस्ताक्षर गर्दा ध्यान दिनुहोस् । आफू सहमत भएको पूर्ण विस्तृत-कथनमा मात्र हस्ताक्षर गर्नुहोस् ।</translation>
+        <source>You can sign messages/agreements with your addresses to prove you can receive bitcoins sent to them. Be careful not to sign anything vague or random, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
+        <translation>आफ्नो ठेगानामा पठाइएको बिटकोइन प्राप्त गर्न सकिन्छ भनेर प्रमाणित गर्न तपाईंले ती ठेगानाले सन्देश/सम्झौताहरूमा हस्ताक्षर गर्न सक्नुहुन्छ । फिसिङ आक्रमणले तपाईंलाई छक्याएर अरूका लागि तपाईंको परिचयमा हस्ताक्षर गराउने प्रयास गर्न सक्ने भएकाले अस्पष्ट वा जथाभावीमा हस्ताक्षर गर्दा ध्यान दिनुहोस् । आफू सहमत भएको पूर्ण विस्तृत-कथनमा मात्र हस्ताक्षर गर्नुहोस् ।</translation>
+    </message>
+    <message>
+        <source>Choose previously used address</source>
+        <translation>पहिला प्रयोग गरिएको ठेगाना प्रयोग गर्नुहोस्</translation>
+    </message>
+    <message>
+        <source>Copy the current signature to the system clipboard</source>
+        <translation>वर्तमान हस्ताक्षरलाई प्रणाली क्लिपबोर्डमा कपी गर्नुहोस्</translation>
+    </message>
+    <message>
+        <source>Enter the receiver's address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
+        <translation>सन्देश प्रमाणित गर्न, तल दिइएको स्थानमा प्राप्तकर्ता ठेगाना, सन्देश (लाइन ब्रेक, स्पेस, ट्याब, आदि उस्तै गरी कपी गर्ने कुरा सुनिश्चित गर्नुहोस्) र हस्ताक्षर &amp;apos;s प्रविष्ट गर्नुहोस् । बीचमा-मानिसको-आक्रमणबाट बच्न हस्ताक्षर पढ्दा हस्ताक्षर गरिएको सन्देशमा जे छ त्यो भन्दा धेरै कुरामा ध्यान नदिनुहोस् । यो कार्यले हस्ताक्षर गर्ने पक्षले मात्र यो ठेगानाले प्राप्त गर्छ भन्ने कुरा प्रमाणित गर्छ, यसले कुनै पनि कारोबारको प्रेषककर्तालाई प्रमाणित गर्न सक्दैन भन्ने कुरा याद गर्नुहोस्!</translation>
     </message>
     </context>
 <context>
@@ -350,6 +406,11 @@
     </context>
 <context>
     <name>TransactionView</name>
+    <message>
+        <source>Copy address</source>
+        <translation>ठेगाना कपी गर्नुहोस्
+</translation>
+    </message>
     </context>
 <context>
     <name>UnitDisplayStatusBarControl</name>
@@ -362,16 +423,25 @@
     </context>
 <context>
     <name>WalletView</name>
+    <message>
+        <source>&amp;Export</source>
+        <translation>&amp;amp;निर्यात गर्नुहोस्
+</translation>
+    </message>
+    <message>
+        <source>Export the data in the current tab to a file</source>
+        <translation>वर्तमान ट्याबको डाटालाई फाइलमा निर्यात गर्नुहोस्</translation>
+    </message>
     </context>
 <context>
     <name>bitcoin-core</name>
     <message>
-        <source>The block database contains a block which appears to be from the future. This may be due to your computer's date and time being set incorrectly. Only rebuild the block database if you are sure that your computer's date and time are correct</source>
-        <translation>ब्लक डाटाबेसमा भविष्यबाट आए जस्तो देखिने एउटा ब्लक हुन्छ । तपाईंको कम्प्युटरको मिति र समय गलत तरिकाले सेट गरिएकाले यस्तो हुन सक्छ । तपाईं आफ्नो कम्प्युटरको मिति र समय सही छ भनेर पक्का हुनुहुन्छ भने मात्र ब्लक डाटाबेस पुनर्निर्माण गर्नुहोस् ।</translation>
+        <source>Delete all wallet transactions and only recover those parts of the blockchain through -rescan on startup</source>
+        <translation>वालेटको सबै कारोबार मेटाउनुहोस् र -स्टार्टअपको पुनः स्क्यान मार्फत ब्लकचेनका ती भागहरूलाई मात्र पुनः प्राप्त गर्नुहोस्</translation>
     </message>
     <message>
-        <source>This is a pre-release test build - use at your own risk - do not use for mining or merchant applications</source>
-        <translation>यो जारी गर्नु पूर्वको परीक्षण संस्करण हो - आफ्नै जोखिममा प्रयोग गर्नुहोस् - खनन वा व्यापारीक प्रयोगको लागि प्रयोग नगर्नुहोस</translation>
+        <source>The block database contains a block which appears to be from the future. This may be due to your computer's date and time being set incorrectly. Only rebuild the block database if you are sure that your computer's date and time are correct</source>
+        <translation>ब्लक डाटाबेसमा भविष्यबाट आए जस्तो देखिने एउटा ब्लक हुन्छ । तपाईंको कम्प्युटरको मिति र समय गलत तरिकाले सेट गरिएकाले यस्तो हुन सक्छ । तपाईं आफ्नो कम्प्युटरको मिति र समय सही छ भनेर पक्का हुनुहुन्छ भने मात्र ब्लक डाटाबेस पुनर्निर्माण गर्नुहोस् ।</translation>
     </message>
     <message>
         <source>Unable to rewind the database to a pre-fork state. You will need to redownload the blockchain</source>
@@ -380,22 +450,6 @@
     <message>
         <source>Use UPnP to map the listening port (default: 1 when listening and no -proxy)</source>
         <translation>UPnP प्रयोग गरेर सुन्ने पोर्टलाई म्याप गर्नुहोस् (सुन्दा र -प्रोक्सी नहुँदा डिफल्ट: 1)</translation>
-    </message>
-    <message>
-        <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
-        <translation>चेतावनी: नेटवर्क पूरै तरिकाले सहमत छैन जस्तो देखिन्छ! केही खननकर्ताहरूले समस्या भोगिरहेका छन् जस्तो देखिन्छ ।</translation>
-    </message>
-    <message>
-        <source>Warning: We do not appear to fully agree with our peers! You may need to upgrade, or other nodes may need to upgrade.</source>
-        <translation>चेतावनी: हामी हाम्रा सहकर्मीहरूसँग पूर्णतया सहमत छैनौं जस्तो देखिन्छ! तपाईंले अपग्रेड गर्नु पर्ने हुनसक्छ वा अरू नोडहरूले अपग्रेड गर्नु पर्ने हुनसक्छ ।</translation>
-    </message>
-    <message>
-        <source>Whitelist peers connecting from the given netmask or IP address. Can be specified multiple times.</source>
-        <translation>दिइएको नेटमास्क वा ठेगानाबाट कनेक्ट भइरहेका श्वेतसूचीका सहकर्मी ।</translation>
-    </message>
-    <message>
-        <source>You need to rebuild the database using -reindex-chainstate to change -txindex</source>
-        <translation>तपाईंले -चेनस्टेट-पुनः सूचकांकबाट -txindex परिवर्तन प्रयोग गरेर डाटाबेस पुनर्निर्माण गर्नु आवश्यक छ</translation>
     </message>
     <message>
         <source>%s corrupt, salvage failed</source>
@@ -428,10 +482,6 @@
     <message>
         <source>Change index out of range</source>
         <translation>सूचकांक परिवर्तन सीमा भन्दा बाहर</translation>
-    </message>
-    <message>
-        <source>Connect only to the specified node(s)</source>
-        <translation>उल्लेख गरिएको नोड (हरू) मात्र कनेक्ट गर्नुहोस</translation>
     </message>
     <message>
         <source>Connection options:</source>
@@ -482,14 +532,6 @@
         <translation>ब्लक प्रमाणित गरिँदै...</translation>
     </message>
     <message>
-        <source>Verifying wallet...</source>
-        <translation>वालेट प्रमाणित गरिँदै...</translation>
-    </message>
-    <message>
-        <source>Wallet %s resides outside data directory %s</source>
-        <translation>वालेट %s डाटा निर्देशिका %s बाहिरमा बस्छ</translation>
-    </message>
-    <message>
         <source>Wallet debugging/testing options:</source>
         <translation>वालेट डिबगिङ/परीक्षणका विकल्पहरू:</translation>
     </message>
@@ -508,10 +550,6 @@
     <message>
         <source>Bind to given address and whitelist peers connecting to it. Use [host]:port notation for IPv6</source>
         <translation>दिइएको ठेगानामा बाँध्नुहोस् र यसमा कनेक्ट गर्ने सहकर्मीलाई श्वेतसूचीमा राख्नुहोस् । IPv6 लागि [होस्ट]:पोर्ट संकेतन प्रयोग गर्नुहोस्</translation>
-    </message>
-    <message>
-        <source>Bind to given address to listen for JSON-RPC connections. Use [host]:port notation for IPv6. This option can be specified multiple times (default: bind to all interfaces)</source>
-        <translation>JSON-RPC कनेक्सन सुन्नको लागि दिइएको ठेगानामा बाँध्नुहोस् । IPv6 लागि [होस्ट]:पोर्ट संकेतन प्रयोग गर्नुहोस् । यो विकल्पलाई धेरै पटक निर्दिष्ट गर्न सकिन्छ (डिफल्ट: सबै इन्टरफेसमा बाँध्नुहोस्)</translation>
     </message>
     <message>
         <source>Create new files with system default permissions, instead of umask 077 (only effective with disabled wallet functionality)</source>
@@ -546,28 +584,12 @@
         <translation>हामीले रिले र खनन गर्ने डाटा वाहक कारोबारको डाटाको अधिकतम आकार (डिफल्ट: %u)</translation>
     </message>
     <message>
-        <source>Query for peer addresses via DNS lookup, if low on addresses (default: 1 unless -connect)</source>
-        <translation>यदि ठेगाना कम भएमा, DNS लुकअप मार्फत सहकर्मी ठेगानाको जाँच गर्नुहोस  (डिफल्ट: 1 सिवाय -कनेक्ट)</translation>
-    </message>
-    <message>
         <source>Randomize credentials for every proxy connection. This enables Tor stream isolation (default: %u)</source>
         <translation>हरेक प्रोक्सी कनेक्सनका लागि क्रेडिन्सियल अनियमित बनाउनुहोस् । यसले टोर स्ट्रिमको अलगावलाई सक्षम पार्छ (डिफल्ट: %u)</translation>
     </message>
     <message>
-        <source>Set maximum size of high-priority/low-fee transactions in bytes (default: %d)</source>
-        <translation>बाइटमा उच्च-प्राथमिकता/कम शुल्कको कारोबारको अधिकतम आकार सेट गर्नुहोस् (डिफल्ट: %d)</translation>
-    </message>
-    <message>
         <source>The transaction amount is too small to send after the fee has been deducted</source>
         <translation>कारोबार रकम शुल्क कटौती गरेपछि पठाउँदा धेरै नै सानो हुन्छ</translation>
-    </message>
-    <message>
-        <source>This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit &lt;https://www.openssl.org/&gt; and cryptographic software written by Eric Young and UPnP software written by Thomas Bernard.</source>
-        <translation>यो उत्पादन ले OpenSSL टुलकिट &lt;https://www.openssl.org/&gt; को प्रयोगको लागि OpenSSL परियोजनाले विकास गरेको सफ्टवेयर, एरिक यंग द्वारा लिखित क्रिप्टोग्राफिक सफ्टवेयर र थमस बर्नार्डद्वारा लिखित UPnP सफ्टवेयरलाई समावेश गर्छ ।</translation>
-    </message>
-    <message>
-        <source>Use hierarchical deterministic key generation (HD) after BIP32. Only has effect during wallet creation/first start</source>
-        <translation>BIP32 पछि पदानुक्रमित निर्धारक की सिर्जना (HD) प्रयोग गर्नुहोस् ।. केवल वालेट सिर्जना/पहिलो सुरुवातको समयमा प्रभाव पार्छ</translation>
     </message>
     <message>
         <source>Whitelisted peers cannot be DoS banned and their transactions are always relayed, even if they are already in the mempool, useful e.g. for a gateway</source>

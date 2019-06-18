@@ -1,15 +1,15 @@
-// Copyright (c) 2011-2015 The Bitcoin Core developers
+// Copyright (c) 2011-2017 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "bantablemodel.h"
+#include <qt/bantablemodel.h>
 
-#include "clientmodel.h"
-#include "guiconstants.h"
-#include "guiutil.h"
+#include <qt/clientmodel.h>
+#include <qt/guiconstants.h>
+#include <qt/guiutil.h>
 
-#include "sync.h"
-#include "utiltime.h"
+#include <sync.h>
+#include <utiltime.h>
 
 #include <QDebug>
 #include <QList>
@@ -48,22 +48,23 @@ public:
     void refreshBanlist()
     {
         banmap_t banMap;
-        CNode::GetBanned(banMap);
+        if(g_connman)
+            g_connman->GetBanned(banMap);
 
         cachedBanlist.clear();
 #if QT_VERSION >= 0x040700
         cachedBanlist.reserve(banMap.size());
 #endif
-        for (banmap_t::iterator it = banMap.begin(); it != banMap.end(); it++)
+        for (const auto& entry : banMap)
         {
             CCombinedBan banEntry;
-            banEntry.subnet = (*it).first;
-            banEntry.banEntry = (*it).second;
+            banEntry.subnet = entry.first;
+            banEntry.banEntry = entry.second;
             cachedBanlist.append(banEntry);
         }
 
         if (sortColumn >= 0)
-            // sort cachedBanlist (use stable sort to prevent rows jumping around unneceesarily)
+            // sort cachedBanlist (use stable sort to prevent rows jumping around unnecessarily)
             qStableSort(cachedBanlist.begin(), cachedBanlist.end(), BannedNodeLessThan(sortColumn, sortOrder));
     }
 
@@ -180,7 +181,5 @@ void BanTableModel::sort(int column, Qt::SortOrder order)
 
 bool BanTableModel::shouldShow()
 {
-    if (priv->size() > 0)
-        return true;
-    return false;
+    return priv->size() > 0;
 }

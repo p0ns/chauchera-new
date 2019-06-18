@@ -1,4 +1,4 @@
-# Block and Transaction Broadcasting With ZeroMQ
+# Block and Transaction Broadcasting with ZeroMQ
 
 [ZeroMQ](http://zeromq.org/) is a lightweight wrapper around TCP
 connections, inter-process communication, and shared-memory,
@@ -6,7 +6,7 @@ providing various message-oriented semantics such as publish/subscribe,
 request/reply, and push/pull.
 
 The Chauchera daemon can be configured to act as a trusted "border
-router", implementing the chaucha wire protocol and relay, making
+router", implementing the litecoin wire protocol and relay, making
 consensus decisions, maintaining the local blockchain database,
 broadcasting locally generated transactions into the network, and
 providing a queryable RPC interface to interact on a polled basis for
@@ -50,7 +50,7 @@ during the *configure* step of building chauchad:
     $ ./configure --disable-zmq (other options)
 
 To actually enable operation, one must set the appropriate options on
-the commandline or in the configuration file.
+the command line or in the configuration file.
 
 ## Usage
 
@@ -66,16 +66,16 @@ address. The same address can be used in more than one notification.
 
 For instance:
 
-    $ chauchad -zmqpubhashtx=tcp://127.0.0.1:29332 \
+    $ chauchad -zmqpubhashtx=tcp://127.0.0.1:28332 \
                -zmqpubrawtx=ipc:///tmp/chauchad.tx.raw
 
 Each PUB notification has a topic and body, where the header
 corresponds to the notification type. For instance, for the
 notification `-zmqpubhashtx` the topic is `hashtx` (no null
-terminator) and the body is the hexadecimal transaction hash (32
+terminator) and the body is the transaction hash (32
 bytes).
 
-These options can also be provided in chaucha.conf.
+These options can also be provided in litecoin.conf.
 
 ZeroMQ endpoint specifiers for TCP (and others) are documented in the
 [ZeroMQ API](http://api.zeromq.org/4-0:_start).
@@ -102,5 +102,5 @@ retrieve the chain from the last known block to the new tip.
 
 There are several possibilities that ZMQ notification can get lost
 during transmission depending on the communication type your are
-using. Chauchad appends an up-counting sequence number to each
+using. Litecoind appends an up-counting sequence number to each
 notification which allows listeners to detect lost notifications.

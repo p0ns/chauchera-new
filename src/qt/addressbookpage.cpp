@@ -1,32 +1,32 @@
-// Copyright (c) 2011-2015 The Bitcoin Core developers
+// Copyright (c) 2011-2017 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/bitcoin-config.h"
+#include <config/bitcoin-config.h>
 #endif
 
-#include "addressbookpage.h"
-#include "ui_addressbookpage.h"
+#include <qt/addressbookpage.h>
+#include <qt/forms/ui_addressbookpage.h>
 
-#include "addresstablemodel.h"
-#include "bitcoingui.h"
-#include "csvmodelwriter.h"
-#include "editaddressdialog.h"
-#include "guiutil.h"
-#include "platformstyle.h"
+#include <qt/addresstablemodel.h>
+#include <qt/bitcoingui.h>
+#include <qt/csvmodelwriter.h>
+#include <qt/editaddressdialog.h>
+#include <qt/guiutil.h>
+#include <qt/platformstyle.h>
 
 #include <QIcon>
 #include <QMenu>
 #include <QMessageBox>
 #include <QSortFilterProxyModel>
 
-AddressBookPage::AddressBookPage(const PlatformStyle *platformStyle, Mode mode, Tabs tab, QWidget *parent) :
+AddressBookPage::AddressBookPage(const PlatformStyle *platformStyle, Mode _mode, Tabs _tab, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AddressBookPage),
     model(0),
-    mode(mode),
-    tab(tab)
+    mode(_mode),
+    tab(_tab)
 {
     ui->setupUi(this);
 
@@ -107,14 +107,14 @@ AddressBookPage::~AddressBookPage()
     delete ui;
 }
 
-void AddressBookPage::setModel(AddressTableModel *model)
+void AddressBookPage::setModel(AddressTableModel *_model)
 {
-    this->model = model;
-    if(!model)
+    this->model = _model;
+    if(!_model)
         return;
 
     proxyModel = new QSortFilterProxyModel(this);
-    proxyModel->setSourceModel(model);
+    proxyModel->setSourceModel(_model);
     proxyModel->setDynamicSortFilter(true);
     proxyModel->setSortCaseSensitivity(Qt::CaseInsensitive);
     proxyModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
@@ -147,7 +147,7 @@ void AddressBookPage::setModel(AddressTableModel *model)
         this, SLOT(selectionChanged()));
 
     // Select row for newly created address
-    connect(model, SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(selectNewAddress(QModelIndex,int,int)));
+    connect(_model, SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(selectNewAddress(QModelIndex,int,int)));
 
     selectionChanged();
 }
@@ -254,7 +254,7 @@ void AddressBookPage::done(int retval)
     // Figure out which address was selected, and return it
     QModelIndexList indexes = table->selectionModel()->selectedRows(AddressTableModel::Address);
 
-    Q_FOREACH (const QModelIndex& index, indexes) {
+    for (const QModelIndex& index : indexes) {
         QVariant address = table->model()->data(index);
         returnValue = address.toString();
     }
@@ -273,7 +273,7 @@ void AddressBookPage::on_exportButton_clicked()
     // CSV is currently the only supported format
     QString filename = GUIUtil::getSaveFileName(this,
         tr("Export Address List"), QString(),
-        tr("Comma separated file (*.csv)"), NULL);
+        tr("Comma separated file (*.csv)"), nullptr);
 
     if (filename.isNull())
         return;

@@ -1,5 +1,5 @@
 ---
-name: "chaucha-linux-0.13"
+name: "litecoin-linux-0.16"
 enable_cache: true
 suites:
 - "trusty"
@@ -28,8 +28,8 @@ packages:
 - "ca-certificates"
 - "python"
 remotes:
-- "url": "https://github.com/proyecto-chaucha/chauchera.git"
-  "dir": "chaucha"
+- "url": "https://github.com/litecoin-project/litecoin.git"
+  "dir": "litecoin"
 files: []
 script: |
 
@@ -113,7 +113,7 @@ script: |
   chmod +x ${WRAP_DIR}/${prog}
   done
 
-  cd chaucha
+  cd litecoin
   BASEPREFIX=`pwd`/depends
   # Build dependencies for each host
   for i in $HOSTS; do
@@ -135,14 +135,17 @@ script: |
   ./autogen.sh
   CONFIG_SITE=${BASEPREFIX}/`echo "${HOSTS}" | awk '{print $1;}'`/share/config.site ./configure --prefix=/
   make dist
-  SOURCEDIST=`echo chaucha-*.tar.gz`
+  SOURCEDIST=`echo litecoin-*.tar.gz`
   DISTNAME=`echo ${SOURCEDIST} | sed 's/.tar.*//'`
   # Correct tar file order
   mkdir -p temp
   pushd temp
   tar xf ../$SOURCEDIST
-  find chaucha-* | sort | tar --no-recursion --mode='u+rw,go+r-w,a+X' --owner=0 --group=0 -c -T - | gzip -9n > ../$SOURCEDIST
+  find litecoin-* | sort | tar --no-recursion --mode='u+rw,go+r-w,a+X' --owner=0 --group=0 -c -T - | gzip -9n > ../$SOURCEDIST
   popd
+
+  # Workaround for tarball not building with the bare tag version (prep)
+  make -C src obj/build.h
 
   ORIGPATH="$PATH"
   # Extract the release tarball into a dir for each host and build
@@ -153,6 +156,11 @@ script: |
     INSTALLPATH=`pwd`/installed/${DISTNAME}
     mkdir -p ${INSTALLPATH}
     tar --strip-components=1 -xf ../$SOURCEDIST
+
+    # Workaround for tarball not building with the bare tag version
+    echo '#!/bin/true' >share/genbuild.sh
+    mkdir src/obj
+    cp ../src/obj/build.h src/obj/
 
     CONFIG_SITE=${BASEPREFIX}/${i}/share/config.site ./configure --prefix=/ --disable-ccache --disable-maintainer-mode --disable-dependency-tracking ${CONFIGFLAGS} CFLAGS="${HOST_CFLAGS}" CXXFLAGS="${HOST_CXXFLAGS}" LDFLAGS="${HOST_LDFLAGS}"
     make ${MAKEOPTS}
@@ -174,13 +182,13 @@ script: |
     find . -name "lib*.a" -delete
     rm -rf ${DISTNAME}/lib/pkgconfig
  
-    # Chaucha: Delete libbitcoin from binary distribution for now, see #192
+    # Litecoin: Delete libbitcoin from binary distribution for now, see #192
     rm -rf ${DISTNAME}/lib/
     rm -rf ${DISTNAME}/include/
-    # Chaucha: ends
+    # Litecoin: ends
  
     find ${DISTNAME}/bin -type f -executable -exec ../contrib/devtools/split-debug.sh {} {} {}.dbg \;
-    #find ${DISTNAME}/lib -type f -exec ../contrib/devtools/split-debug.sh {} {} {}.dbg \; # Chaucha: see issue 192
+    #find ${DISTNAME}/lib -type f -exec ../contrib/devtools/split-debug.sh {} {} {}.dbg \; # Litecoin: see issue 192
     find ${DISTNAME} -not -name "*.dbg" | sort | tar --no-recursion --mode='u+rw,go+r-w,a+X' --owner=0 --group=0 -c -T - | gzip -9n > ${OUTDIR}/${DISTNAME}-${i}.tar.gz
     find ${DISTNAME} -name "*.dbg" | sort | tar --no-recursion --mode='u+rw,go+r-w,a+X' --owner=0 --group=0 -c -T - | gzip -9n > ${OUTDIR}/${DISTNAME}-${i}-debug.tar.gz
     cd ../../

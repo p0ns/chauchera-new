@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Copyright (c) 2012 The Bitcoin Core developers
+# Copyright (c) 2012-2017 The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 '''
@@ -13,15 +13,17 @@ Usage:
 # Released under MIT License
 import os
 from itertools import islice
-from base58 import b58encode, b58decode, b58encode_chk, b58decode_chk, b58chars
+from base58 import b58encode_chk, b58decode_chk, b58chars
 import random
 from binascii import b2a_hex
 
 # key types
 PUBKEY_ADDRESS = 48
 SCRIPT_ADDRESS = 5
+SCRIPT_ADDRESS2 = 50
 PUBKEY_ADDRESS_TEST = 111
 SCRIPT_ADDRESS_TEST = 196
+SCRIPT_ADDRESS_TEST2 = 58
 PRIVKEY = 176
 PRIVKEY_TEST = 239
 
@@ -32,8 +34,10 @@ templates = [
   #                                  None = N/A
   ((PUBKEY_ADDRESS,),      20, (),   (False, False, 'pubkey', None)),
   ((SCRIPT_ADDRESS,),      20, (),   (False, False, 'script',  None)),
+  ((SCRIPT_ADDRESS2,),      20, (),   (False, False, 'script',  None)),
   ((PUBKEY_ADDRESS_TEST,), 20, (),   (False, True,  'pubkey', None)),
   ((SCRIPT_ADDRESS_TEST,), 20, (),   (False, True,  'script',  None)),
+  ((SCRIPT_ADDRESS_TEST2,), 20, (),   (False, True,  'script',  None)),
   ((PRIVKEY,),             32, (),   (True,  False, None,  False)),
   ((PRIVKEY,),             32, (1,), (True,  False, None,  True)),
   ((PRIVKEY_TEST,),        32, (),   (True,  True,  None,  False)),
@@ -45,7 +49,6 @@ def is_valid(v):
     result = b58decode_chk(v)
     if result is None:
         return False
-    valid = False
     for template in templates:
         prefix = str(bytearray(template[0]))
         suffix = str(bytearray(template[2]))

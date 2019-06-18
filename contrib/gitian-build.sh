@@ -6,7 +6,6 @@
 sign=false
 verify=false
 build=false
-setupenv=false
 
 # Systems to build
 linux=true
@@ -18,8 +17,8 @@ SIGNER=
 VERSION=
 commit=false
 url=https://github.com/proyecto-chaucha/chauchera
-proc=2
-mem=2000
+proc=4
+mem=3000
 lxc=true
 osslTarUrl=http://downloads.sourceforge.net/project/osslsigncode/osslsigncode/osslsigncode-1.7.1.tar.gz
 osslPatchUrl=https://bitcoincore.org/cfields/osslsigncode-Backports-to-1.7.1.patch
@@ -31,7 +30,7 @@ commitFiles=true
 read -d '' usage <<- EOF
 Usage: $scriptName [-c|u|v|b|s|B|o|h|j|m|] signer version
 
-Run this script from the directory containing the bitcoin, gitian-builder, gitian.sigs.ltc, and chaucha-detached-sigs.
+Run this script from the directory containing the litecoin, gitian-builder, gitian.sigs.ltc, and chauchera-detached-sigs.
 
 Arguments:
 signer          GPG signer to sign each build assert file
@@ -41,14 +40,14 @@ Options:
 -c|--commit	Indicate that the version argument is for a commit or branch
 -u|--url	Specify the URL of the repository. Default is https://github.com/proyecto-chaucha/chauchera
 -v|--verify 	Verify the gitian build
--b|--build	Do a gitiain build
+-b|--build	Do a gitian build
 -s|--sign	Make signed binaries for Windows and Mac OSX
 -B|--buildsign	Build both signed and unsigned binaries
 -o|--os		Specify which Operating Systems the build is for. Default is lwx. l for linux, w for windows, x for osx
 -j		Number of processes to use. Default 2
 -m		Memory to allocate in MiB. Default 2000
 --kvm           Use KVM instead of LXC
---setup         Setup the gitian building environment. Uses KVM. If you want to use lxc, use the --lxc option. Only works on Debian-based systems (Ubuntu, Debian)
+--setup         Set up the Gitian building environment. Uses KVM. If you want to use lxc, use the --lxc option. Only works on Debian-based systems (Ubuntu, Debian)
 --detach-sign   Create the assert file for detached signing. Will not commit anything.
 --no-commit     Do not commit anything to git
 -h|--help	Print this help message
@@ -106,7 +105,7 @@ while :; do
 		fi
 		shift
 	    else
-		echo 'Error: "--os" requires an argument containing an l (for linux), w (for windows), or x (for Mac OSX)\n'
+		echo 'Error: "--os" requires an argument containing an l (for linux), w (for windows), or x (for Mac OSX)'
 		exit 1
 	    fi
 	    ;;
@@ -179,8 +178,6 @@ done
 if [[ $lxc = true ]]
 then
     export USE_LXC=1
-    export LXC_BRIDGE=lxcbr0
-    sudo ifconfig lxcbr0 up 10.0.2.2
 fi
 
 # Check for OSX SDK
@@ -191,7 +188,7 @@ then
 fi
 
 # Get signer
-if [[ -n"$1" ]]
+if [[ -n "$1" ]]
 then
     SIGNER=$1
     shift
@@ -232,8 +229,8 @@ echo ${COMMIT}
 if [[ $setup = true ]]
 then
     sudo apt-get install ruby apache2 git apt-cacher-ng python-vm-builder qemu-kvm qemu-utils
-    git clone https://github.com/chaucha-project/gitian.sigs.ltc.git
-    git clone https://github.com/proyecto-chaucha/chauchera-detached-sigs.git
+    git clone https://github.com/litecoin-project/gitian.sigs.ltc.git
+    git clone https://github.com/litecoin-project/litecoin-detached-sigs.git
     git clone https://github.com/devrandom/gitian-builder.git
     pushd ./gitian-builder
     if [[ -n "$USE_LXC" ]]
@@ -247,7 +244,7 @@ then
 fi
 
 # Set up build
-pushd ./chaucha
+pushd ./chauchera
 git fetch
 git checkout ${COMMIT}
 popd
@@ -256,7 +253,7 @@ popd
 if [[ $build = true ]]
 then
 	# Make output folder
-	mkdir -p ./chaucha-binaries/${VERSION}
+	mkdir -p ./chauchera-binaries/${VERSION}
 	
 	# Build Dependencies
 	echo ""
@@ -266,7 +263,7 @@ then
 	mkdir -p inputs
 	wget -N -P inputs $osslPatchUrl
 	wget -N -P inputs $osslTarUrl
-	make -C ../chaucha/depends download SOURCES_PATH=`pwd`/cache/common
+	make -C ../chauchera/depends download SOURCES_PATH=`pwd`/cache/common
 
 	# Linux
 	if [[ $linux = true ]]
@@ -274,9 +271,9 @@ then
             echo ""
 	    echo "Compiling ${VERSION} Linux"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit chaucha=${COMMIT} --url chaucha=${url} ../chaucha/contrib/gitian-descriptors/gitian-linux.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs.ltc/ ../chaucha/contrib/gitian-descriptors/gitian-linux.yml
-	    mv build/out/chaucha-*.tar.gz build/out/src/chaucha-*.tar.gz ../chaucha-binaries/${VERSION}
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit chauchera=${COMMIT} --url chauchera=${url} ../chauchera/contrib/gitian-descriptors/gitian-linux.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs.ltc/ ../chauchera/contrib/gitian-descriptors/gitian-linux.yml
+	    mv build/out/chauchera-*.tar.gz build/out/src/chauchera-*.tar.gz ../chauchera-binaries/${VERSION}
 	fi
 	# Windows
 	if [[ $windows = true ]]
@@ -284,10 +281,10 @@ then
 	    echo ""
 	    echo "Compiling ${VERSION} Windows"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit chaucha=${COMMIT} --url chaucha=${url} ../chaucha/contrib/gitian-descriptors/gitian-win.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs.ltc/ ../chaucha/contrib/gitian-descriptors/gitian-win.yml
-	    mv build/out/chaucha-*-win-unsigned.tar.gz inputs/chaucha-win-unsigned.tar.gz
-	    mv build/out/chaucha-*.zip build/out/chaucha-*.exe ../chaucha-binaries/${VERSION}
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit chauchera=${COMMIT} --url chauchera=${url} ../chauchera/contrib/gitian-descriptors/gitian-win.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs.ltc/ ../chauchera/contrib/gitian-descriptors/gitian-win.yml
+	    mv build/out/chauchera-*-win-unsigned.tar.gz inputs/chauchera-win-unsigned.tar.gz
+	    mv build/out/chauchera-*.zip build/out/chauchera-*.exe ../chauchera-binaries/${VERSION}
 	fi
 	# Mac OSX
 	if [[ $osx = true ]]
@@ -295,20 +292,20 @@ then
 	    echo ""
 	    echo "Compiling ${VERSION} Mac OSX"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit chaucha=${COMMIT} --url chaucha=${url} ../chaucha/contrib/gitian-descriptors/gitian-osx.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs.ltc/ ../chaucha/contrib/gitian-descriptors/gitian-osx.yml
-	    mv build/out/chaucha-*-osx-unsigned.tar.gz inputs/chaucha-osx-unsigned.tar.gz
-	    mv build/out/chaucha-*.tar.gz build/out/chaucha-*.dmg ../chaucha-binaries/${VERSION}
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit chauchera=${COMMIT} --url chauchera=${url} ../chauchera/contrib/gitian-descriptors/gitian-osx.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs.ltc/ ../chauchera/contrib/gitian-descriptors/gitian-osx.yml
+	    mv build/out/chauchera-*-osx-unsigned.tar.gz inputs/chauchera-osx-unsigned.tar.gz
+	    mv build/out/chauchera-*.tar.gz build/out/chauchera-*.dmg ../chauchera-binaries/${VERSION}
 	fi
 	popd
 
         if [[ $commitFiles = true ]]
         then
-	    # Commit to gitian.sigs.ltc repo
+	    # Commit to gitian.sigs repo
             echo ""
             echo "Committing ${VERSION} Unsigned Sigs"
             echo ""
-            pushd gitian.sigs.ltc
+            pushd gitian.sigs
             git add ${VERSION}-linux/${SIGNER}
             git add ${VERSION}-win-unsigned/${SIGNER}
             git add ${VERSION}-osx-unsigned/${SIGNER}
@@ -325,27 +322,27 @@ then
 	echo ""
 	echo "Verifying v${VERSION} Linux"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-linux ../chaucha/contrib/gitian-descriptors/gitian-linux.yml
+	./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-linux ../chauchera/contrib/gitian-descriptors/gitian-linux.yml
 	# Windows
 	echo ""
 	echo "Verifying v${VERSION} Windows"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-win-unsigned ../chaucha/contrib/gitian-descriptors/gitian-win.yml
+	./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-win-unsigned ../chauchera/contrib/gitian-descriptors/gitian-win.yml
 	# Mac OSX	
 	echo ""
 	echo "Verifying v${VERSION} Mac OSX"
 	echo ""	
-	./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-osx-unsigned ../chaucha/contrib/gitian-descriptors/gitian-osx.yml
+	./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-osx-unsigned ../chauchera/contrib/gitian-descriptors/gitian-osx.yml
 	# Signed Windows
 	echo ""
 	echo "Verifying v${VERSION} Signed Windows"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-osx-signed ../chaucha/contrib/gitian-descriptors/gitian-osx-signer.yml
+	./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-osx-signed ../chauchera/contrib/gitian-descriptors/gitian-osx-signer.yml
 	# Signed Mac OSX
 	echo ""
 	echo "Verifying v${VERSION} Signed Mac OSX"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-osx-signed ../chaucha/contrib/gitian-descriptors/gitian-osx-signer.yml	
+	./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-osx-signed ../chauchera/contrib/gitian-descriptors/gitian-osx-signer.yml	
 	popd
 fi
 
@@ -360,10 +357,10 @@ then
 	    echo ""
 	    echo "Signing ${VERSION} Windows"
 	    echo ""
-	    ./bin/gbuild -i --commit signature=${COMMIT} ../chaucha/contrib/gitian-descriptors/gitian-win-signer.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs.ltc/ ../chaucha/contrib/gitian-descriptors/gitian-win-signer.yml
-	    mv build/out/chaucha-*win64-setup.exe ../chaucha-binaries/${VERSION}
-	    mv build/out/chaucha-*win32-setup.exe ../chaucha-binaries/${VERSION}
+	    ./bin/gbuild -i --commit signature=${COMMIT} ../chauchera/contrib/gitian-descriptors/gitian-win-signer.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs.ltc/ ../chauchera/contrib/gitian-descriptors/gitian-win-signer.yml
+	    mv build/out/chauchera-*win64-setup.exe ../chauchera-binaries/${VERSION}
+	    mv build/out/chauchera-*win32-setup.exe ../chauchera-binaries/${VERSION}
 	fi
 	# Sign Mac OSX
 	if [[ $osx = true ]]
@@ -371,16 +368,16 @@ then
 	    echo ""
 	    echo "Signing ${VERSION} Mac OSX"
 	    echo ""
-	    ./bin/gbuild -i --commit signature=${COMMIT} ../chaucha/contrib/gitian-descriptors/gitian-osx-signer.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs.ltc/ ../chaucha/contrib/gitian-descriptors/gitian-osx-signer.yml
-	    mv build/out/chaucha-osx-signed.dmg ../chaucha-binaries/${VERSION}/chaucha-${VERSION}-osx.dmg
+	    ./bin/gbuild -i --commit signature=${COMMIT} ../chauchera/contrib/gitian-descriptors/gitian-osx-signer.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs.ltc/ ../chauchera/contrib/gitian-descriptors/gitian-osx-signer.yml
+	    mv build/out/chauchera-osx-signed.dmg ../chauchera-binaries/${VERSION}/chauchera-${VERSION}-osx.dmg
 	fi
 	popd
 
         if [[ $commitFiles = true ]]
         then
             # Commit Sigs
-            pushd gitian.sigs.ltc
+            pushd gitian.sigs
             echo ""
             echo "Committing ${VERSION} Signed Sigs"
             echo ""

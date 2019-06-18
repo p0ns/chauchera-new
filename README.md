@@ -14,7 +14,7 @@ Wallet oficial del [Proyecto Chaucha](http://chaucha.cl).
 
 ## ¿Qué es esto?
 
-*Chauchera* es un cliente modificado desde el código fuente de [Litecoin](https://litecoin.org/) (0.13.3), que permite a las personas comunicarse con la red del **Proyecto Chaucha**.
+*Chauchera* es un cliente modificado desde el código fuente de [Litecoin](https://litecoin.org/) (0.16.3), que permite a las personas comunicarse con la red del **Proyecto Chaucha**.
 
 Con la *Chauchera* podrás enviar y recibir *Chauchas* (`CHA`), que es la criptomoneda utilizada dentro de la red.
 
@@ -28,10 +28,10 @@ En Chile es común llamarle "*chauchera*" a un pequeño bolso utilizado para alm
 - Con el primer bloque se generaron **50.000 CHA** para el financiamiento del proyecto.
 - Desde el bloque `#1` al `#2833` la recompensa fue de **10 CHA** por bloque.
 - A partir del bloque `#2834` hasta el bloque `#50000` la recompensa es variable.
-- Desde el bloque `#50000` en adelante, la recompensa es de **10 CHA** por bloque, dividido en 2 cada 2 años aproximadamente.
-- Se recalcula la dificultad de minado cada bloque desde el bloque 147000 dinámicamente usando DGW.
+- Desde el bloque `#50,000` en adelante, la recompensa es de **10 CHA** por bloque, dividido a la mitad cada 2 años aproximadamente.
+- Desde el bloque `#127,000` en adelante, se incluyó el algoritmo Dark Gravity Wave para el cálculo de dificultad.
+- Desde el bloque `#220,000` en adelante, la recompensa es de **1.5 CHA** por bloque, dividido a la mitad cada 5 años aproximadamente.
 - El máximo de *Chauchas* que existirán en la red es de `10.800.000 CHA`.
-- La propuesta PMC1 definió la generación en 1.5 CHA y el Halving en 5 años desde el bloque `#220000`
 - La Red *Chaucha* está basada en [Litecoin](https://litecoin.org/).
 
 

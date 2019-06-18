@@ -16,8 +16,8 @@ BEGIN
     BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
-            VALUE "CompanyName",        "Chaucha"
-            VALUE "FileDescription",    "chaucha-tx (CLI Chaucha transaction editor utility)"
+            VALUE "CompanyName",        "Litecoin"
+            VALUE "FileDescription",    "chaucha-tx (CLI Litecoin transaction editor utility)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
             VALUE "InternalName",       "chaucha-tx"
             VALUE "LegalCopyright",     COPYRIGHT_STR
