@@ -1271,13 +1271,6 @@ public:
     bool operator()(const CScriptID &scriptID) {
         CScript subscript;
         if (pwallet && pwallet->GetCScript(scriptID, subscript)) {
-            int witnessversion;
-            std::vector<unsigned char> witprog;
-            if (subscript.IsWitnessProgram(witnessversion, witprog)) {
-                ExtractDestination(subscript, result);
-                already_witness = true;
-                return true;
-            }
             CScript witscript = GetScriptForWitness(subscript);
             if (!IsSolvable(*pwallet, witscript)) {
                 return false;
