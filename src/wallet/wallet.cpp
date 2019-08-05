@@ -851,7 +851,6 @@ bool CWallet::GetAccountDestination(CTxDestination &dest, std::string strAccount
         if (!GetKeyFromPool(account.vchPubKey, false))
             return false;
 
-        LearnRelatedScripts(account.vchPubKey, g_address_type);
         dest = GetDestinationForKey(account.vchPubKey, g_address_type);
         SetAddressBook(dest, strAccount, "receive");
         walletdb.WriteAccount(strAccount, account);
@@ -2748,7 +2747,6 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletT
 
                 const OutputType change_type = TransactionChangeType(coin_control.change_type, vecSend);
 
-                LearnRelatedScripts(vchPubKey, change_type);
                 scriptChange = GetScriptForDestination(GetDestinationForKey(vchPubKey, change_type));
             }
             CTxOut change_prototype_txout(0, scriptChange);
@@ -3638,7 +3636,6 @@ void CWallet::MarkReserveKeysAsUsed(int64_t keypool_id)
         if (walletdb.ReadPool(index, keypool)) { //TODO: This should be unnecessary
             m_pool_key_to_index.erase(keypool.vchPubKey.GetID());
         }
-        LearnAllRelatedScripts(keypool.vchPubKey);
         walletdb.ErasePool(index);
         LogPrintf("keypool index %d removed\n", index);
         it = setKeyPool->erase(it);
@@ -4170,17 +4167,6 @@ const std::string& FormatOutputType(OutputType type)
     case OUTPUT_TYPE_LEGACY: return OUTPUT_TYPE_STRING_LEGACY;
     default: assert(false);
     }
-}
-
-void CWallet::LearnRelatedScripts(const CPubKey& key, OutputType type)
-{
-    strprintf("WAT");
-}
-
-void CWallet::LearnAllRelatedScripts(const CPubKey& key)
-{
-    // OUTPUT_TYPE_P2SH_SEGWIT always adds all necessary scripts for all types.
-    LearnRelatedScripts(key, OUTPUT_TYPE_LEGACY);
 }
 
 CTxDestination GetDestinationForKey(const CPubKey& key, OutputType type)
