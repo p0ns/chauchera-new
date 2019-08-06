@@ -1247,57 +1247,6 @@ UniValue addmultisigaddress(const JSONRPCRequest& request)
     return result;
 }
 
-class Witnessifier : public boost::static_visitor<bool>
-{
-public:
-    CWallet * const pwallet;
-    CTxDestination result;
-    bool already_witness;
-
-    explicit Witnessifier(CWallet *_pwallet) : pwallet(_pwallet), already_witness(false) {}
-
-    bool operator()(const CKeyID &keyID) {
-        if (pwallet) {
-            CScript basescript = GetScriptForDestination(keyID);
-            CScript witscript = GetScriptForWitness(basescript);
-            if (!IsSolvable(*pwallet, witscript)) {
-                return false;
-            }
-            return ExtractDestination(witscript, result);
-        }
-        return false;
-    }
-
-    bool operator()(const CScriptID &scriptID) {
-        CScript subscript;
-        if (pwallet && pwallet->GetCScript(scriptID, subscript)) {
-            CScript witscript = GetScriptForWitness(subscript);
-            if (!IsSolvable(*pwallet, witscript)) {
-                return false;
-            }
-            return ExtractDestination(witscript, result);
-        }
-        return false;
-    }
-
-    bool operator()(const WitnessV0KeyHash& id)
-    {
-        already_witness = true;
-        result = id;
-        return true;
-    }
-
-    bool operator()(const WitnessV0ScriptHash& id)
-    {
-        already_witness = true;
-        result = id;
-        return true;
-    }
-
-    template<typename T>
-    bool operator()(const T& dest) { return false; }
-};
-
 struct tallyitem
 {
     CAmount nAmount;

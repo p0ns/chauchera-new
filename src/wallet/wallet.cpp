@@ -112,24 +112,6 @@ public:
             Process(script);
     }
 
-    void operator()(const WitnessV0ScriptHash& scriptID)
-    {
-        CScriptID id;
-        CRIPEMD160().Write(scriptID.begin(), 32).Finalize(id.begin());
-        CScript script;
-        if (keystore.GetCScript(id, script)) {
-            Process(script);
-        }
-    }
-
-    void operator()(const WitnessV0KeyHash& keyid)
-    {
-        CKeyID id(keyid);
-        if (keystore.HaveKey(id)) {
-            vKeys.push_back(id);
-        }
-    }
-
     template<typename X>
     void operator()(const X &none) {}
 };
@@ -4180,13 +4162,7 @@ CTxDestination GetDestinationForKey(const CPubKey& key, OutputType type)
 std::vector<CTxDestination> GetAllDestinationsForKey(const CPubKey& key)
 {
     CKeyID keyid = key.GetID();
-    if (key.IsCompressed()) {
-        CTxDestination segwit = WitnessV0KeyHash(keyid);
-        CTxDestination p2sh = CScriptID(GetScriptForDestination(segwit));
-        return std::vector<CTxDestination>{std::move(keyid), std::move(p2sh), std::move(segwit)};
-    } else {
-        return std::vector<CTxDestination>{std::move(keyid)};
-    }
+    return std::vector<CTxDestination>{std::move(keyid)};
 }
 
 CTxDestination CWallet::AddAndGetDestinationForScript(const CScript& script, OutputType type)

@@ -235,12 +235,6 @@ public:
         return EncodeBase58Check(data);
     }
 
-    std::string operator()(const WitnessV0KeyHash& id) const { return {}; }
-
-    std::string operator()(const WitnessV0ScriptHash& id) const { return {}; }
-
-    std::string operator()(const WitnessUnknown& id) const { return {}; }
-
     std::string operator()(const CNoDestination& no) const { return {}; }
 };
 

@@ -105,47 +105,6 @@ public:
         }
         return obj;
     }
-
-    UniValue operator()(const WitnessV0KeyHash& id) const
-    {
-        UniValue obj(UniValue::VOBJ);
-        CPubKey pubkey;
-        obj.push_back(Pair("isscript", false));
-        obj.push_back(Pair("iswitness", true));
-        obj.push_back(Pair("witness_version", 0));
-        obj.push_back(Pair("witness_program", HexStr(id.begin(), id.end())));
-        if (pwallet && pwallet->GetPubKey(CKeyID(id), pubkey)) {
-            obj.push_back(Pair("pubkey", HexStr(pubkey)));
-        }
-        return obj;
-    }
-
-    UniValue operator()(const WitnessV0ScriptHash& id) const
-    {
-        UniValue obj(UniValue::VOBJ);
-        CScript subscript;
-        obj.push_back(Pair("isscript", true));
-        obj.push_back(Pair("iswitness", true));
-        obj.push_back(Pair("witness_version", 0));
-        obj.push_back(Pair("witness_program", HexStr(id.begin(), id.end())));
-        CRIPEMD160 hasher;
-        uint160 hash;
-        hasher.Write(id.begin(), 32).Finalize(hash.begin());
-        if (pwallet && pwallet->GetCScript(CScriptID(hash), subscript)) {
-            ProcessSubScript(subscript, obj);
-        }
-        return obj;
-    }
-
-    UniValue operator()(const WitnessUnknown& id) const
-    {
-        UniValue obj(UniValue::VOBJ);
-        CScript subscript;
-        obj.push_back(Pair("iswitness", true));
-        obj.push_back(Pair("witness_version", (int)id.version));
-        obj.push_back(Pair("witness_program", HexStr(id.program, id.program + id.length)));
-        return obj;
-    }
 };
 #endif
 
