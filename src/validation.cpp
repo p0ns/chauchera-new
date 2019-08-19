@@ -3967,7 +3967,7 @@ bool CChainState::RewindBlockIndex(const CChainParams& params)
     // Note that during -reindex-chainstate we are called with an empty chainActive!
     int nHeight = 1;
     while (nHeight <= chainActive.Height()) {
-        if (!(chainActive[nHeight]->nStatus & BLOCK_OPT_WITNESS)) {
+        if (!(chainActive[nHeight]->nStatus)) {
             break;
         }
         nHeight++;
