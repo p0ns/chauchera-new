@@ -2169,18 +2169,7 @@ void static UpdateTip(const CBlockIndex *pindexNew, const CChainParams& chainPar
     {
         int nUpgraded = 0;
         const CBlockIndex* pindex = pindexNew;
-        for (int bit = 0; bit < VERSIONBITS_NUM_BITS; bit++) {
-            WarningBitsConditionChecker checker(bit);
-            ThresholdState state = checker.GetStateFor(pindex, chainParams.GetConsensus(), warningcache[bit]);
-            if (state == THRESHOLD_ACTIVE || state == THRESHOLD_LOCKED_IN) {
-                const std::string strWarning = strprintf(_("Warning: unknown new rules activated (versionbit %i)"), bit);
-                if (state == THRESHOLD_ACTIVE) {
-                    DoWarning(strWarning);
-                } else {
-                    warningMessages.push_back(strWarning);
-                }
-            }
-        }
+
         // Check the version of the last 100 blocks to see if we need to upgrade:
         for (int i = 0; i < 100 && pindex != nullptr; i++)
         {
@@ -2198,13 +2187,18 @@ void static UpdateTip(const CBlockIndex *pindexNew, const CChainParams& chainPar
             DoWarning(strWarning);
         }
     }
-    LogPrintf("%s: new best=%s height=%d version=0x%08x log2_work=%.8g tx=%lu date='%s' progress=%f cache=%.1fMiB(%utxo)", __func__,
-      pindexNew->GetBlockHash().ToString(), pindexNew->nHeight, pindexNew->nVersion,
-      log(pindexNew->nChainWork.getdouble())/log(2.0), (unsigned long)pindexNew->nChainTx,
-      DateTimeStrFormat("%Y-%m-%d %H:%M:%S", pindexNew->GetBlockTime()),
-      GuessVerificationProgress(chainParams.TxData(), pindexNew), pcoinsTip->DynamicMemoryUsage() * (1.0 / (1<<20)), pcoinsTip->GetCacheSize());
+    LogPrintf("%s: new best=%s height=%d version=0x%08x tx=%lu date='%s' cache=%.1fMiB(%utxo)", __func__,
+        pindexNew->GetBlockHash().ToString(),
+        pindexNew->nHeight, pindexNew->nVersion,
+        (unsigned long)pindexNew->nChainTx,
+        DateTimeStrFormat("%Y-%m-%d %H:%M:%S", pindexNew->GetBlockTime()),
+        pcoinsTip->DynamicMemoryUsage() * (1.0 / (1<<20)),
+        pcoinsTip->GetCacheSize()
+    );
+
     if (!warningMessages.empty())
         LogPrintf(" warning='%s'", boost::algorithm::join(warningMessages, ", "));
+
     LogPrintf("\n");
 
 }
