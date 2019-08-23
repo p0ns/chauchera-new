@@ -81,19 +81,6 @@ bool static IsCompressedOrUncompressedPubKey(const valtype &vchPubKey) {
     }
     return true;
 }
-
-bool static IsCompressedPubKey(const valtype &vchPubKey) {
-    if (vchPubKey.size() != 33) {
-        //  Non-canonical public key: invalid length for compressed key
-        return false;
-    }
-    if (vchPubKey[0] != 0x02 && vchPubKey[0] != 0x03) {
-        //  Non-canonical public key: invalid prefix for compressed key
-        return false;
-    }
-    return true;
-}
-
 /**
  * A canonical signature exists of: <30> <total len> <02> <len R> <R> <02> <len S> <S> <hashtype>
  * Where R and S are not negative (their first byte has its highest bit not set), and not
@@ -219,7 +206,7 @@ bool static CheckPubKeyEncoding(const valtype &vchPubKey, unsigned int flags, co
         return set_error(serror, SCRIPT_ERR_PUBKEYTYPE);
     }
     // Only compressed keys are accepted in segwit
-    if ((flags & SCRIPT_VERIFY_WITNESS_PUBKEYTYPE) != 0 && sigversion == SIGVERSION_WITNESS_V0 && !IsCompressedPubKey(vchPubKey)) {
+    if (sigversion == SIGVERSION_WITNESS_V0) {
         return set_error(serror, SCRIPT_ERR_WITNESS_PUBKEYTYPE);
     }
     return true;
@@ -1432,22 +1419,5 @@ bool VerifyScript(const CScript& scriptSig, const CScript& scriptPubKey, const C
 
 size_t CountWitnessSigOps(const CScript& scriptSig, const CScript& scriptPubKey, const CScriptWitness* witness, unsigned int flags)
 {
-    static const CScriptWitness witnessEmpty;
-
-    if ((flags & SCRIPT_VERIFY_WITNESS) == 0) {
-        return 0;
-    }
-    assert((flags & SCRIPT_VERIFY_P2SH) != 0);
-
-    if (scriptPubKey.IsPayToScriptHash() && scriptSig.IsPushOnly()) {
-        CScript::const_iterator pc = scriptSig.begin();
-        std::vector<unsigned char> data;
-        while (pc < scriptSig.end()) {
-            opcodetype opcode;
-            scriptSig.GetOp(pc, opcode, data);
-        }
-        CScript subscript(data.begin(), data.end());
-    }
-
     return 0;
 }
