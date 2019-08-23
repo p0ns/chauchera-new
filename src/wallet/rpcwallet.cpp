@@ -2916,7 +2916,7 @@ UniValue fundrawtransaction(const JSONRPCRequest& request)
 
     if (request.fHelp || request.params.size() < 1 || request.params.size() > 2)
         throw std::runtime_error(
-                            "fundrawtransaction \"hexstring\" ( options iswitness )\n"
+                            "fundrawtransaction \"hexstring\" ( options )\n"
                             "\nAdd inputs to a transaction until it has enough in value to meet its out value.\n"
                             "This will not modify existing inputs, and will add at most one change output to the outputs.\n"
                             "No existing outputs will be modified unless \"subtractFeeFromOutputs\" is specified.\n"
