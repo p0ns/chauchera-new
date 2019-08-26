@@ -98,7 +98,6 @@ void BlockAssembler::resetBlock()
     // Reserve space for coinbase tx
     nBlockWeight = 4000;
     nBlockSigOpsCost = 400;
-    fIncludeWitness = false;
 
     // These counters do not include coinbase tx
     nBlockTx = 0;
@@ -146,7 +145,6 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
     // -promiscuousmempoolflags is used.
     // TODO: replace this with a call to main to assess validity of a mempool
     // transaction (which in most cases can be a no-op).
-    fIncludeWitness = false;
 
     int nPackagesSelected = 0;
     int nDescendantsUpdated = 0;
