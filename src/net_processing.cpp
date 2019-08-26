@@ -199,8 +199,6 @@ struct CNodeState {
       * but is used as a flag to "lock in" the version of compact blocks (fWantsCmpctWitness) we send.
       */
     bool fProvidesHeaderAndIDs;
-    //! Whether this peer can give us witnesses
-    bool fHaveWitness;
     //! Whether this peer wants witnesses in cmpctblocks/blocktxns
     bool fWantsCmpctWitness;
     /**
@@ -258,7 +256,6 @@ struct CNodeState {
         fPreferHeaders = false;
         fPreferHeaderAndIDs = false;
         fProvidesHeaderAndIDs = false;
-        fHaveWitness = false;
         fWantsCmpctWitness = false;
         fSupportsDesiredCmpctVersion = false;
         m_chain_sync = { 0, nullptr, false, false };
@@ -419,7 +416,7 @@ void MaybeSetPeerAsAnnouncingHeaderAndIDs(NodeId nodeid, CConnman* connman) {
             }
         }
         connman->ForNode(nodeid, [connman](CNode* pfrom){
-            uint64_t nCMPCTBLOCKVersion = (pfrom->GetLocalServices() & NODE_WITNESS) ? 2 : 1;
+            uint64_t nCMPCTBLOCKVersion = 1;
             if (lNodesAnnouncingHeaderAndIDs.size() >= 3) {
                 // As per BIP152, we only get 3 of our peers to announce
                 // blocks using compact encodings.
@@ -1243,11 +1240,7 @@ void static ProcessGetData(CNode* pfrom, const Consensus::Params& consensusParam
 }
 
 uint32_t GetFetchFlags(CNode* pfrom) {
-    uint32_t nFetchFlags = 0;
-    if ((pfrom->GetLocalServices() & NODE_WITNESS) && State(pfrom->GetId())->fHaveWitness) {
-        nFetchFlags |= MSG_WITNESS_FLAG;
-    }
-    return nFetchFlags;
+    return 0;
 }
 
 inline void static SendBlockTransactions(const CBlock& block, const BlockTransactionsRequest& req, CNode* pfrom, CConnman* connman) {
@@ -1644,12 +1637,6 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
         pfrom->SetSendVersion(nSendVersion);
         pfrom->nVersion = nVersion;
 
-        if((nServices & NODE_WITNESS))
-        {
-            LOCK(cs_main);
-            State(pfrom->GetId())->fHaveWitness = true;
-        }
-
         // Potentially mark this peer as a preferred download peer.
         {
         LOCK(cs_main);
@@ -1749,10 +1736,7 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
             // We send this to non-NODE NETWORK peers as well, because
             // they may wish to request compact blocks from us
             bool fAnnounceUsingCMPCTBLOCK = false;
-            uint64_t nCMPCTBLOCKVersion = 2;
-            if (pfrom->GetLocalServices() & NODE_WITNESS)
-                connman->PushMessage(pfrom, msgMaker.Make(NetMsgType::SENDCMPCT, fAnnounceUsingCMPCTBLOCK, nCMPCTBLOCKVersion));
-            nCMPCTBLOCKVersion = 1;
+            uint64_t nCMPCTBLOCKVersion = 1;
             connman->PushMessage(pfrom, msgMaker.Make(NetMsgType::SENDCMPCT, fAnnounceUsingCMPCTBLOCK, nCMPCTBLOCKVersion));
         }
         pfrom->fSuccessfullyConnected = true;
@@ -1827,7 +1811,7 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
         bool fAnnounceUsingCMPCTBLOCK = false;
         uint64_t nCMPCTBLOCKVersion = 0;
         vRecv >> fAnnounceUsingCMPCTBLOCK >> nCMPCTBLOCKVersion;
-        if (nCMPCTBLOCKVersion == 1 || ((pfrom->GetLocalServices() & NODE_WITNESS) && nCMPCTBLOCKVersion == 2)) {
+        if (nCMPCTBLOCKVersion == 1) {
             LOCK(cs_main);
             // fProvidesHeaderAndIDs is used to "lock in" version of compact blocks we send (fWantsCmpctWitness)
             if (!State(pfrom->GetId())->fProvidesHeaderAndIDs) {
@@ -1837,10 +1821,7 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
             if (State(pfrom->GetId())->fWantsCmpctWitness == (nCMPCTBLOCKVersion == 2)) // ignore later version announces
                 State(pfrom->GetId())->fPreferHeaderAndIDs = fAnnounceUsingCMPCTBLOCK;
             if (!State(pfrom->GetId())->fSupportsDesiredCmpctVersion) {
-                if (pfrom->GetLocalServices() & NODE_WITNESS)
-                    State(pfrom->GetId())->fSupportsDesiredCmpctVersion = (nCMPCTBLOCKVersion == 2);
-                else
-                    State(pfrom->GetId())->fSupportsDesiredCmpctVersion = (nCMPCTBLOCKVersion == 1);
+                State(pfrom->GetId())->fSupportsDesiredCmpctVersion = (nCMPCTBLOCKVersion == 1);
             }
         }
     }
