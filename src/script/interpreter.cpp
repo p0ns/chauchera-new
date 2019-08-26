@@ -205,10 +205,6 @@ bool static CheckPubKeyEncoding(const valtype &vchPubKey, unsigned int flags, co
     if ((flags & SCRIPT_VERIFY_STRICTENC) != 0 && !IsCompressedOrUncompressedPubKey(vchPubKey)) {
         return set_error(serror, SCRIPT_ERR_PUBKEYTYPE);
     }
-    // Only compressed keys are accepted in segwit
-    if (sigversion == SIGVERSION_WITNESS_V0) {
-        return set_error(serror, SCRIPT_ERR_WITNESS_PUBKEYTYPE);
-    }
     return true;
 }
 
@@ -1163,16 +1159,7 @@ uint256 GetOutputsHash(const CTransaction& txTo) {
 
 } // namespace
 
-PrecomputedTransactionData::PrecomputedTransactionData(const CTransaction& txTo)
-{
-    // Cache is calculated only for transactions with witness
-    if (txTo.HasWitness()) {
-        hashPrevouts = GetPrevoutHash(txTo);
-        hashSequence = GetSequenceHash(txTo);
-        hashOutputs = GetOutputsHash(txTo);
-        ready = true;
-    }
-}
+PrecomputedTransactionData::PrecomputedTransactionData(const CTransaction& txTo) {}
 
 uint256 SignatureHash(const CScript& scriptCode, const CTransaction& txTo, unsigned int nIn, int nHashType, const CAmount& amount, SigVersion sigversion, const PrecomputedTransactionData* cache)
 {
