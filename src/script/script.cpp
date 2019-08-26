@@ -230,17 +230,6 @@ bool CScript::IsPushOnly() const
     return this->IsPushOnly(begin());
 }
 
-std::string CScriptWitness::ToString() const
-{
-    std::string ret = "CScriptWitness(";
-    for (unsigned int i = 0; i < stack.size(); i++) {
-        if (i) {
-            ret += ", ";
-        }
-        ret += HexStr(stack[i]);
-    }
-    return ret + ")";
-}
 
 bool CScript::HasValidOps() const
 {
