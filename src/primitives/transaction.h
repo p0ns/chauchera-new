@@ -222,17 +222,9 @@ inline void UnserializeTransaction(TxType& tx, Stream& s) {
 
 template<typename Stream, typename TxType>
 inline void SerializeTransaction(const TxType& tx, Stream& s) {
-    const bool fAllowWitness = !(s.GetVersion() & SERIALIZE_TRANSACTION_NO_WITNESS);
-
     s << tx.nVersion;
     unsigned char flags = 0;
     // Consistency check
-    if (fAllowWitness) {
-        /* Check whether witnesses need to be serialized. */
-        if (tx.HasWitness()) {
-            flags |= 1;
-        }
-    }
     if (flags) {
         /* Use extended format in case witnesses are to be serialized. */
         std::vector<CTxIn> vinDummy;
@@ -330,10 +322,6 @@ public:
 
     std::string ToString() const;
 
-    bool HasWitness() const
-    {
-        return false;
-    }
 };
 
 /** A mutable version of CTransaction. */
@@ -373,10 +361,6 @@ struct CMutableTransaction
         return a.GetHash() == b.GetHash();
     }
 
-    bool HasWitness() const
-    {
-        return false;
-    }
 };
 
 typedef std::shared_ptr<const CTransaction> CTransactionRef;
