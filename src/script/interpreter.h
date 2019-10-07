@@ -92,10 +92,6 @@ enum
     // See BIP112 for details
     SCRIPT_VERIFY_CHECKSEQUENCEVERIFY = (1U << 10),
 
-    // Support segregated witness
-    //
-    SCRIPT_VERIFY_WITNESS = (1U << 11),
-
     // Making v1-v16 witness program non-standard
     //
     SCRIPT_VERIFY_DISCOURAGE_UPGRADABLE_WITNESS_PROGRAM = (1U << 12),
@@ -107,10 +103,6 @@ enum
     // Signature(s) must be empty vector if an CHECK(MULTI)SIG operation failed
     //
     SCRIPT_VERIFY_NULLFAIL = (1U << 14),
-
-    // Public keys in segregated witness scripts must be compressed
-    //
-    SCRIPT_VERIFY_WITNESS_PUBKEYTYPE = (1U << 15),
 
     // Making OP_CODESEPARATOR and FindAndDelete fail any non-segwit scripts
     //
@@ -185,8 +177,6 @@ public:
 };
 
 bool EvalScript(std::vector<std::vector<unsigned char> >& stack, const CScript& script, unsigned int flags, const BaseSignatureChecker& checker, SigVersion sigversion, ScriptError* error = nullptr);
-bool VerifyScript(const CScript& scriptSig, const CScript& scriptPubKey, const CScriptWitness* witness, unsigned int flags, const BaseSignatureChecker& checker, ScriptError* serror = nullptr);
-
-size_t CountWitnessSigOps(const CScript& scriptSig, const CScript& scriptPubKey, const CScriptWitness* witness, unsigned int flags);
+bool VerifyScript(const CScript& scriptSig, const CScript& scriptPubKey, unsigned int flags, const BaseSignatureChecker& checker, ScriptError* serror = nullptr);
 
 #endif // BITCOIN_SCRIPT_INTERPRETER_H

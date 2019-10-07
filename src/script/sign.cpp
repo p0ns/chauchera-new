@@ -132,7 +132,6 @@ bool ProduceSignature(const BaseSignatureCreator& creator, const CScript& fromPu
     bool solved = SignStep(creator, script, result, whichType, SIGVERSION_BASE);
     bool P2SH = false;
     CScript subscript;
-    sigdata.scriptWitness.stack.clear();
 
     if (solved && whichType == TX_SCRIPTHASH)
     {
@@ -150,7 +149,7 @@ bool ProduceSignature(const BaseSignatureCreator& creator, const CScript& fromPu
     sigdata.scriptSig = PushAll(result);
 
     // Test solution
-    return solved && VerifyScript(sigdata.scriptSig, fromPubKey, &sigdata.scriptWitness, STANDARD_SCRIPT_VERIFY_FLAGS, creator.Checker());
+    return solved && VerifyScript(sigdata.scriptSig, fromPubKey, STANDARD_SCRIPT_VERIFY_FLAGS, creator.Checker());
 }
 
 SignatureData DataFromTransaction(const CMutableTransaction& tx, unsigned int nIn)
@@ -158,7 +157,6 @@ SignatureData DataFromTransaction(const CMutableTransaction& tx, unsigned int nI
     SignatureData data;
     assert(tx.vin.size() > nIn);
     data.scriptSig = tx.vin[nIn].scriptSig;
-    data.scriptWitness = tx.vin[nIn].scriptWitness;
     return data;
 }
 
@@ -166,7 +164,6 @@ void UpdateTransaction(CMutableTransaction& tx, unsigned int nIn, const Signatur
 {
     assert(tx.vin.size() > nIn);
     tx.vin[nIn].scriptSig = data.scriptSig;
-    tx.vin[nIn].scriptWitness = data.scriptWitness;
 }
 
 bool SignSignature(const CKeyStore &keystore, const CScript& fromPubKey, CMutableTransaction& txTo, unsigned int nIn, const CAmount& amount, int nHashType)
@@ -252,18 +249,17 @@ namespace
 struct Stacks
 {
     std::vector<valtype> script;
-    std::vector<valtype> witness;
+    std::vector<valtype> empty;
 
     Stacks() {}
-    explicit Stacks(const std::vector<valtype>& scriptSigStack_) : script(scriptSigStack_), witness() {}
-    explicit Stacks(const SignatureData& data) : witness(data.scriptWitness.stack) {
+    explicit Stacks(const std::vector<valtype>& scriptSigStack_) : script(scriptSigStack_), empty() {}
+    explicit Stacks(const SignatureData& data) : empty() {
         EvalScript(script, data.scriptSig, SCRIPT_VERIFY_STRICTENC, BaseSignatureChecker(), SIGVERSION_BASE);
     }
 
     SignatureData Output() const {
         SignatureData result;
         result.scriptSig = PushAll(script);
-        result.scriptWitness.stack = witness;
         return result;
     }
 };
@@ -364,12 +360,11 @@ bool IsSolvable(const CKeyStore& store, const CScript& script)
     // it will reject witness outputs that require signing with an uncompressed public key.
     DummySignatureCreator creator(&store);
     SignatureData sigs;
-    // Make sure that STANDARD_SCRIPT_VERIFY_FLAGS includes SCRIPT_VERIFY_WITNESS_PUBKEYTYPE, the most
     // important property this function is designed to test for.
-    static_assert(STANDARD_SCRIPT_VERIFY_FLAGS & SCRIPT_VERIFY_WITNESS_PUBKEYTYPE, "IsSolvable requires standard script flags to include WITNESS_PUBKEYTYPE");
+    static_assert(STANDARD_SCRIPT_VERIFY_FLAGS, "IsSolvable requires standard script flags.");
     if (ProduceSignature(creator, script, sigs)) {
         // VerifyScript check is just defensive, and should never fail.
-        assert(VerifyScript(sigs.scriptSig, script, &sigs.scriptWitness, STANDARD_SCRIPT_VERIFY_FLAGS, creator.Checker()));
+        assert(VerifyScript(sigs.scriptSig, script, STANDARD_SCRIPT_VERIFY_FLAGS, creator.Checker()));
         return true;
     }
     return false;
