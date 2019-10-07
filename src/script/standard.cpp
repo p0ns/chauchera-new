@@ -250,27 +250,6 @@ public:
         *script << OP_HASH160 << ToByteVector(scriptID) << OP_EQUAL;
         return true;
     }
-
-    bool operator()(const WitnessV0KeyHash& id) const
-    {
-        script->clear();
-        *script << OP_0 << ToByteVector(id);
-        return true;
-    }
-
-    bool operator()(const WitnessV0ScriptHash& id) const
-    {
-        script->clear();
-        *script << OP_0 << ToByteVector(id);
-        return true;
-    }
-
-    bool operator()(const WitnessUnknown& id) const
-    {
-        script->clear();
-        *script << CScript::EncodeOP_N(id.version) << std::vector<unsigned char>(id.program, id.program + id.length);
-        return true;
-    }
 };
 } // namespace
 
@@ -296,24 +275,6 @@ CScript GetScriptForMultisig(int nRequired, const std::vector<CPubKey>& keys)
         script << ToByteVector(key);
     script << CScript::EncodeOP_N(keys.size()) << OP_CHECKMULTISIG;
     return script;
-}
-
-CScript GetScriptForWitness(const CScript& redeemscript)
-{
-    CScript ret;
-
-    txnouttype typ;
-    std::vector<std::vector<unsigned char> > vSolutions;
-    if (Solver(redeemscript, typ, vSolutions)) {
-        if (typ == TX_PUBKEY) {
-            return GetScriptForDestination(WitnessV0KeyHash(Hash160(vSolutions[0].begin(), vSolutions[0].end())));
-        } else if (typ == TX_PUBKEYHASH) {
-            return GetScriptForDestination(WitnessV0KeyHash(vSolutions[0]));
-        }
-    }
-    uint256 hash;
-    CSHA256().Write(&redeemscript[0], redeemscript.size()).Finalize(hash.begin());
-    return GetScriptForDestination(WitnessV0ScriptHash(hash));
 }
 
 bool IsValidDestination(const CTxDestination& dest) {

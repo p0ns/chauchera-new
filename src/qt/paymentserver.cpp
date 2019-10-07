@@ -645,7 +645,6 @@ void PaymentServer::fetchPaymentACK(CWallet* wallet, const SendCoinsRecipient& r
         // it's the output type we use subject to privacy issues, but not restricted by what
         // other software supports.
         const OutputType change_type = g_change_type != OUTPUT_TYPE_NONE ? g_change_type : g_address_type;
-        wallet->LearnRelatedScripts(newKey, change_type);
         CTxDestination dest = GetDestinationForKey(newKey, change_type);
         wallet->SetAddressBook(dest, strAccount, "refund");
 

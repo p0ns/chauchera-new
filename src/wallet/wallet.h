@@ -1138,20 +1138,6 @@ public:
     void BlockUntilSyncedToCurrentChain();
 
     /**
-     * Explicitly make the wallet learn the related scripts for outputs to the
-     * given key. This is purely to make the wallet file compatible with older
-     * software, as CBasicKeyStore automatically does this implicitly for all
-     * keys now.
-     */
-    void LearnRelatedScripts(const CPubKey& key, OutputType);
-
-    /**
-     * Same as LearnRelatedScripts, but when the OutputType is not known (and could
-     * be anything).
-     */
-    void LearnAllRelatedScripts(const CPubKey& key);
-
-    /**
      * Get a destination of the requested type (if possible) to the specified script.
      * This function will automatically add the necessary scripts to the wallet.
      */
