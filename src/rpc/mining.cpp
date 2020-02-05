@@ -108,6 +108,7 @@ UniValue generateBlocks(boost::shared_ptr<CReserveScript> coinbaseScript, int nG
         nHeight = nHeightStart;
         nHeightEnd = nHeightStart+nGenerate;
     }
+    
     unsigned int nExtraNonce = 0;
     UniValue blockHashes(UniValue::VARR);
     while (nHeight < nHeightEnd)

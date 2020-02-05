@@ -276,8 +276,9 @@ public:
         return *phashBlock;
     }
 
-    uint256 GetBlockPoWHash() const
+    uint256 GetBlockPoWHash() const  //although this is not being use, let's force forward compat.
     {
+
         return GetBlockHeader().GetPoWHash();
     }
 

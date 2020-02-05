@@ -68,13 +68,21 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
     // Genesis block
     if (pindexLast == NULL)
         return nProofOfWorkLimit;
+
+    int64_t nNextBlockHeight = pindexLast->nHeight + 1;
+
+    if( (nNextBlockHeight >= params.PMC2ActivationHeight) && (nNextBlockHeight < (params.PMC2ActivationHeight + params.PMC2DifficultyAdjustmentWindowSize)) ) {
+        printf("%s: Block Height %ld: minPOW window for PMC2 activated, returning nProofOfWorkLimit\n", __func__, nNextBlockHeight);
+        return nProofOfWorkLimit;
+    }
+
     
-    if(pindexLast->nHeight + 1 >= params.nPowDGWHeight){ //Testnet activation comes in params, nPowDGWHeight should be 0
+    if(nNextBlockHeight >= params.nPowDGWHeight){ //Testnet activation comes in params, nPowDGWHeight should be 0
         return DarkGravityWave(pindexLast, params);
     }
 
     // Only change once per difficulty adjustment interval
-    if ((pindexLast->nHeight+1) % params.DifficultyAdjustmentInterval() != 0)
+    if (nNextBlockHeight % params.DifficultyAdjustmentInterval() != 0)
     {
         if (params.fPowAllowMinDifficultyBlocks)
         {
@@ -99,7 +107,7 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
     // Chaucha: This fixes an issue where a 51% attack can change difficulty at will.
     // Go back the full period unless it's the first retarget after genesis. Code courtesy of Art Forz
     int blockstogoback = params.DifficultyAdjustmentInterval()-1;
-    if ((pindexLast->nHeight+1) != params.DifficultyAdjustmentInterval())
+    if (nNextBlockHeight != params.DifficultyAdjustmentInterval())
         blockstogoback = params.DifficultyAdjustmentInterval();
 
     // Go back by what we want to be 14 days worth of blocks

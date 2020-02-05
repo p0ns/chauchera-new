@@ -1702,7 +1702,6 @@ bool ReadBlockFromDisk(CBlock& block, const CDiskBlockPos& pos, const Consensus:
         return error("%s: Deserialize or I/O error - %s at %s", __func__, e.what(), pos.ToString());
     }
 
-    // Check the header
     if (!CheckProofOfWork(block.GetPoWHash(), block.nBits, consensusParams))
         return error("ReadBlockFromDisk: Errors in block header at %s", pos.ToString());
 
@@ -1716,6 +1715,7 @@ bool ReadBlockFromDisk(CBlock& block, const CBlockIndex* pindex, const Consensus
     if (block.GetHash() != pindex->GetBlockHash())
         return error("ReadBlockFromDisk(CBlock&, CBlockIndex*): GetHash() doesn't match index for %s at %s",
                 pindex->ToString(), pindex->GetBlockPos().ToString());
+
     return true;
 }
 
@@ -1735,7 +1735,7 @@ CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
     if (nHeight > 2834 && nHeight <= 50000) //En realidad partio desde el 2835.
         nSubsidy = (50000/nHeight + 10) * COIN;
 
-    if (nHeight >= consensusParams.PMC1)
+    if (nHeight >= consensusParams.PMC1ActivationHeight)
         nSubsidy = 1.5 * COIN;
 
     // Subsidy is cut in half every 210,000 blocks which will occur approximately every 4 years.
@@ -3566,6 +3566,16 @@ bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationState& sta
             if (IsSuperMajority(2, pindexPrev, consensusParams.nMajorityRejectBlockOutdated, consensusParams))
                 enforceV2 = true;
         }
+    }
+
+    bool enforceV3 = false;
+    if (block.nVersion < consensusParams.PMC2MinVersionRequired && nHeight >= consensusParams.PMC2ActivationHeight) {
+        enforceV3 = true;
+    }
+
+    if (enforceV3) {
+        return state.Invalid(false, REJECT_OBSOLETE, strprintf("bad-version(0x%08x)", block.nVersion),
+                             strprintf("rejected nVersion=0x%08x for block height %d", block.nVersion, nHeight));
     }
 
     if (enforceV2) {
