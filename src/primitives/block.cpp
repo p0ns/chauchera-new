@@ -10,6 +10,7 @@
 #include <utilstrencodings.h>
 #include <crypto/common.h>
 #include <crypto/scrypt.h>
+#include "chainparams.h"
 
 uint256 CBlockHeader::GetHash() const
 {
@@ -19,7 +20,14 @@ uint256 CBlockHeader::GetHash() const
 uint256 CBlockHeader::GetPoWHash() const
 {
     uint256 thash;
-    scrypt_1024_1_1_256(BEGIN(nVersion), BEGIN(thash));
+    unsigned int target_N_size;
+
+    if ( nVersion < Params().GetConsensus().PMC2MinVersionRequired )
+        target_N_size = BLOCK_HASH_PRE_PMC2_N_SIZE;
+    else
+        target_N_size = Params().GetConsensus().PMC2ScryptNFactor;
+
+    scrypt_N_1_1_256(BEGIN(nVersion), BEGIN(thash), target_N_size);
     return thash;
 }
 

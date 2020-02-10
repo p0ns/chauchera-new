@@ -1150,7 +1150,7 @@ CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
     if (nHeight > 2834 && nHeight <= 50000) //En realidad partio desde el 2835.
         nSubsidy = (50000/nHeight + 10) * COIN;
 
-    if (nHeight >= consensusParams.PMC1)
+    if (nHeight >= consensusParams.PMC1ActivationHeight)
         nSubsidy = 1.5 * COIN;
 
     // Subsidy is cut in half every 210,000 blocks which will occur approximately every 4 years.
@@ -1844,6 +1844,15 @@ bool CChainState::ConnectBlock(const CBlock& block, CValidationState& state, CBl
 
     int64_t nTime1 = GetTimeMicros(); nTimeCheck += nTime1 - nTimeStart;
     LogPrint(BCLog::BENCH, "    - Sanity checks: %.2fms [%.2fs (%.2fms/blk)]\n", MILLI * (nTime1 - nTimeStart), nTimeCheck * MICRO, nTimeCheck * MILLI / nBlocksTotal);
+
+    // Seccion especial para validaciones de PMCs
+    bool fEnforcePMC2 = (block.nVersion < chainparams.GetConsensus().PMC2MinVersionRequired && pindex->nHeight >= chainparams.GetConsensus().PMC2ActivationHeight);
+
+    if (fEnforcePMC2) {
+        return state.Invalid(false, REJECT_OBSOLETE, strprintf("bad-version(0x%08x)", block.nVersion),
+                             strprintf("rejected nVersion=0x%08x for block height %d", block.nVersion, pindex->nHeight));
+    }
+
 
     // Do not allow blocks that contain transactions which 'overwrite' older transactions,
     // unless those are already completely spent.

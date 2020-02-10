@@ -10,6 +10,8 @@
 #include <serialize.h>
 #include <uint256.h>
 
+#define BLOCK_HASH_PRE_PMC2_N_SIZE  (1 << (9 + 1))
+
 /** Nodes collect new transactions into a block, hash them into a hash tree,
  * and scan through nonce values to make the block's hash satisfy proof-of-work
  * requirements.  When they solve the proof-of-work, they broadcast the block

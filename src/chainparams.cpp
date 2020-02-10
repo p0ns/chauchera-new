@@ -101,8 +101,13 @@ public:
         consensus.nPowDGWHeight = 147000; //DGW on starting from block 147.000
 
         // Propuestas de Mejora para Chaucha (PMC)
-        consensus.PMC1 = 220000;
-        consensus.PMC2 = 1000000;  // 1 millon mientras se decide
+        consensus.PMC1ActivationHeight = 220000;
+
+        // PMC2 Activa el cambio de Scrypt a ScryptN
+        consensus.PMC2ActivationHeight = 1200000;
+        consensus.PMC2MinVersionRequired = 0x30000000UL;
+        consensus.PMC2DifficultyAdjustmentWindowSize = 24;
+        consensus.PMC2ScryptNFactor = (1 << (14 + 1));
 
 
         // The best chain should have at least this much work.
@@ -212,8 +217,13 @@ public:
         consensus.nPowDGWHeight = 200; //DGW always on
 
         // Propuestas de Mejora para Chaucha (PMC)
-        consensus.PMC1 = 235;
-        consensus.PMC2 = 500;
+        consensus.PMC1ActivationHeight = 30;
+
+        // PMC2 Activa el cambio de Scrypt a ScryptN
+        consensus.PMC2ActivationHeight = 50;
+        consensus.PMC2MinVersionRequired = 0x30000000UL;
+        consensus.PMC2DifficultyAdjustmentWindowSize = 24;
+        consensus.PMC2ScryptNFactor = (1 << (14 + 1));
 
         pchMessageStart[0] = 0xfc;
         pchMessageStart[1] = 0xd1;
@@ -299,8 +309,15 @@ public:
         consensus.nPowDGWHeight = 0; //DGW always on
 
         // Propuestas de Mejora para Chaucha (PMC)
-        consensus.PMC1 = 1; // 1.5 CHA
-        consensus.PMC2 = 20;
+        // Propuestas de Mejora para Chaucha (PMC)
+        consensus.PMC1ActivationHeight = 30;
+
+        // PMC2 Activa el cambio de Scrypt a ScryptN
+        consensus.PMC2ActivationHeight = 10;
+        consensus.PMC2MinVersionRequired = 0x30000000UL;
+        consensus.PMC2DifficultyAdjustmentWindowSize = 24;
+        consensus.PMC2ScryptNFactor = (1 << (14 + 1));
+
 
         pchMessageStart[0] = 0xfa;
         pchMessageStart[1] = 0xbf;
