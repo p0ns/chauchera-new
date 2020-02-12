@@ -2187,13 +2187,18 @@ void static UpdateTip(const CBlockIndex *pindexNew, const CChainParams& chainPar
             DoWarning(strWarning);
         }
     }
-    LogPrintf("%s: new best=%s height=%d version=0x%08x tx=%lu date='%s' cache=%.1fMiB(%utxo)", __func__,
+    LogPrintf("%s: new best=%s\n\theight=%d\n\tversion=0x%08x\n\ttx=%lu\n\tdate='%s'\n\tcache=%.1fMiB(%utxo)\n\tPoWHash=%s\n\tBits=0x%08x\n\tNonce=%d", __func__,
         pindexNew->GetBlockHash().ToString(),
-        pindexNew->nHeight, pindexNew->nVersion,
+        pindexNew->nHeight,
+        pindexNew->nVersion,
         (unsigned long)pindexNew->nChainTx,
         DateTimeStrFormat("%Y-%m-%d %H:%M:%S", pindexNew->GetBlockTime()),
         pcoinsTip->DynamicMemoryUsage() * (1.0 / (1<<20)),
-        pcoinsTip->GetCacheSize()
+        pcoinsTip->GetCacheSize(),
+        pindexNew->GetBlockPoWHash().ToString(),
+        pindexNew->nBits,
+        pindexNew->nNonce
+
     );
 
     if (!warningMessages.empty())
