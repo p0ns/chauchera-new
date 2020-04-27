@@ -188,7 +188,7 @@ public:
         consensus.nSubsidyHalvingInterval = 250;
         consensus.BIP16Height = 0; // always enforce P2SH BIP16 on regtest
         consensus.BIP34Height = 0;
-        consensus.BIP34Hash = uint256S("f0a673496ca33e8d84df16f2ad99eba0732ee41971658be4d927f30c8f27aa65");
+        consensus.BIP34Hash = uint256S("0x9eb5f94fb3f94602b7c7bd05af3cca3d213132cc4be0e054bda88813b89d1c1e");
         consensus.BIP65Height = 0;
         consensus.BIP66Height = 0;
         consensus.powLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
@@ -211,7 +211,7 @@ public:
         consensus.nMinimumChainWork = uint256S("");
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S("0x1efb29c8187d5a496a33377941d1df415169c3ce5d8c05d055f25b683ec3f9a3"); //612653
+        consensus.defaultAssumeValid = uint256S("0x9eb5f94fb3f94602b7c7bd05af3cca3d213132cc4be0e054bda88813b89d1c1e"); //612653
 
         /** DarkGravityWell v3 Fork Params - Humwerthuz @ 30/12/2017 **/
         consensus.nPowDGWHeight = 200; //DGW always on
@@ -232,10 +232,10 @@ public:
         nDefaultPort = 19335;
         nPruneAfterHeight = 100000;
 
-        genesis = CreateGenesisBlock(1514919398, 304091, 0x1e0ffff0, 1, 50 * COIN);
+        genesis = CreateGenesisBlock(1587999168, 2510815, 0x1e0ffff0, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0xf0a673496ca33e8d84df16f2ad99eba0732ee41971658be4d927f30c8f27aa65"));
-        assert(genesis.hashMerkleRoot == uint256S("0x1b54ad13e84ece043533beb59d6b666047ffc77a4496034a101791601d711998"));
+        assert(consensus.hashGenesisBlock == uint256S("0x9eb5f94fb3f94602b7c7bd05af3cca3d213132cc4be0e054bda88813b89d1c1e"));
+        assert(genesis.hashMerkleRoot == uint256S("0xcb88ddb0d8b486623c6070ecc2a61b4f684f33c377214a771a8834e86a91a06f"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
@@ -263,7 +263,6 @@ public:
         };
 
         chainTxData = ChainTxData{
-            // Data as of block a0afbded94d4be233e191525dc2d467af5c7eab3143c852c3cd549831022aad6 (height 343833)
             0,
             0,
             0
