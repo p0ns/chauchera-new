@@ -188,7 +188,7 @@ public:
         consensus.nSubsidyHalvingInterval = 250;
         consensus.BIP16Height = 0; // always enforce P2SH BIP16 on regtest
         consensus.BIP34Height = 0;
-        consensus.BIP34Hash = uint256S("0x9eb5f94fb3f94602b7c7bd05af3cca3d213132cc4be0e054bda88813b89d1c1e");
+        consensus.BIP34Hash = uint256S("0x850d8becdbeab4bc066f7b8e592c61b313495b517e2c4ed6dcead0e7957a1267");
         consensus.BIP65Height = 0;
         consensus.BIP66Height = 0;
         consensus.powLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
@@ -211,16 +211,16 @@ public:
         consensus.nMinimumChainWork = uint256S("");
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S("0x9eb5f94fb3f94602b7c7bd05af3cca3d213132cc4be0e054bda88813b89d1c1e"); //612653
+        consensus.defaultAssumeValid = uint256S("0x850d8becdbeab4bc066f7b8e592c61b313495b517e2c4ed6dcead0e7957a1267"); //612653
 
         /** DarkGravityWell v3 Fork Params - Humwerthuz @ 30/12/2017 **/
-        consensus.nPowDGWHeight = 200; //DGW always on
+        consensus.nPowDGWHeight = 0; //DGW always on
 
         // Propuestas de Mejora para Chaucha (PMC)
-        consensus.PMC1ActivationHeight = 30;
+        consensus.PMC1ActivationHeight = 20;
 
         // PMC2 Activa el cambio de Scrypt a ScryptN
-        consensus.PMC2ActivationHeight = 50;
+        consensus.PMC2ActivationHeight = 40;
         consensus.PMC2MinVersionRequired = 0x30000000UL;
         consensus.PMC2DifficultyAdjustmentWindowSize = 24;
         consensus.PMC2ScryptNFactor = (1 << (14 + 1));
@@ -232,10 +232,10 @@ public:
         nDefaultPort = 19335;
         nPruneAfterHeight = 100000;
 
-        genesis = CreateGenesisBlock(1587999168, 2510815, 0x1e0ffff0, 1, 50 * COIN);
+        genesis = CreateGenesisBlock(1588001028, 92605, 0x1e0ffff0, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x9eb5f94fb3f94602b7c7bd05af3cca3d213132cc4be0e054bda88813b89d1c1e"));
-        assert(genesis.hashMerkleRoot == uint256S("0xcb88ddb0d8b486623c6070ecc2a61b4f684f33c377214a771a8834e86a91a06f"));
+        assert(consensus.hashGenesisBlock == uint256S("0x850d8becdbeab4bc066f7b8e592c61b313495b517e2c4ed6dcead0e7957a1267"));
+        assert(genesis.hashMerkleRoot == uint256S("0x1b54ad13e84ece043533beb59d6b666047ffc77a4496034a101791601d711998"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
