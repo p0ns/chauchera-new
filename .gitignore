@@ -8,6 +8,8 @@ src/chaucha-tx
 src/test/test_chaucha
 src/qt/test/test_chauchera
 
+db4/
+
 # autoreconf
 Makefile.in
 aclocal.m4
