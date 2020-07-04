@@ -28,7 +28,7 @@ uint256 CBlockHeader::GetPoWHash() const
     else
         target_N_size = Params().GetConsensus().PMC2ScryptNFactor;
 
-    printf("GetPoWHash: using N size %d for nVersion %d at block %s \n", target_N_size, nVersion, chash.ToString().c_str());
+    //printf("GetPoWHash: using N size %d for nVersion %d at block %s \n", target_N_size, nVersion, chash.ToString().c_str());
 
     scrypt_N_1_1_256(BEGIN(nVersion), BEGIN(thash), target_N_size);
     
