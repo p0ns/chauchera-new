@@ -6,7 +6,6 @@
 #include "primitives/block.h"
 
 #include "hash.h"
-#include "chain.h"
 #include "crypto/scrypt.h"
 #include "tinyformat.h"
 #include "utilstrencodings.h"
@@ -29,7 +28,6 @@ uint256 CBlockHeader::GetPoWHashCHA() const
 {
     uint256 thash;
     scrypt_N_1_1_256(BEGIN(nVersion), BEGIN(thash), Params().GetConsensus().PMC2ScryptNFactor);
-    
     return thash;
 }
 
