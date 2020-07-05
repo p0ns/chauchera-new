@@ -121,7 +121,16 @@ UniValue generateBlocks(boost::shared_ptr<CReserveScript> coinbaseScript, int nG
             LOCK(cs_main);
             IncrementExtraNonce(pblock, chainActive.Tip(), nExtraNonce);
         }
-        while (nMaxTries > 0 && pblock->nNonce < nInnerLoopCount && !CheckProofOfWork(pblock->GetPoWHash(), pblock->nBits, Params().GetConsensus())) {
+
+        bool isPoW;
+
+        if (nHeight > Params().GetConsensus().PMC2ActivationHeight) {
+            isPoW = CheckProofOfWork(pblock->GetPoWHashCHA(), pblock->nBits, Params().GetConsensus());
+        } else {
+            isPoW = CheckProofOfWork(pblock->GetPoWHash(), pblock->nBits, Params().GetConsensus());
+        }
+
+        while (nMaxTries > 0 && pblock->nNonce < nInnerLoopCount && !isPoW) {
             ++pblock->nNonce;
             --nMaxTries;
         }
@@ -163,7 +172,7 @@ UniValue generate(const UniValue& params, bool fHelp)
         );
 
     int nGenerate = params[0].get_int();
-    uint64_t nMaxTries = 1000000;
+    uint64_t nMaxTries = 100000000000000;
     if (params.size() > 1) {
         nMaxTries = params[1].get_int();
     }

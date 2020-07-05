@@ -1688,6 +1688,7 @@ bool WriteBlockToDisk(const CBlock& block, CDiskBlockPos& pos, const CMessageHea
 bool ReadBlockFromDisk(CBlock& block, const CDiskBlockPos& pos, const Consensus::Params& consensusParams)
 {
     block.SetNull();
+    int nHeight = chainActive.Height() + 1;
 
     // Open history file to read
     CAutoFile filein(OpenBlockFile(pos, true), SER_DISK, CLIENT_VERSION);
@@ -1702,7 +1703,15 @@ bool ReadBlockFromDisk(CBlock& block, const CDiskBlockPos& pos, const Consensus:
         return error("%s: Deserialize or I/O error - %s at %s", __func__, e.what(), pos.ToString());
     }
 
-    if (!CheckProofOfWork(block.GetPoWHash(), block.nBits, consensusParams))
+    bool isPoW;
+
+    if (nHeight > consensusParams.PMC2ActivationHeight) {
+        isPoW = CheckProofOfWork(block.GetPoWHashCHA(), block.nBits, consensusParams);
+    } else {
+        isPoW = CheckProofOfWork(block.GetPoWHash(), block.nBits, consensusParams);
+    }
+
+    if (!isPoW)
         return error("ReadBlockFromDisk: Errors in block header at %s", pos.ToString());
 
     return true;
@@ -3403,8 +3412,17 @@ bool FindUndoPos(CValidationState &state, int nFile, CDiskBlockPos &pos, unsigne
 
 bool CheckBlockHeader(const CBlockHeader& block, CValidationState& state, const Consensus::Params& consensusParams, bool fCheckPOW)
 {
+    int nHeight = chainActive.Height() + 1;
+    bool isPoW;
+
+    if (nHeight > consensusParams.PMC2ActivationHeight) {
+        isPoW = CheckProofOfWork(block.GetPoWHashCHA(), block.nBits, consensusParams);
+    } else {
+        isPoW = CheckProofOfWork(block.GetPoWHash(), block.nBits, consensusParams);
+    }
+
     // Check proof of work matches claimed amount
-    if (fCheckPOW && !CheckProofOfWork(block.GetPoWHash(), block.nBits, consensusParams))
+    if (fCheckPOW && !isPoW)
         return state.DoS(50, false, REJECT_INVALID, "high-hash", false, "proof of work failed");
 
     return true;
