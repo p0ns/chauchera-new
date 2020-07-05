@@ -6,6 +6,7 @@
 #include "primitives/block.h"
 
 #include "hash.h"
+#include "chain.h"
 #include "crypto/scrypt.h"
 #include "tinyformat.h"
 #include "utilstrencodings.h"
@@ -20,17 +21,14 @@ uint256 CBlockHeader::GetHash() const
 uint256 CBlockHeader::GetPoWHash() const
 {
     uint256 thash;
-    uint256 chash = GetHash();
-    unsigned int target_N_size;
+    scrypt_N_1_1_256(BEGIN(nVersion), BEGIN(thash), BLOCK_HASH_PRE_PMC2_N_SIZE);
+    return thash;
+}
 
-    if ( nVersion < Params().GetConsensus().PMC2MinVersionRequired )
-        target_N_size = BLOCK_HASH_PRE_PMC2_N_SIZE;
-    else
-        target_N_size = Params().GetConsensus().PMC2ScryptNFactor;
-
-    //printf("GetPoWHash: using N size %d for nVersion %d at block %s \n", target_N_size, nVersion, chash.ToString().c_str());
-
-    scrypt_N_1_1_256(BEGIN(nVersion), BEGIN(thash), target_N_size);
+uint256 CBlockHeader::GetPoWHashCHA() const
+{
+    uint256 thash;
+    scrypt_N_1_1_256(BEGIN(nVersion), BEGIN(thash), Params().GetConsensus().PMC2ScryptNFactor);
     
     return thash;
 }
