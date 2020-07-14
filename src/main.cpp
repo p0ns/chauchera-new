@@ -1685,10 +1685,9 @@ bool WriteBlockToDisk(const CBlock& block, CDiskBlockPos& pos, const CMessageHea
     return true;
 }
 
-bool ReadBlockFromDisk(CBlock& block, const CDiskBlockPos& pos, const Consensus::Params& consensusParams)
+bool ReadBlockFromDiskOLD(CBlock& block, const CDiskBlockPos& pos, const Consensus::Params& consensusParams)
 {
     block.SetNull();
-    int nHeight = chainActive.Height() + 1;
 
     // Open history file to read
     CAutoFile filein(OpenBlockFile(pos, true), SER_DISK, CLIENT_VERSION);
@@ -1703,15 +1702,30 @@ bool ReadBlockFromDisk(CBlock& block, const CDiskBlockPos& pos, const Consensus:
         return error("%s: Deserialize or I/O error - %s at %s", __func__, e.what(), pos.ToString());
     }
 
-    bool isPoW;
+    if (!CheckProofOfWork(block.GetPoWHash(), block.nBits, consensusParams))
+        return error("ReadBlockFromDisk: Errors in block header at %s", pos.ToString());
 
-    if (nHeight > consensusParams.PMC2ActivationHeight) {
-        isPoW = CheckProofOfWork(block.GetPoWHashCHA(), block.nBits, consensusParams);
-    } else {
-        isPoW = CheckProofOfWork(block.GetPoWHash(), block.nBits, consensusParams);
+    return true;
+}
+
+bool ReadBlockFromDiskCHA(CBlock& block, const CDiskBlockPos& pos, const Consensus::Params& consensusParams)
+{
+    block.SetNull();
+
+    // Open history file to read
+    CAutoFile filein(OpenBlockFile(pos, true), SER_DISK, CLIENT_VERSION);
+    if (filein.IsNull())
+        return error("ReadBlockFromDisk: OpenBlockFile failed for %s", pos.ToString());
+
+    // Read block
+    try {
+        filein >> block;
+    }
+    catch (const std::exception& e) {
+        return error("%s: Deserialize or I/O error - %s at %s", __func__, e.what(), pos.ToString());
     }
 
-    if (!isPoW)
+    if (!CheckProofOfWork(block.GetPoWHashCHA(), block.nBits, consensusParams))
         return error("ReadBlockFromDisk: Errors in block header at %s", pos.ToString());
 
     return true;
@@ -1719,7 +1733,20 @@ bool ReadBlockFromDisk(CBlock& block, const CDiskBlockPos& pos, const Consensus:
 
 bool ReadBlockFromDisk(CBlock& block, const CBlockIndex* pindex, const Consensus::Params& consensusParams)
 {
-    if (!ReadBlockFromDisk(block, pindex->GetBlockPos(), consensusParams))
+    int nHeight = pindex->nHeight;
+    bool isPoW;
+
+    if (nHeight >= consensusParams.PMC2ActivationHeight) {
+        LogPrintf("%s: ACTIVACION SCRYPTCHA (%d)\n", __func__, nHeight);
+        isPoW = ReadBlockFromDiskCHA(block, pindex->GetBlockPos(), consensusParams);
+    } else {
+        isPoW = ReadBlockFromDiskOLD(block, pindex->GetBlockPos(), consensusParams);
+    }
+
+
+    LogPrintf("%s: isPoW %d (%s)\n", __func__, nHeight, isPoW);
+
+    if (!isPoW)
         return false;
     if (block.GetHash() != pindex->GetBlockHash())
         return error("ReadBlockFromDisk(CBlock&, CBlockIndex*): GetHash() doesn't match index for %s at %s",
@@ -3412,14 +3439,26 @@ bool FindUndoPos(CValidationState &state, int nFile, CDiskBlockPos &pos, unsigne
 
 bool CheckBlockHeader(const CBlockHeader& block, CValidationState& state, const Consensus::Params& consensusParams, bool fCheckPOW)
 {
-    int nHeight = chainActive.Height() + 1;
+    int nHeight = 0;
+
+    uint256 hash = block.GetHash();
+    BlockMap::iterator mi = mapBlockIndex.find(block.hashPrevBlock);
+
+    if (mi != mapBlockIndex.end()) {
+        CBlockIndex *pindex = mi->second;
+        nHeight = pindex == NULL ? 0 : pindex->nHeight + 1;
+    }
+
     bool isPoW;
 
-    if (nHeight > consensusParams.PMC2ActivationHeight) {
+    if (nHeight >= consensusParams.PMC2ActivationHeight) {
         isPoW = CheckProofOfWork(block.GetPoWHashCHA(), block.nBits, consensusParams);
+        LogPrintf("%s: ACTIVACION SCRYPTCHA (%d)\n", __func__, nHeight);
     } else {
         isPoW = CheckProofOfWork(block.GetPoWHash(), block.nBits, consensusParams);
     }
+
+    LogPrintf("%s: isPoW %d (%s)\n", __func__, nHeight, isPoW);
 
     // Check proof of work matches claimed amount
     if (fCheckPOW && !isPoW)
@@ -4543,7 +4582,7 @@ bool LoadExternalBlockFile(const CChainParams& chainparams, FILE* fileIn, CDiskB
                     std::pair<std::multimap<uint256, CDiskBlockPos>::iterator, std::multimap<uint256, CDiskBlockPos>::iterator> range = mapBlocksUnknownParent.equal_range(head);
                     while (range.first != range.second) {
                         std::multimap<uint256, CDiskBlockPos>::iterator it = range.first;
-                        if (ReadBlockFromDisk(block, it->second, chainparams.GetConsensus()))
+                        if (ReadBlockFromDiskOLD(block, it->second, chainparams.GetConsensus()) || ReadBlockFromDiskCHA(block, it->second, chainparams.GetConsensus()))
                         {
                             LogPrint("reindex", "%s: Processing out of order child %s of %s\n", __func__, block.GetHash().ToString(),
                                     head.ToString());
