@@ -95,7 +95,7 @@ public:
 
 
         // PMC2 Activa el cambio de Scrypt a ScryptN
-        consensus.PMC2ActivationHeight = 1200000;
+        consensus.PMC2ActivationHeight = 5000000;
         consensus.PMC2MinVersionRequired = 0x30000000UL;
         consensus.PMC2DifficultyAdjustmentWindowSize = 24;
         consensus.PMC2ScryptNFactor = (1 << (14 + 1));
