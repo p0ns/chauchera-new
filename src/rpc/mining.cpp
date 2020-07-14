@@ -124,7 +124,8 @@ UniValue generateBlocks(boost::shared_ptr<CReserveScript> coinbaseScript, int nG
 
         bool isPoW;
 
-        if (nHeight > Params().GetConsensus().PMC2ActivationHeight) {
+        if (nHeight + 1 >= Params().GetConsensus().PMC2ActivationHeight) {
+            LogPrintf("%s: ACTIVACION SCRYPTCHA (%d)\n", __func__, nHeight + 1);
             isPoW = CheckProofOfWork(pblock->GetPoWHashCHA(), pblock->nBits, Params().GetConsensus());
         } else {
             isPoW = CheckProofOfWork(pblock->GetPoWHash(), pblock->nBits, Params().GetConsensus());
