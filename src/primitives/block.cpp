@@ -10,6 +10,7 @@
 #include "tinyformat.h"
 #include "utilstrencodings.h"
 #include "crypto/common.h"
+#include "crypto/sha256.h"
 #include "chainparams.h"
 
 uint256 CBlockHeader::GetHash() const
@@ -28,6 +29,7 @@ uint256 CBlockHeader::GetPoWHashCHA() const
 {
     uint256 thash;
     scrypt_N_1_1_256(BEGIN(nVersion), BEGIN(thash), Params().GetConsensus().PMC2ScryptNFactor);
+    CSHA256().Write(thash.begin(), 32).Finalize(thash.begin());
     return thash;
 }
 
